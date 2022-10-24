@@ -26,6 +26,9 @@ SYMLINK_FROM_TO=(
 	"chromium/Default/Local Extension Settings"     ".config"
 	"BetterDiscord/plugins" ".config"
     ".bashrc"               ""
+    "dwl"                   ".config"
+    "gammastep"             ".config"
+    "fuzzel"                ".config"
 )
 
 
