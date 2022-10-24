@@ -1,0 +1,11 @@
+[terminal]
+vt = 1
+
+[default_session]
+
+command = "tuigreet -s USER_HOME/.config/xsessions -t -r --asterisks-char A --power-shutdown 'loginctl poweroff' --power-reboot 'loginctl reboot'"
+user = "greeter"
+
+[initial_session]
+command = "USER_HOME/.config/awesome/run/run.sh"
+user = "USER1"

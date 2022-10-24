@@ -1,0 +1,20 @@
+{
+	"all": {
+		"changeLogs": {
+			"ImageUtilities": "4.8.7",
+			"ShowConnections": "1.1.2"
+		},
+		"choices": {
+			"toastPosition": "right"
+		},
+		"general": {
+			"shareData": true,
+			"showToasts": true,
+			"showSupportBadges": false,
+			"useChromium": false
+		},
+		"hashes": {
+			"0BDFDB.raw.css": "c10b12dd7ea7d591e3b0817afa421b97a14816bf"
+		}
+	}
+}

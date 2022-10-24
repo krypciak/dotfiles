@@ -1,0 +1,13 @@
+UUID=ROOT_UUID ROOT_FSTAB_ARGS
+
+# $BOOT_PART
+UUID=BOOT_UUID BOOT_FSTAB_ARGS
+
+# /dev/LVM_GROUP_NAME/home
+UUID=HOME_UUID HOME_FSTAB_ARGS
+
+# /dev/LVM_GROUP_NAME/swap
+UUID=SWAP_UUID none swap defaults 0 0
+
+tmpfs /tmp      tmpfs rw,nodev,nosuid          0  0
+tmpfs FAKE_USER_HOME/.cache	tmpfs	noatime,nodev,nosuid,size=400M	0	0

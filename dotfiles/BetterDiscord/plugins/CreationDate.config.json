@@ -1,0 +1,14 @@
+{
+	"all": {
+		"dates": {
+			"creationDate": {}
+		},
+		"general": {
+			"displayText": true
+		},
+		"places": {
+			"userPopout": false,
+			"userProfile": true
+		}
+	}
+}
