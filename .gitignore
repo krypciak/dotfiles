@@ -16,3 +16,7 @@ dotfiles/copyq/copyq_tabs.ini
 dotfiles/copyq/copyq_tab*
 dotfiles/copyq/copyq-scripts.ini
 *.ldb
+
+*.o
+*-protocol.c
+*-protocol.h
