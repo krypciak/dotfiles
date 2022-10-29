@@ -1,3 +1,6 @@
 [submodule "dotfiles/dwl/dpms-off"]
 	path = dotfiles/dwl/dpms-off
 	url = https://github.com/lilydjwg/dpms-off
+[submodule "dotfiles/dwl/dwl-dotfiles"]
+	path = dotfiles/dwl/dwl-dotfiles
+	url = https://github.com/krypciak/dwl-dotfiles
