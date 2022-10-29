@@ -2,4 +2,13 @@ source ~/.config/at_login.sh
 
 export XDG_RUNTIME_DIR=/tmp/xdg-runtime-$(id -u)
 mkdir -p $XDG_RUNTIME_DIR
-dwl -s somebar
+chmod 0700 -R $XDG_RUNTIME_DIR
+
+# simulate a do-while
+do=true
+while $do ||  [ -f /tmp/restart_dwl ]; do
+    do=false
+    rm -rf /tmp/restart_dwl > /dev/null 2>&1
+    ~/.config/dwl/dwl-dotfiles/dwl -s somebar
+done
+
