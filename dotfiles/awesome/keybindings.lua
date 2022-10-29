@@ -144,7 +144,7 @@ local globalkeys_awesome = awful.util.table.join(
         awesome.quit()
         end, {description = "quit awesome", group = "awesome"}),
 	-- Restart awesome 
-	awful.key({superkey, ctrlkey}, "r", function()
+	awful.key({superkey, ctrlkey, shiftkey}, "m", function()
             os.execute("echo "..awful.screen.focused().selected_tag.name .. " > /tmp/awesomewm_last_tag")
             awesome.restart()
         end,
@@ -311,9 +311,6 @@ local globalkeys_layout = awful.util.table.join(
 		function() awful.layout.inc(-1) end,
 		{description = "Previous layout", group = "awesome" }),
 
-	awful.key({capskey}, "c",
-		function() awful.layout.set(awful.layout.layouts[default_layout_index]) end,
-		{description = "Default layout", group = "awesome" })
 )
 
 local globalkeys_system = awful.util.table.join(
