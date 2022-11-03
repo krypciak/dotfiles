@@ -309,7 +309,7 @@ local globalkeys_layout = awful.util.table.join(
 
     awful.key({capskey}, "f",
 		function() awful.layout.inc(-1) end,
-		{description = "Previous layout", group = "awesome" }),
+		{description = "Previous layout", group = "awesome" })
 
 )
 
