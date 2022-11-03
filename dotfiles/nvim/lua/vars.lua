@@ -3,17 +3,33 @@ local g = vim.g
 
 -- Share system clipboard with vim clipboard
 cmd('set clipboard+=unnamedplus')
-g.clipboard = {
-    copy = {
-        ['+'] = {'copyq', 'copy', '-'},
-        ['*'] = {'copyq', 'copy', '-'},
-    },
-    paste = {
-        ['+'] = {'copyq', 'clipboard'},
-        ['*'] = {'copyq', 'clipboard'},
-    },
-    cache_enabled = 1,
-}
+if os.getenv('WAYLAND_DISPLAY') then
+    -- Wayland
+    g.clipboard = {
+        copy = {
+            ['+'] = 'wl-copy',
+            ['*'] = 'wl-copy',
+        },
+        paste = {
+            ['+'] = 'wl-paste',
+            ['*'] = 'wl-paste',
+        },
+        cache_enabled = 1,
+    }
+else
+    -- X11 copyq
+    g.clipboard = {
+        copy = {
+            ['+'] = {'copyq', 'copy', '-'},
+            ['*'] = {'copyq', 'copy', '-'},
+        },
+        paste = {
+            ['+'] = {'copyq', 'clipboard'},
+            ['*'] = {'copyq', 'clipboard'},
+        },
+        cache_enabled = 1,
+    }
+end
 --
 g.SuperTabDefaultCompletionType = "<c-n>"
 
