@@ -57,7 +57,7 @@ pacman -Sy
 pri "Adding user $USER1"
 useradd -s /bin/bash -G tty,ftp,games,network,scanner,users,video,audio,wheel $USER1
 mkdir -p $USER_HOME
-chown -R $USER1:$USER1 $ARTIXD_DIR
+chown -R $USER1:1001 $ARTIXD_DIR
 
 DOTFILES_DIR=$USER_HOME/home/.config/dotfiles
 pri "Copying the repo to $DOTFILES_DIR"
@@ -80,14 +80,14 @@ if [ -d /tmp/paru ]; then rm -rf /tmp/paru; fi
 if ! command -v "paru"; then
     pacman $PACMAN_ARGUMENTS -S git
     git clone https://aur.archlinux.org/paru-bin.git /tmp/paru
-    chown -R $USER1:$USER1 /tmp/paru
+    chown -R $USER1:1001 /tmp/paru
     chmod +wrx /tmp/paru
     cd /tmp/paru
     doas -u $USER1 makepkg -si --noconfirm --needed
 fi
 cp $CONFIGD_DIR/root/etc/paru.conf /etc/paru.conf
 
-chown -R $USER1:$USER1 $USER_HOME/
+chown -R $USER1:1001 $USER_HOME/
 
 pri "Installing packages"
 doas -u $USER1 paru $PARU_ARGUMENTS $PACMAN_ARGUMENTS -S opendoas-sudo nvim-packer-git greetd-artix-openrc greetd-tuigreet-bin
@@ -116,7 +116,7 @@ done
 
 if [ $INSTALL_DOTFILES -eq 1 ]; then
     pri "Installing dotfiles for user $USER1"
-    chown $USER1:$USER1 -R $USER_HOME
+    chown $USER1:1001 -R $USER_HOME
     doas -u $USER1 sh $DOTFILES_DIR/install-dotfiles.sh
 
     pri "Installing dotfiles for root"
@@ -124,7 +124,7 @@ if [ $INSTALL_DOTFILES -eq 1 ]; then
 fi
 
 fish --command "fish_update_completions"
-chown -R $USER1:$USER1 $USER_HOME
+chown -R $USER1:1001 $USER_HOME
 doas -u $USER1 fish --command "fish_update_completions"
 
 pri "Cleaning up"
@@ -136,7 +136,9 @@ rm -r /dotfiles
 
 pri "Copying configs"
 printf "$LBLUE"
-cp -rv $CONFIGD_DIR/root_iso/* /
+
+rsync -av --progress $CONFIGD_DIR/root/ / --exclude etc/fstab --exclude etc/pacman.conf --exclude etc/default/grub --exclude etc/doas.conf --exclude etc/pacman.d --exclude etc/mkinitcpio.conf
+
 printf "$NC"
 
 ESCAPED_T1=$(printf '%s\n' "run_if_not_running_pgrep({ \"tutanota\" }" | sed -e 's/[\/&]/\\&/g')
@@ -145,8 +147,9 @@ sed -i "s/$ESCAPED_T1/--$ESCAPED_T1/g" $USER_HOME/.config/awesome/after_5sec.lua
 ESCAPED_T1=$(printf '%s\n' "run_if_not_running_pgrep({ music_player_class }" | sed -e 's/[\/&]/\\&/g')
 sed -i "s/$ESCAPED_T1/--$ESCAPED_T1/g" $USER_HOME/.config/awesome/autostart.lua
 
-sed -i "s/USER1/$USER1/g" /etc/doas.conf
-
+echo "permit setenv { XAUTHORITY LANG LC_ALL } nopass root \
+permit setenv { XAUTHORITY LANG LC_ALL } nopass :wheel \
+permit setenv { XAUTHORITY LANG LC_ALL } nopass $USER1\n" > /etc/doas.conf
 
 mkdir -p $USER_HOME/home/.cache
 
@@ -179,7 +182,7 @@ else
         sleep 3
     done
 fi
-chown -R $USER1:$USER1 $USER_HOME
+chown -R $USER1:1001 $USER_HOME
 
 pri "Set password for root"
 if [ "$ROOT_PASSWORD" != "" ]; then
@@ -203,7 +206,7 @@ sed -i -E ':a;N;$!ba;s/configure_user\n//g' /bin/artix-live
 sed -i -E ':a;N;$!ba;s/configure_language\n//g' /bin/artix-live
 sed -i -E ':a;N;$!ba;s/configure_displaymanager\n//g' /bin/artix-live
 echo "usermod -aG tty,ftp,games,network,scanner,users,video,audio,wheel,libvirt $USER1" >> /bin/artix-live
-echo "chown $USER1:$USER1 -R /home/$USER1/" >> /bin/artix-live
+echo "chown $USER1:1001 -R /home/$USER1/" >> /bin/artix-live
 
 if [ $PAUSE_AFTER_DONE -eq 1 ]; then
     confirm "" "ignore"
