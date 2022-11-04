@@ -29,6 +29,7 @@ SYMLINK_FROM_TO=(
     "dwl"                   ".config"
     "gammastep"             ".config"
     "fuzzel"                ".config"
+    "swaylock"              ".config"
 )
 
 
