@@ -2,7 +2,7 @@
  * @name BetterFriendList
  * @author DevilBro
  * @authorId 278543574059057154
- * @version 1.4.6
+ * @version 1.4.7
  * @description Adds extra Controls to the Friends Page, for example sort by Name/Status, Search and All/Request/Blocked Amount
  * @invite Jx3TjNS
  * @donate https://www.paypal.me/MircoWittrien
@@ -13,20 +13,16 @@
  */
 
 module.exports = (_ => {
-	const config = {
-		"info": {
-			"name": "BetterFriendList",
-			"author": "DevilBro",
-			"version": "1.4.6",
-			"description": "Adds extra Controls to the Friends Page, for example sort by Name/Status, Search and All/Request/Blocked Amount"
-		}
+	const changeLog = {
+		
 	};
 
 	return !window.BDFDB_Global || (!window.BDFDB_Global.loaded && !window.BDFDB_Global.started) ? class {
-		getName () {return config.info.name;}
-		getAuthor () {return config.info.author;}
-		getVersion () {return config.info.version;}
-		getDescription () {return `The Library Plugin needed for ${config.info.name} is missing. Open the Plugin Settings to download it. \n\n${config.info.description}`;}
+		constructor (meta) {for (let key in meta) this[key] = meta[key];}
+		getName () {return this.name;}
+		getAuthor () {return this.author;}
+		getVersion () {return this.version;}
+		getDescription () {return `The Library Plugin needed for ${this.name} is missing. Open the Plugin Settings to download it. \n\n${this.description}`;}
 		
 		downloadLibrary () {
 			require("request").get("https://mwittrien.github.io/BetterDiscordAddons/Library/0BDFDB.plugin.js", (e, r, b) => {
@@ -39,7 +35,7 @@ module.exports = (_ => {
 			if (!window.BDFDB_Global || !Array.isArray(window.BDFDB_Global.pluginQueue)) window.BDFDB_Global = Object.assign({}, window.BDFDB_Global, {pluginQueue: []});
 			if (!window.BDFDB_Global.downloadModal) {
 				window.BDFDB_Global.downloadModal = true;
-				BdApi.showConfirmationModal("Library Missing", `The Library Plugin needed for ${config.info.name} is missing. Please click "Download Now" to install it.`, {
+				BdApi.showConfirmationModal("Library Missing", `The Library Plugin needed for ${this.name} is missing. Please click "Download Now" to install it.`, {
 					confirmText: "Download Now",
 					cancelText: "Cancel",
 					onCancel: _ => {delete window.BDFDB_Global.downloadModal;},
@@ -49,13 +45,13 @@ module.exports = (_ => {
 					}
 				});
 			}
-			if (!window.BDFDB_Global.pluginQueue.includes(config.info.name)) window.BDFDB_Global.pluginQueue.push(config.info.name);
+			if (!window.BDFDB_Global.pluginQueue.includes(this.name)) window.BDFDB_Global.pluginQueue.push(this.name);
 		}
 		start () {this.load();}
 		stop () {}
 		getSettingsPanel () {
 			let template = document.createElement("template");
-			template.innerHTML = `<div style="color: var(--header-primary); font-size: 16px; font-weight: 300; white-space: pre; line-height: 22px;">The Library Plugin needed for ${config.info.name} is missing.\nPlease click <a style="font-weight: 500;">Download Now</a> to install it.</div>`;
+			template.innerHTML = `<div style="color: var(--header-primary); font-size: 16px; font-weight: 300; white-space: pre; line-height: 22px;">The Library Plugin needed for ${this.name} is missing.\nPlease click <a style="font-weight: 500;">Download Now</a> to install it.</div>`;
 			template.content.firstElementChild.querySelector("a").addEventListener("click", this.downloadLibrary);
 			return template.content.firstElementChild;
 		}
@@ -91,22 +87,28 @@ module.exports = (_ => {
 					}
 				};
 
-				this.patchedModules = {
-					before: {
-						TabBar: "render",
-						PeopleListSectionedLazy: "default",
-						PeopleListSectionedNonLazy: "default"
-					},
-					after: {
-						TabBar: "render",
-						PeopleListSectionedLazy: "default",
-						PeopleListSectionedNonLazy: "default",
-						PeopleList: "default",
-						FriendRow: "render",
-						PendingRow: "default",
-						BlockedRow: "render",
-						PeopleListItem: ["render", "componentDidMount","componentWillUnmount"]
-					}
+				this.modulePatches = {
+					before: [
+						"PeopleListSectionedLazy",
+						"PeopleListSectionedNonLazy",
+						"TabBar"
+					],
+					after: [
+						"PeopleList",
+						"PeopleListItem",
+						"PeopleListItemBlocked",
+						"PeopleListItemFriend",
+						"PeopleListItemPending",
+						"PeopleListSectionedLazy",
+						"PeopleListSectionedNonLazy",
+						"TabBar"
+					],
+					componentDidMount: [
+						"PeopleListItem"
+					],
+					componentWillUnmount: [
+						"PeopleListItem"
+					]
 				};
 				
 				this.css = `
@@ -184,37 +186,37 @@ module.exports = (_ => {
 			}
 			
 			onUserContextMenu (e) {
-				if (e.instance.props.user && e.subType == "useUserRelationshipItems" && BDFDB.LibraryModules.RelationshipStore.isFriend(e.instance.props.user.id)) {
-					let favorized = favorizedFriends.indexOf(e.instance.props.user.id) > -1;
-					let hidden = hiddenFriends.indexOf(e.instance.props.user.id) > -1;
-					e.returnvalue.push(this.settings.general.addFavorizedCategory && BDFDB.ContextMenuUtils.createItem(BDFDB.LibraryComponents.MenuItems.MenuItem, {
-						label: favorized ? this.labels.context_unfavorizefriend : this.labels.context_favorizefriend,
-						id: BDFDB.ContextMenuUtils.createItemId(this.name, favorized ? "unfavorize-friend" : "favorize-friend"),
-						action: _ => {
-							if (favorized) BDFDB.ArrayUtils.remove(favorizedFriends, e.instance.props.user.id, true);
-							else {
-								favorizedFriends.push(e.instance.props.user.id);
-								BDFDB.ArrayUtils.remove(hiddenFriends, e.instance.props.user.id, true);
-							}
-							BDFDB.DataUtils.save(favorizedFriends, this, "favorizedFriends");
-							BDFDB.DataUtils.save(hiddenFriends, this, "hiddenFriends");
-							this.rerenderList();
+				if (!e.instance.props.user || !BDFDB.LibraryStores.RelationshipStore.isFriend(e.instance.props.user.id)) return;
+				let favorized = favorizedFriends.indexOf(e.instance.props.user.id) > -1;
+				let hidden = hiddenFriends.indexOf(e.instance.props.user.id) > -1;
+				let [children, index] = BDFDB.ContextMenuUtils.findItem(e.returnvalue, {id: "remove-friend"});
+				if (index > -1) children.splice(index + 1, 0, this.settings.general.addFavorizedCategory && BDFDB.ContextMenuUtils.createItem(BDFDB.LibraryComponents.MenuItems.MenuItem, {
+					label: favorized ? this.labels.context_unfavorizefriend : this.labels.context_favorizefriend,
+					id: BDFDB.ContextMenuUtils.createItemId(this.name, favorized ? "unfavorize-friend" : "favorize-friend"),
+					action: _ => {
+						if (favorized) BDFDB.ArrayUtils.remove(favorizedFriends, e.instance.props.user.id, true);
+						else {
+							favorizedFriends.push(e.instance.props.user.id);
+							BDFDB.ArrayUtils.remove(hiddenFriends, e.instance.props.user.id, true);
 						}
-					}), this.settings.general.addHiddenCategory && BDFDB.ContextMenuUtils.createItem(BDFDB.LibraryComponents.MenuItems.MenuItem, {
-						label: hidden ? this.labels.context_unhidefriend : this.labels.context_hidefriend,
-						id: BDFDB.ContextMenuUtils.createItemId(this.name, hidden ? "unhide-friend" : "hide-friend"),
-						action: _ => {
-							if (hidden) BDFDB.ArrayUtils.remove(hiddenFriends, e.instance.props.user.id, true);
-							else {
-								BDFDB.ArrayUtils.remove(favorizedFriends, e.instance.props.user.id, true);
-								hiddenFriends.push(e.instance.props.user.id);
-							}
-							BDFDB.DataUtils.save(favorizedFriends, this, "favorizedFriends");
-							BDFDB.DataUtils.save(hiddenFriends, this, "hiddenFriends");
-							this.rerenderList();
+						BDFDB.DataUtils.save(favorizedFriends, this, "favorizedFriends");
+						BDFDB.DataUtils.save(hiddenFriends, this, "hiddenFriends");
+						this.rerenderList();
+					}
+				}), this.settings.general.addHiddenCategory && BDFDB.ContextMenuUtils.createItem(BDFDB.LibraryComponents.MenuItems.MenuItem, {
+					label: hidden ? this.labels.context_unhidefriend : this.labels.context_hidefriend,
+					id: BDFDB.ContextMenuUtils.createItemId(this.name, hidden ? "unhide-friend" : "hide-friend"),
+					action: _ => {
+						if (hidden) BDFDB.ArrayUtils.remove(hiddenFriends, e.instance.props.user.id, true);
+						else {
+							BDFDB.ArrayUtils.remove(favorizedFriends, e.instance.props.user.id, true);
+							hiddenFriends.push(e.instance.props.user.id);
 						}
-					}));
-				}
+						BDFDB.DataUtils.save(favorizedFriends, this, "favorizedFriends");
+						BDFDB.DataUtils.save(hiddenFriends, this, "hiddenFriends");
+						this.rerenderList();
+					}
+				}));
 			}
 			
 			processTabBar (e) {
@@ -237,7 +239,7 @@ module.exports = (_ => {
 					}
 					else {
 						if (this.settings.general.addTotalAmount) {
-							let relationships = BDFDB.LibraryModules.RelationshipStore.getRelationships(), relationshipCount = {};
+							let relationships = BDFDB.LibraryStores.RelationshipStore.getRelationships(), relationshipCount = {};
 							for (let type in BDFDB.DiscordConstants.RelationshipTypes) relationshipCount[type] = 0;
 							for (let id in relationships) if (!this.settings.general.addHiddenCategory || (hiddenFriends.indexOf(id) == -1 || relationships[id] != BDFDB.DiscordConstants.RelationshipTypes.FRIEND)) relationshipCount[relationships[id]]++;
 							for (let child of e.returnvalue.props.children) if (child && child.props.id != BDFDB.DiscordConstants.FriendsSections.ADD_FRIEND) {
@@ -250,14 +252,11 @@ module.exports = (_ => {
 										newChildren.push(this.createBadge(favorizedFriends.filter(id => relationships[id] == BDFDB.DiscordConstants.RelationshipTypes.FRIEND).length));
 										break;
 									case BDFDB.DiscordConstants.FriendsSections.ONLINE:
-										newChildren.push(this.createBadge(Object.entries(relationships).filter(n => n[1] == BDFDB.DiscordConstants.RelationshipTypes.FRIEND && !(this.settings.general.addHiddenCategory && hiddenFriends.indexOf(n[0]) > -1) && BDFDB.LibraryModules.StatusMetaUtils.getStatus(n[0]) != BDFDB.DiscordConstants.StatusTypes.OFFLINE).length));
+										newChildren.push(this.createBadge(Object.entries(relationships).filter(n => n[1] == BDFDB.DiscordConstants.RelationshipTypes.FRIEND && !(this.settings.general.addHiddenCategory && hiddenFriends.indexOf(n[0]) > -1) && BDFDB.LibraryStores.PresenceStore.getStatus(n[0]) != BDFDB.LibraryComponents.StatusComponents.Types.OFFLINE).length));
 										break;
 									case BDFDB.DiscordConstants.FriendsSections.PENDING:
 										newChildren.push(this.createBadge(relationshipCount[BDFDB.DiscordConstants.RelationshipTypes.PENDING_INCOMING], this.labels.incoming, relationshipCount[BDFDB.DiscordConstants.RelationshipTypes.PENDING_INCOMING] > 0));
 										newChildren.push(this.createBadge(relationshipCount[BDFDB.DiscordConstants.RelationshipTypes.PENDING_OUTGOING], this.labels.outgoing));
-										break;
-									case BDFDB.DiscordConstants.FriendsSections.SUGGESTIONS:
-										newChildren.push(this.createBadge(BDFDB.LibraryModules.RelationshipSuggestionUtils.getSuggestionCount()));
 										break;
 									case BDFDB.DiscordConstants.FriendsSections.BLOCKED:
 										newChildren.push(this.createBadge(relationshipCount[BDFDB.DiscordConstants.RelationshipTypes.BLOCKED]));
@@ -322,69 +321,68 @@ module.exports = (_ => {
 			}
 			
 			processPeopleList (e) {
-				let [children, index] = BDFDB.ReactUtils.findParent(e.returnvalue, {name: "SectionTitle"});
-				if (index > -1) {
-					let users = (BDFDB.ReactUtils.findChild(e.returnvalue, {props: ["statusSections"]}) || {props: {statusSections: []}}).props.statusSections.flat(10);
-					let filteredUsers = users;
-					if (this.settings.general.addFavorizedCategory) {
-						if (isFavoritesSelected) filteredUsers = filteredUsers.filter(n => n && n.user && favorizedFriends.indexOf(n.user.id) > -1);
-					}
-					if (this.settings.general.addHiddenCategory) {
-						if (isHiddenSelected) filteredUsers = filteredUsers.filter(n => n && n.user && hiddenFriends.indexOf(n.user.id) > -1);
-						else filteredUsers = filteredUsers.filter(n => n && n.user && hiddenFriends.indexOf(n.user.id) == -1);
-					}
-					children[index].props.title = BDFDB.ReactUtils.createElement(BDFDB.LibraryComponents.Flex, {
-						align: BDFDB.LibraryComponents.Flex.Align.CENTER,
-						children: [
-							BDFDB.ReactUtils.createElement("div", {
-								className: BDFDB.disCN._betterfriendlisttitle,
-								children: this.settings.general.addFavorizedCategory && isFavoritesSelected ? `${this.labels.favorites} - ${filteredUsers.filter(u => u && u.key != placeHolderId).length}` : this.settings.general.addHiddenCategory && isHiddenSelected ? `${this.labels.hidden} - ${filteredUsers.filter(u => u && u.key != placeHolderId).length}` : children[index].props.title.replace(users.length, filteredUsers.filter(u => u && u.key != placeHolderId).length)
+				let [children, index] = BDFDB.ReactUtils.findParent(e.returnvalue, {filter: n => n && n.props && n.props.title && n.props.id});
+				if (index == -1) return;
+				let users = (BDFDB.ReactUtils.findChild(e.returnvalue, {props: ["statusSections"]}) || {props: {statusSections: []}}).props.statusSections.flat(10);
+				let filteredUsers = users;
+				if (this.settings.general.addFavorizedCategory) {
+					if (isFavoritesSelected) filteredUsers = filteredUsers.filter(n => n && n.user && favorizedFriends.indexOf(n.user.id) > -1);
+				}
+				if (this.settings.general.addHiddenCategory) {
+					if (isHiddenSelected) filteredUsers = filteredUsers.filter(n => n && n.user && hiddenFriends.indexOf(n.user.id) > -1);
+					else filteredUsers = filteredUsers.filter(n => n && n.user && hiddenFriends.indexOf(n.user.id) == -1);
+				}
+				children[index].props.title = BDFDB.ReactUtils.createElement(BDFDB.LibraryComponents.Flex, {
+					align: BDFDB.LibraryComponents.Flex.Align.CENTER,
+					children: [
+						BDFDB.ReactUtils.createElement("div", {
+							className: BDFDB.disCN._betterfriendlisttitle,
+							children: this.settings.general.addFavorizedCategory && isFavoritesSelected ? `${this.labels.favorites} - ${filteredUsers.filter(u => u && u.key != placeHolderId).length}` : this.settings.general.addHiddenCategory && isHiddenSelected ? `${this.labels.hidden} - ${filteredUsers.filter(u => u && u.key != placeHolderId).length}` : children[index].props.title.replace(users.length, filteredUsers.filter(u => u && u.key != placeHolderId).length)
+						}),
+						this.settings.general.addSortOptions && [
+							{key: "usernameLower", label: BDFDB.LanguageUtils.LanguageStrings.USER_SETTINGS_LABEL_USERNAME},
+							{key: "statusIndex", label: BDFDB.LanguageUtils.LibraryStrings.status}
+						].filter(n => n).map(data => BDFDB.ReactUtils.createElement("div", {
+							className: BDFDB.DOMUtils.formatClassName(BDFDB.disCN.tableheadercellwrapper, BDFDB.disCN.tableheadercell, BDFDB.disCN._betterfriendlistnamecell, sortKey == data.key && BDFDB.disCN.tableheadercellsorted, BDFDB.disCN.tableheadercellclickable),
+							children: BDFDB.ReactUtils.createElement("div", {
+								className: BDFDB.disCN.tableheadercellcontent,
+								children: [
+									data.label,
+									sortKey == data.key && BDFDB.ReactUtils.createElement(BDFDB.LibraryComponents.SvgIcon, {
+										className: BDFDB.disCN.tableheadersorticon,
+										name: BDFDB.LibraryComponents.SvgIcon.Names[sortReversed ? "ARROW_UP" : "ARROW_DOWN"]
+									})
+								].filter(n => n)
 							}),
-							this.settings.general.addSortOptions && [
-								{key: "usernameLower", label: BDFDB.LanguageUtils.LanguageStrings.USER_SETTINGS_LABEL_USERNAME},
-								{key: "statusIndex", label: BDFDB.LanguageUtils.LibraryStrings.status}
-							].filter(n => n).map(data => BDFDB.ReactUtils.createElement("div", {
-								className: BDFDB.DOMUtils.formatClassName(BDFDB.disCN.tableheadercellwrapper, BDFDB.disCN.tableheadercell, BDFDB.disCN._betterfriendlistnamecell, sortKey == data.key && BDFDB.disCN.tableheadercellsorted, BDFDB.disCN.tableheadercellclickable),
-								children: BDFDB.ReactUtils.createElement("div", {
-									className: BDFDB.disCN.tableheadercellcontent,
-									children: [
-										data.label,
-										sortKey == data.key && BDFDB.ReactUtils.createElement(BDFDB.LibraryComponents.SvgIcon, {
-											className: BDFDB.disCN.tableheadersorticon,
-											name: BDFDB.LibraryComponents.SvgIcon.Names[sortReversed ? "ARROW_UP" : "ARROW_DOWN"]
-										})
-									].filter(n => n)
-								}),
-								onClick: event => {
-									if (sortKey == data.key) {
-										if (!sortReversed) sortReversed = true;
-										else {
-											sortKey = null;
-											sortReversed = false;
-										}
-									}
+							onClick: event => {
+								if (sortKey == data.key) {
+									if (!sortReversed) sortReversed = true;
 									else {
-										sortKey = data.key;
+										sortKey = null;
 										sortReversed = false;
 									}
-									this.rerenderList();
 								}
-							}))
-						].flat(10).filter(n => n)
-					});
-				}
+								else {
+									sortKey = data.key;
+									sortReversed = false;
+								}
+								this.rerenderList();
+							}
+						}))
+					].flat(10).filter(n => n)
+				});
 			}
 			
-			processFriendRow (e) {
+			processPeopleListItemFriend (e) {
 				e.returnvalue.props.mutualGuilds = e.instance.props.mutualGuilds;
 			}
 			
-			processPendingRow (e) {
-				this.processFriendRow(e);
+			processPeopleListItemPending (e) {
+				this.processPeopleListItemFriend(e);
 			}
 			
-			processBlockedRow (e) {
-				this.processFriendRow(e);
+			processPeopleListItemBlocked (e) {
+				this.processPeopleListItemFriend(e);
 			}
 			
 			processPeopleListItem (e) {
@@ -409,7 +407,7 @@ module.exports = (_ => {
 			}
 			
 			injectMutualGuilds (returnvalue, mutualGuilds) {
-				let [children, index] = BDFDB.ReactUtils.findParent(returnvalue, {name: "UserInfo"});
+				let [children, index] = BDFDB.ReactUtils.findParent(returnvalue, {filter: n => n && n.props && n.props.subText && n.props.user});
 				if (index > -1) children.splice(index + 1, 0, BDFDB.ReactUtils.createElement(BDFDB.LibraryComponents.GuildSummaryItem, {
 					className: BDFDB.disCN._betterfriendlistmutualguilds,
 					guilds: mutualGuilds,
@@ -762,5 +760,5 @@ module.exports = (_ => {
 				}
 			}
 		};
-	})(window.BDFDB_Global.PluginUtils.buildPlugin(config));
+	})(window.BDFDB_Global.PluginUtils.buildPlugin(changeLog));
 })();
