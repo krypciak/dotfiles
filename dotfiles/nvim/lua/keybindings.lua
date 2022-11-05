@@ -10,13 +10,21 @@ end
 map('n', '<C-n>', ':NvimTreeToggle<CR>', { noremap = true })
 
 -- Run/Compile keybinding
-map('n', '<leader>t', '', { noremap = true, 
-   callback = function() print('Unsupported filetype: '..vim.o.filetype) end })
+map('n', '<leader>t', '', { noremap = true, callback = function()
+        ftype = vim.bo.filetype
+        if ftype == 'rust' then rust_run()
+        elseif ftype == 'python' then python_run()
+        else print('Unsupported filetype: '.. ftype) end
+   end })
 
 
 -- Build keybinding
-map('n', '<leader>b', '', { noremap = true, 
-   callback = function() print('Unsupported filetype: '..vim.o.filetype) end })
+map('n', '<leader>b', '', { noremap = true, callback = function()
+        ftype = vim.bo.filetype
+        if ftype == 'rust' then rust_build()
+        else print('Unsupported filetype: '.. ftype) end
+   end })
+
 
 
 -- d stands for delete not cut
@@ -57,6 +65,6 @@ map('n', '<leader>ff', '<cmd>Telescope find_files<cr>')
 
 map('', '<leader>aa', ':%y<cr>')
 
---if vim.o.filetype == "rust" then 
-require("lang/rust") 
-require("lang/python") 
+require("lang/rust")
+require("lang/python")
+

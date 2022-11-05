@@ -1,7 +1,3 @@
-function rust_cmd(str)
-    cmd(':autocmd FileType rust ' .. str)
-end
-
 cmd [[
     command! CargoBench call cargo#bench(<q-args>)
     command! CargoBuild call cargo#build(<q-args>)
@@ -14,7 +10,7 @@ cmd [[
     command! CargoNew call cargo#new(<q-args>)
 ]]
 
-map('n', '<leader>t', '', { noremap = true, callback = function()
+function rust_run()
     cmd(":w")
     -- Get the first non-blank line
     local first_line = vim.fn.getline(1)
@@ -26,12 +22,12 @@ map('n', '<leader>t', '', { noremap = true, callback = function()
     print(bul)
     cmd(bul)
     cmd("normal! G")
-end})
+end
 
-map('n', '<leader>b', '', { noremap = true, callback = function()
+function rust_build()
     cmd(':w')
     cmd(':CargoBuild')
     cmd("normal! G")
-end})
+end
 
-rust_cmd(':inoremap <buffer> pri println!(')
+cmd(':inoremap <buffer> pri println!(')

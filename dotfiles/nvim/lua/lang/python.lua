@@ -1,5 +1,4 @@
-
-map('n', '<leader>t', '', { noremap = true, callback = function()
+function python_run()
     cmd(":w")
     -- Get the first non-blank line
     local first_line = vim.fn.getline(1)
@@ -11,5 +10,4 @@ map('n', '<leader>t', '', { noremap = true, callback = function()
     print(bul)
     cmd(bul)
     cmd("normal! G")
-end})
-
+end
