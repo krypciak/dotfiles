@@ -1,3 +1,7 @@
+function rust_cmd(str)
+    cmd(':autocmd FileType rust ' .. str)
+end
+
 cmd [[
     command! CargoBench call cargo#bench(<q-args>)
     command! CargoBuild call cargo#build(<q-args>)
@@ -30,4 +34,4 @@ function rust_build()
     cmd("normal! G")
 end
 
-cmd(':inoremap <buffer> pri println!(')
+rust_cmd(':inoremap <buffer> pri println!(')
