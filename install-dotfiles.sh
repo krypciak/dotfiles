@@ -30,6 +30,7 @@ SYMLINK_FROM_TO=(
     "gammastep"             ".config"
     "fuzzel"                ".config"
     "swaylock"              ".config"
+    "Ferdium/config"        ".config"
 )
 
 
