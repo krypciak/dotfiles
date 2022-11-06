@@ -81,6 +81,7 @@ if ! command -v "paru"; then
     pacman $PACMAN_ARGUMENTS -S git
     git clone https://aur.archlinux.org/paru.git /tmp/paru
     chown -R $USER1:1001 /tmp/paru
+    chown -R $USER1:1001 /home/$USER1
     chmod +wrx /tmp/paru
     cd /tmp/paru
     doas -u $USER1 makepkg -si --noconfirm --needed
