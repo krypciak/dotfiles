@@ -99,10 +99,6 @@ for group in "${PACKAGE_GROUPS[@]}"; do
     PACKAGE_LIST="$PACKAGE_LIST $(install_${group}) "
 done
 
-pacman $PACMAN_ARGUMENTS -U /icecat-*-x86_64.pkg.tar.zst
-rm -f /icecat-*-x86_64.pkg.tar.zst
-read
-
 n=0
 until [ "$n" -ge 5 ]; do
     doas -u $USER1 paru $PARU_ARGUMENTS $PACMAN_ARGUMENTS -S $PACKAGE_LIST && break
@@ -218,5 +214,11 @@ if [ $PAUSE_AFTER_DONE -eq 1 ]; then
 fi
 
 mkdir -p /mnt/pen /mnt/hdd /mnt/ssd /mnt/share
+
+pacman $PACMAN_ARGUMENTS -U /icecat-*-x86_64.pkg.tar.zst
+rm -f /icecat-*-x86_64.pkg.tar.zst
+
+doas -u $USER1 timeout 5s icecat
+doas -u $USER1 timeout 5s icecat
 
 
