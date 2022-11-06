@@ -92,12 +92,16 @@ chown -R $USER1:1001 $USER_HOME/
 
 pri "Installing packages"
 doas -u $USER1 paru $PARU_ARGUMENTS $PACMAN_ARGUMENTS -S opendoas-sudo nvim-packer-git greetd-artix-openrc greetd-tuigreet-bin
-PACKAGE_LIST='icecat '
+PACKAGE_LIST=''
 for group in "${PACKAGE_GROUPS[@]}"; do
     source $ARTIXD_DIR/packages/install-${group}.sh
     pri "Installing $group"
     PACKAGE_LIST="$PACKAGE_LIST $(install_${group}) "
 done
+
+pacman $PACMAN_ARGUMENTS -U /icecat-*-x86_64.pkg.tar.zst
+rm -f /icecat-*-x86_64.pkg.tar.zst
+read
 
 n=0
 until [ "$n" -ge 5 ]; do
