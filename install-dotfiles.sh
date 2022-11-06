@@ -36,7 +36,6 @@ SYMLINK_FROM_TO=(
     ".mozilla/icecat/rgvol6f2.default/extension-preferences.json" ""
     ".mozilla/icecat/rgvol6f2.default/extensions" ""
     ".mozilla/icecat/rgvol6f2.default/extensions.json" ""
-    ".mozilla/icecat/rgvol6f2.default/search.json.mozlz4" ""
     ".mozilla/icecat/rgvol6f2.default/sessionCheckpoints.json" ""
 )
 
@@ -59,6 +58,10 @@ COPY_FROM_TO=(
     "kdeglobals"            ".config"
 	"keepassxc"             ".config"
     ".mozilla/icecat/rgvol6f2.default/prefs.js" "%"
+    ".mozilla/icecat/rgvol6f2.default/search.json.mozlz4" "%"
+    ".mozilla/icecat/rgvol6f2.default/storage" "%"
+    ".mozilla/icecat/rgvol6f2.default/storage.sqlite" "%"
+    ".mozilla/icecat/rgvol6f2.default/cookies.sqlite" "%"
 )
 
 LINK_HOME_DIRS=(
