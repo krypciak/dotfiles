@@ -16,7 +16,7 @@ capskey      = "Mod3"
 
 wallpaper_dir = awesomedir .. '/theme/wallpapers/'
 wallpapers   = { 
-    { 'oneshot/factory.png', 'oneshot/main.png', 'oneshot/library.png', 'oneshot/asteroid.png' }, 
+    {  'oneshot/library.png', 'oneshot/main.png', 'oneshot/factory.png', 'oneshot/asteroid.png' }, 
     { 'autumn.png' }, 
     { '#000000', '#303030' } 
 }
