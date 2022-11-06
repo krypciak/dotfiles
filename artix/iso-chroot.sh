@@ -91,7 +91,7 @@ chown -R $USER1:1001 $USER_HOME/
 
 pri "Installing packages"
 doas -u $USER1 paru $PARU_ARGUMENTS $PACMAN_ARGUMENTS -S opendoas-sudo nvim-packer-git greetd-artix-openrc greetd-tuigreet-bin
-PACKAGE_LIST=''
+PACKAGE_LIST='icecat '
 for group in "${PACKAGE_GROUPS[@]}"; do
     source $ARTIXD_DIR/packages/install-${group}.sh
     pri "Installing $group"
@@ -213,3 +213,5 @@ if [ $PAUSE_AFTER_DONE -eq 1 ]; then
 fi
 
 mkdir -p /mnt/pen /mnt/hdd /mnt/ssd /mnt/share
+
+
