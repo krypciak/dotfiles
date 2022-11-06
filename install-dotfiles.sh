@@ -31,6 +31,13 @@ SYMLINK_FROM_TO=(
     "fuzzel"                ".config"
     "swaylock"              ".config"
     "Ferdium/config"        ".config"
+    ".mozilla/icecat/profiles.ini" ""
+    ".mozilla/icecat/rgvol6f2.default/extension-settings.json" ""
+    ".mozilla/icecat/rgvol6f2.default/extension-preferences.json" ""
+    ".mozilla/icecat/rgvol6f2.default/extensions" ""
+    ".mozilla/icecat/rgvol6f2.default/extensions.json" ""
+    ".mozilla/icecat/rgvol6f2.default/search.json.mozlz4" ""
+    ".mozilla/icecat/rgvol6f2.default/sessionCheckpoints.json" ""
 )
 
 
@@ -51,6 +58,7 @@ COPY_FROM_TO=(
 	"qt5ct"                 ".config"
     "kdeglobals"            ".config"
 	"keepassxc"             ".config"
+    ".mozilla/icecat/rgvol6f2.default/prefs.js" "%"
 )
 
 LINK_HOME_DIRS=(
@@ -65,6 +73,7 @@ LINK_HOME_DIRS=(
 	"Games"
 	"Temp"
 	"Music"
+    ".mozilla"
 )
 
 LGREEN='\033[1;32m'
