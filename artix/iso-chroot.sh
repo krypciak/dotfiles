@@ -116,6 +116,10 @@ for group in "${PACKAGE_GROUPS[@]}"; do
     fi
 done
 
+# install icecat
+cd $USER_HOME/.cache/paru/clone/icecat
+chown $USER1:1001 -R $USER_HOME/.cache/paru/clone/icecat
+doas -u $USER1 makepkg -sie
 
 if [ $INSTALL_DOTFILES -eq 1 ]; then
     pri "Installing dotfiles for user $USER1"
