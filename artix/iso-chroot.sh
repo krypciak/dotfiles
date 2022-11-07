@@ -208,9 +208,6 @@ fi
 
 mkdir -p /mnt/pen /mnt/hdd /mnt/ssd /mnt/share
 
-pacman $PACMAN_ARGUMENTS -U /icecat-*-x86_64.pkg.tar.zst
-rm -f /icecat-*-x86_64.pkg.tar.zst
-
 doas -u $USER1 timeout 5s icecat
 doas -u $USER1 timeout 5s icecat
 
