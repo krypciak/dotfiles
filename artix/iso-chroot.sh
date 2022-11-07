@@ -28,6 +28,7 @@ echo "hostname=\'$HOSTNAME\'" > /etc/conf.d/hostname
 
 sed -i 's/#Color/Color/g' /etc/pacman.conf
 sed -i 's/#ParallelDownloads = 5/ParallelDownloads = 5/g' /etc/pacman.conf
+sed -i 's/CheckSpace/#CheckSpace/g' /etc/pacman.conf
 
 
 
@@ -51,6 +52,7 @@ pacman-key --populate
 
 pri "Copying pacman configuration"
 cp $CONFIGD_DIR/root/etc/pacman.conf /etc/pacman.conf
+sed -i 's/CheckSpace/#CheckSpace/g' /etc/pacman.conf
 cp -r $CONFIGD_DIR/root/etc/pacman.d /etc/
 pacman -Sy 
 
