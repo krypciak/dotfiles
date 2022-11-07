@@ -143,9 +143,9 @@ sed -i "s/$ESCAPED_T1/--$ESCAPED_T1/g" $USER_HOME/.config/awesome/after_5sec.lua
 ESCAPED_T1=$(printf '%s\n' "run_if_not_running_pgrep({ music_player_class }" | sed -e 's/[\/&]/\\&/g')
 sed -i "s/$ESCAPED_T1/--$ESCAPED_T1/g" $USER_HOME/.config/awesome/autostart.lua
 
-echo "permit setenv { XAUTHORITY LANG LC_ALL } nopass root \
-permit setenv { XAUTHORITY LANG LC_ALL } nopass :wheel \
-permit setenv { XAUTHORITY LANG LC_ALL } nopass $USER1\n" > /etc/doas.conf
+echo "permit setenv { XAUTHORITY LANG LC_ALL } nopass root" > /etc/doas.conf
+echo "permit setenv { XAUTHORITY LANG LC_ALL } nopass :wheel" >> /etc/doas.conf
+echo "permit setenv { XAUTHORITY LANG LC_ALL } nopass $USER1\n" >> /etc/doas.conf
 
 mkdir -p $USER_HOME/home/.cache
 
@@ -217,7 +217,8 @@ doas -u $USER1 timeout 5s icecat
 pri "Cleaning up"
 umount /var/cache/pacman/pkg
 umount $USER_HOME/.cache/paru/clone
-rm -rf $USER_HOME/.cargo
-#find /var/cache/pacman/pkg/ -iname "*.part" -delete
-#paru --noconfirm -Scc > /dev/null 2>&1
+umount $USER_HOME/.cargo
+
+pacman -Qqd | pacman -Rsu --print -
+
 rm -r /dotfiles 
