@@ -119,7 +119,7 @@ done
 # install icecat
 cd $USER_HOME/.cache/paru/clone/icecat
 chown $USER1:1001 -R $USER_HOME/.cache/paru/clone/icecat
-doas -u $USER1 makepkg -sie
+doas -u $USER1 makepkg -sie --noconfirm
 
 cd /
 
@@ -223,7 +223,7 @@ umount /var/cache/pacman/pkg
 umount $USER_HOME/.cache/paru/clone
 umount $USER_HOME/.cargo
 
-pacman -Rs $(pacman -Qqtd)
+pacman $PACMAN_ARGUMENTS -Rs $(pacman -Qqtd)
 
 rm -r /dotfiles 
 
