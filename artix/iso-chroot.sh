@@ -196,8 +196,6 @@ fi
 chsh -s /bin/bash root > /dev/null 2>&1
 
 
-neofetch
-
 sed -i -E ':a;N;$!ba;s/configure_user\n//g' /bin/artix-live
 sed -i -E ':a;N;$!ba;s/configure_language\n//g' /bin/artix-live
 sed -i -E ':a;N;$!ba;s/configure_displaymanager\n//g' /bin/artix-live
@@ -222,3 +220,5 @@ umount $USER_HOME/.cargo
 pacman -Qqd | pacman -Rsu --print -
 
 rm -r /dotfiles 
+
+neofetch
