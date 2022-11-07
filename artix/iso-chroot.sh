@@ -121,6 +121,8 @@ cd $USER_HOME/.cache/paru/clone/icecat
 chown $USER1:1001 -R $USER_HOME/.cache/paru/clone/icecat
 doas -u $USER1 makepkg -sie
 
+cd /
+
 if [ $INSTALL_DOTFILES -eq 1 ]; then
     pri "Installing dotfiles for user $USER1"
     chown $USER1:1001 -R $USER_HOME
@@ -212,8 +214,8 @@ fi
 
 mkdir -p /mnt/pen /mnt/hdd /mnt/ssd /mnt/share
 
-doas -u $USER1 timeout 5s icecat
-doas -u $USER1 timeout 5s icecat
+doas -u $USER1 timeout 10s icecat
+doas -u $USER1 timeout 6s icecat
 
 
 pri "Cleaning up"
@@ -221,7 +223,7 @@ umount /var/cache/pacman/pkg
 umount $USER_HOME/.cache/paru/clone
 umount $USER_HOME/.cargo
 
-pacman -Qqd | pacman -Rsu --print -
+pacman -Rs $(pacman -Qqtd)
 
 rm -r /dotfiles 
 
