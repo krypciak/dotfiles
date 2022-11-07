@@ -10,4 +10,4 @@ UUID=HOME_UUID HOME_FSTAB_ARGS
 UUID=SWAP_UUID none swap defaults 0 0
 
 tmpfs /tmp      tmpfs rw,nodev,nosuid          0  0
-tmpfs FAKE_USER_HOME/.cache	tmpfs	noatime,nodev,nosuid,size=400M	0	0
+#tmpfs FAKE_USER_HOME/.cache	tmpfs	noatime,nodev,nosuid,size=400M	0	0
