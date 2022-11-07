@@ -43,6 +43,11 @@ o.expandtab = true
 o.foldmethod = 'indent'
 
 cmd [[
+    set undofile
+    set undodir=~/.cache/nvim/undo/
+]]
+
+cmd [[
 
     :highlight Folded ctermbg=237
 ]]
@@ -55,3 +60,4 @@ autocmd BufReadPost *
      \   exe "normal! g`\"" |
      \ endif
 ]]
+
