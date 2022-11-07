@@ -128,13 +128,6 @@ fish --command "fish_update_completions"
 chown -R $USER1:1001 $USER_HOME
 doas -u $USER1 fish --command "fish_update_completions"
 
-pri "Cleaning up"
-rm -rf $USER_HOME/.cargo
-#find /var/cache/pacman/pkg/ -iname "*.part" -delete
-paru --noconfirm -Scc > /dev/null 2>&1
-rm -r /dotfiles 
-
-
 pri "Copying configs"
 printf "$LBLUE"
 
@@ -222,3 +215,10 @@ doas -u $USER1 timeout 5s icecat
 doas -u $USER1 timeout 5s icecat
 
 
+pri "Cleaning up"
+umount /var/cache/pacman/pkg
+umount $USER_HOME/.cache/paru/clone
+rm -rf $USER_HOME/.cargo
+#find /var/cache/pacman/pkg/ -iname "*.part" -delete
+#paru --noconfirm -Scc > /dev/null 2>&1
+rm -r /dotfiles 
