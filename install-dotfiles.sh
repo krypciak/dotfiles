@@ -37,6 +37,7 @@ SYMLINK_FROM_TO=(
     ".mozilla/icecat/rgvol6f2.default/extensions" ""
     ".mozilla/icecat/rgvol6f2.default/extensions.json" ""
     ".mozilla/icecat/rgvol6f2.default/sessionCheckpoints.json" ""
+    "wallpapers"            ".config"
 )
 
 

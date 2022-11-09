@@ -14,7 +14,7 @@ ctrlkey	     = "Control"
 shiftkey     = "Shift"
 capskey      = "Mod3"
 
-wallpaper_dir = awesomedir .. '/theme/wallpapers/'
+wallpaper_dir = userdir .. '/.config/wallpapers/'
 wallpapers   = { 
     {  'oneshot/library.png', 'oneshot/main.png', 'oneshot/factory.png', 'oneshot/asteroid.png' }, 
     { 'autumn.png' }, 
