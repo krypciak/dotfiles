@@ -19,6 +19,7 @@ export QT_QPA_PLATFORMTHEME=qt5ct
 export PATH="/home/$USER1/.local/bin:$PATH"
 
 export EDITOR='nvim'
+export CM_LAUNCHER=rofi
 
 export USER1=$USER
 
