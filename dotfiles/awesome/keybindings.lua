@@ -226,7 +226,6 @@ local globalkeys_launcher = awful.util.table.join(
 			elseif key == "g" then run_if_not_running_pgrep("github-desktop") 
 			elseif key == "k" then awful.spawn("keepassxc") 
 			elseif key == "r" then awful.spawn("alacritty --class ranger --title ranger -e ranger") 
-			elseif key == "[" then awful.spawn("alacritty --class 'System update' --title 'System update' -e paru -Syu") 
 			elseif key == "'" then awful.spawn("sh " .. userdir .. "/.config/dotfiles/scripts/ttyper.sh ignore") 
 			elseif key == "v" then awful.spawn("virt-manager") 
 			elseif key == "a" then awful.spawn("alacritty --class 'aerc','aerc' --title 'aerc' -e aerc") 
