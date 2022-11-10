@@ -128,11 +128,24 @@ local globalkeys_media = awful.util.table.join (
 	-- Global volume controls
 	awful.key({capskey}, "e",
 		function() awful.spawn("amixer set Master 5%+") end,
-		{description = "volume up all", group = "multimedia"}),
-	-- Decrese global volume
+		{description = "increse speaker volume", group = "multimedia"}),
 	awful.key({capskey}, "d",
 		function() awful.spawn("amixer set Master 5%-") end,
-		{description = "volume down all", group = "multimedia"})
+		{description = "decrese speaker volume", group = "multimedia"}),
+	-- Microphone volume controls
+	awful.key({capskey, shift}, "e",
+		function() awful.spawn("amixer set Capture 5%+") end,
+		{description = "increse microphone volume", group = "multimedia"}),
+	awful.key({capskey, shift}, "d",
+		function() awful.spawn("amixer set Capture 5%-") end,
+		{description = "decrese microphone volume", group = "multimedia"}),
+
+    awful.key({capskey, ctrlkey}, "e",
+        function() awful.spawn("amixer set Capture cap") end,
+		{description = "unmute microphone", group = "multimedia"}),
+    awful.key({capskey, ctrlkey}, "d",
+        function() awful.spawn("amixer set Capture nocap") end,
+		{description = "mute microphone", group = "multimedia"})
 )
 
 local globalkeys_awesome = awful.util.table.join(
