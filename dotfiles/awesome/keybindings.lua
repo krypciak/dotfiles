@@ -225,14 +225,8 @@ local globalkeys_launcher = awful.util.table.join(
 			elseif key == "u" then run_if_not_running_pgrep("redshift") 
 			elseif key == "g" then run_if_not_running_pgrep("github-desktop") 
 			elseif key == "k" then awful.spawn("keepassxc") 
-			elseif key == "c" then run_if_not_running_pgrep("copyq") 
 			elseif key == "r" then awful.spawn("alacritty --class ranger --title ranger -e ranger") 
 			elseif key == "[" then awful.spawn("alacritty --class 'System update' --title 'System update' -e paru -Syu") 
-			elseif key == "]" then run_if_not_running_pgrep({ "steam_app_960090" }, function() 
-                --awful.spawn("env LUTRIS_SKIP_INIT=1 lutris lutris:rungameid/2") 
-                awful.spawn("steam steam://rungameid/368340")
-                end)
-            
 			elseif key == "'" then awful.spawn("sh " .. userdir .. "/.config/dotfiles/scripts/ttyper.sh ignore") 
 			elseif key == "v" then awful.spawn("virt-manager") 
 			elseif key == "a" then awful.spawn("alacritty --class 'aerc','aerc' --title 'aerc' -e aerc") 
@@ -267,11 +261,6 @@ local globalkeys_launcher = awful.util.table.join(
 		os.execute("pkill -TERM redshift") end,
 		{description="Close redshift", group="launcher"}),
 
-	awful.key({superkey, altkey}, "c", function()
-		noti("Application Terminated", "Terminated copyq", 1)
-		os.execute("pkill -TERM copyq") end,
-		{description="Close copyq", group="launcher"}),
-
 	awful.key({superkey, altkey}, "k", function()
 		noti("Application Terminated", "Terminated keepassxc", 1)
 		os.execute("pkill -TERM keepassxc") end,
@@ -287,8 +276,16 @@ local globalkeys_launcher = awful.util.table.join(
 		{description = "open a terminal (" .. terminal .. ")", group = "launcher"}),
 
 	awful.key({altkey}, "r",
-		function() awful.spawn("dmenu_run_history") end, 
-		{description = "run prompt (dmenu_run_history)", group = "launcher"})
+		function() awful.spawn("rofi -show combi -combi-modes 'window,drun,run,ssh' -modes combi") end,
+		{description = "run rofi", group = "launcher"}),
+
+	awful.key({capskey}, "1",
+		function() awful.spawn("clipmenu") end,
+		{description = "run clipmenu", group = "launcher"}),
+
+	awful.key({capskey, ctrlkey}, "1",
+		function() awful.spawn("clipdel -d '.*'") end,
+		{description = "delete clipboard history", group = "launcher"})
 )
 
 local globalkeys_layout = awful.util.table.join(
