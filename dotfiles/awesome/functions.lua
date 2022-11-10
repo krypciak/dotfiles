@@ -77,6 +77,7 @@ local can_sleep = true
 
 function suspend() 
     if can_sleep then
+        awful.spawn("playerctl pause -a")
     	can_sleep = false
 	    os.execute('loginctl suspend')
         os.execute('sleep 0.3')
@@ -93,6 +94,7 @@ end
 
 function hibernate() 
     if can_sleep then
+        awful.spawn("playerctl pause -a")
 	    can_sleep = false
 	    os.execute("loginctl hibernate")
 	    local globalkeys_grabber
