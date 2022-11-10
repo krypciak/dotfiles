@@ -39,6 +39,8 @@ SYMLINK_FROM_TO=(
     ".mozilla/icecat/rgvol6f2.default/sessionCheckpoints.json" ""
     "wallpapers"            ".config"
     "rofi"                  ".config"
+    "applications/tutanota-desktop.desktop"      ".local/share/applications"
+    "applications/arch-update.desktop"           ".local/share/applications"
 )
 
 
