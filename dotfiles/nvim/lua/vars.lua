@@ -17,15 +17,15 @@ if os.getenv('WAYLAND_DISPLAY') then
         cache_enabled = 1,
     }
 else
-    -- X11 copyq
+    -- X11
     g.clipboard = {
         copy = {
-            ['+'] = {'copyq', 'copy', '-'},
-            ['*'] = {'copyq', 'copy', '-'},
+            ['+'] = 'xsel -ib',
+            ['*'] = 'xsel -ib',
         },
         paste = {
-            ['+'] = {'copyq', 'clipboard'},
-            ['*'] = {'copyq', 'clipboard'},
+            ['+'] = 'xsel -ob',
+            ['*'] = 'xsel -ob',
         },
         cache_enabled = 1,
     }
