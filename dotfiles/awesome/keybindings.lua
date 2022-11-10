@@ -338,6 +338,11 @@ local globalkeys_system = awful.util.table.join(
 	awful.key({superkey, ctrlkey, shiftkey}, "l",
 		function() awful.spawn(lock_command) end,
 		{description = "lock", group = "system"}),
+
+	awful.key({superkey, ctrlkey, shiftkey}, "k", function() 
+        awful.spawn(lock_command)
+        os.execute("sleep 1; xset dpms force off")
+        end, {description = "turn off screen and lock", group = "system"}),
     
     -- suspend() in functions.lua
 	awful.key({superkey, ctrlkey, shiftkey}, "s", suspend,
