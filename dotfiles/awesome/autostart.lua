@@ -28,7 +28,8 @@ xmodmap("add mod3 = Super_R")
 awful.spawn("pulseaudio --start")
 
 -- Clipbooard manager
-awful.spawn("copyq")
+--awful.spawn("copyq")
+awful.spawn("clipmenud")
 
 -- Bluetooth
 awful.spawn("bluetoothctl connect DC:2C:26:30:B8:9B")
