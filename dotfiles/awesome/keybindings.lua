@@ -178,7 +178,7 @@ local globalkeys_awesome = awful.util.table.join(
         wallpaper_index = 1
 
         local wallpaper = wallpapers[wallpaper_group][1]
-        -- set_vallpaper() in functions.lua
+         set_vallpaper() in functions.lua
         set_wallpaper(wallpaper)
         end,
         {description = "switch wallpaper group", group = "awesome"}),
@@ -275,7 +275,7 @@ local globalkeys_launcher = awful.util.table.join(
 		{description = "open a terminal (" .. terminal .. ")", group = "launcher"}),
 
 	awful.key({altkey}, "r",
-		function() awful.spawn("rofi -show combi -combi-modes 'window,drun,run,ssh' -modes combi") end,
+		function() awful.spawn("rofi -show drun") end,
 		{description = "run rofi", group = "launcher"}),
 
 	awful.key({capskey}, "1",
