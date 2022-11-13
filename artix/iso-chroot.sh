@@ -225,6 +225,9 @@ umount $USER_HOME/.cargo
 
 pacman $PACMAN_ARGUMENTS -Rs $(pacman -Qqtd)
 
+rm -f /usr/share/applications/icecat-safe.desktop
+
 rm -r /dotfiles 
 
 neofetch
+

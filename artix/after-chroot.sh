@@ -148,6 +148,8 @@ fish --command "fish_update_completions"
 doas -u $USER1 fish --command "fish_update_completions"
 
 pri "Cleaning up"
+rm -f /usr/share/applications/icecat-safe.desktop
+
 rm -rf $USER_HOME/.cargo
 #find /var/cache/pacman/pkg/ -iname "*.part" -delete
 paru --noconfirm -Scc > /dev/null 2>&1
@@ -277,10 +279,11 @@ grub-install --target=x86_64-efi --efi-directory=$BOOT_DIR_ALONE --bootloader-id
 pri "Generating grub config"
 grub-mkconfig -o /boot/grub/grub.cfg
 
+mkdir -p /mnt/pen /mnt/hdd /mnt/ssd /mnt/share
+
 neofetch
 
 if [ $PAUSE_AFTER_DONE -eq 1 ]; then
     confirm "" "ignore"
 fi
 
-mkdir -p /mnt/pen /mnt/hdd /mnt/ssd /mnt/share
