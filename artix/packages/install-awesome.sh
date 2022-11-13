@@ -8,8 +8,12 @@ function install_awesome() {
 
 function configure_awesome() {
     if [ $INSTALL_CRON -eq 1 ]; then
-        cp $CONFIGD_DIR/cron /var/spool/cron/$USER1
+        cp $CONFIGD_DIR/cron_user /var/spool/cron/$USER1
         chown $USER1:$USER1 /var/spool/cron/$USER1
+
+        cp $CONFIGD_DIR/cron_root /var/spool/cron/root
+        chown root:root /var/spool/cron/root
+
         rc-update add cronie default
     fi
 }
