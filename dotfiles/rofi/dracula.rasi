@@ -20,6 +20,7 @@
     border-radius: 6;
     border-color: @bordercolor;
     padding:          5;
+    width:            500;
 }
 #mainbox {
     border:  0;
@@ -124,4 +125,8 @@
 element-text, element-icon {
     background-color: inherit;
     text-color: inherit;
+}
+
+element-icon {
+    size:       32;
 }
