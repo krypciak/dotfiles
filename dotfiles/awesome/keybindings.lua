@@ -154,6 +154,7 @@ local globalkeys_awesome = awful.util.table.join(
 		{description = "show help", group = "awesome"}),
 	awful.key({superkey, shiftkey, ctrlkey}, "q", function()
         awful.spawn("pkill redshift")
+        os.execute("kill $(pidof bash /usr/bin/clipmenud)")
         awesome.quit()
         end, {description = "quit awesome", group = "awesome"}),
 	-- Restart awesome 
