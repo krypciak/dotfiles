@@ -162,11 +162,6 @@ sed -i "s/USER1/${USER1}/g" /etc/greetd/config.toml
 chown greeter:greeter /etc/greetd/config.toml
 rc-update add greetd default
 rc-update del agetty.tty1 default
-rc-update del agetty.tty2 default
-rc-update del agetty.tty3 default
-rc-update del agetty.tty4 default
-rc-update del agetty.tty5 default
-rc-update del agetty.tty6 default
 
 
 sed -i "s/USER1/${USER1}/g" /etc/security/limits.conf
