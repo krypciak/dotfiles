@@ -14,16 +14,7 @@ ctrlkey	     = "Control"
 shiftkey     = "Shift"
 capskey      = "Mod3"
 
-wallpaper_dir = userdir .. '/.config/wallpapers/'
-wallpapers   = { 
-    {  'oneshot/library.png', 'oneshot/main.png', 'oneshot/factory.png', 'oneshot/asteroid.png' }, 
-    { 'autumn.png' }, 
-    { '#000000', '#303030' } 
-}
-lock_wallpaper = wallpapers[1][2]
-
-wallpaper_group = 1
-wallpaper_index = 1
+lock_wallpaper = userdir .. '/.config/wallpapers/oneshot/main.png'
 
 default_layout_index = 2
 
@@ -55,10 +46,7 @@ screenshots_date_format = '%x_%X'
 screenshot_editor = 'kolourpaint'
 
 
-lock_command = 'alock -b image:file=' .. wallpaper_dir .. lock_wallpaper .. ' -i none'
-
---update_count_check = 'checkupdates | wc -l'
-update_count_check = ''
+lock_command = 'alock -b image:file=' .. lock_wallpaper .. ' -i none'
 
 
 awful.util.terminal = terminal

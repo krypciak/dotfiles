@@ -173,23 +173,16 @@ local globalkeys_awesome = awful.util.table.join(
 		{description = "Decrese useless gap", group = "awesome" }),
 
     awful.key({capskey}, "t", function()
-        wallpaper_group = wallpaper_group + 1
-        if wallpaper_group > #wallpapers then wallpaper_group = 1 end
-        wallpaper_index = 1
-
-        local wallpaper = wallpapers[wallpaper_group][1]
-         set_vallpaper() in functions.lua
-        set_wallpaper(wallpaper)
+        ext_group = 1
+        ext_index = 0
+        assert(loadfile(userdir .. '/.config/dotfiles/scripts/wallpaper.lua', 't', _ENV))()
         end,
         {description = "switch wallpaper group", group = "awesome"}),
     
     awful.key({capskey}, "g", function()
-        wallpaper_index = wallpaper_index + 1
-        if wallpaper_index > #wallpapers[wallpaper_group] then wallpaper_index = 1 end
-
-        local wallpaper = wallpapers[wallpaper_group][wallpaper_index]
-        -- set_vallpaper() in functions.lua
-        set_wallpaper(wallpaper)
+        ext_group = 0
+        ext_index = 1
+        assert(loadfile(userdir .. '/.config/dotfiles/scripts/wallpaper.lua', 't', _ENV))()
         end,
         {description = "switch wallpaper index", group = "awesome"})
 )

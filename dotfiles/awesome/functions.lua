@@ -62,14 +62,14 @@ function run_if_not_running_pgrep(name, func)
     return running
 end
 
-function set_wallpaper(wallpaper)
-        noti("Wallpaper changed", tostring(wallpaper), 1)
+function set_wallpaper(wallpaper, disable_noti)
+        if not disable_noti then
+            noti("Wallpaper changed", tostring(wallpaper), 1)
+        end
         if wallpaper:find('^#') then
-            theme.wallpaper = wallpaper
             gears.wallpaper.set(wallpaper)
         else
-            theme.wallpaper = wallpaper_dir .. wallpaper
-            gears.wallpaper.maximized(theme.wallpaper)
+            gears.wallpaper.maximized(wallpaper_dir .. wallpaper)
         end
 end
 

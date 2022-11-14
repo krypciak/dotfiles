@@ -1,6 +1,6 @@
 userdir = os.getenv('HOME')
 wallpaper_dir = userdir .. '/.config/wallpapers/'
-wallpaper_selected_file = userdir .. '/.cache/wallpaper-selected'
+wallpaper_selected_file = wallpaper_dir .. 'selected'
 
 default_group = 1
 default_index = 1
@@ -10,6 +10,16 @@ wallpapers = {
     { 'autumn.png' }, 
     { '#000000', '#303030' } 
 }
+
+local in_group
+local in_index
+if arg then
+    in_group = tonumber(arg[1])
+    in_index = tonumber(arg[2])
+else
+    in_group = ext_group
+    in_index = ext_index
+end
 
 group = default_group
 index = default_index
@@ -26,11 +36,11 @@ if file then
         else break end
     end
 
-    group = group + tonumber(arg[1])
+    group = group + in_group
     if group > #wallpapers then group = 1
     elseif 0 >= group      then group = #wallpapers end
 
-    index = index + tonumber(arg[2])
+    index = index + in_index
     if index > #wallpapers[group] then index = 1
     elseif 0 >= index             then index = #wallpapers[group] end
     file:close()
@@ -41,14 +51,16 @@ file = io.open(wallpaper_selected_file, "w")
 file:write(group .. '\n' .. index .. '\n')
 file:close()
 
-function set_wallpaper(wallpaper) 
-    if wallpaper:find('^#') then
-        os.execute('swaybg --color "' .. wallpaper .. '"')
-    else
-        os.execute('swaybg --mode stretch --image ' .. wallpaper_dir .. wallpaper)
+if os.getenv("WAYLAND_DISPLAY") then
+    function set_wallpaper(wallpaper) 
+        if wallpaper:find('^#') then
+            os.execute('swaybg --color "' .. wallpaper .. '"')
+        else
+            os.execute('swaybg --mode stretch --image ' .. wallpaper_dir .. wallpaper)
+        end
     end
+    os.execute("pkill swaybg")
 end
 
-os.execute("pkill swaybg")
-set_wallpaper(wallpapers[group][index])
+set_wallpaper(wallpapers[group][index], not ext_noti)
 

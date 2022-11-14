@@ -8,7 +8,6 @@ local my_table = awful.util.table
 
 theme                                           = {}
 theme.dir                                       = os.getenv("HOME") .. "/.config/awesome/theme"
-theme.wallpaper                                 = wallpaper_dir .. wallpapers[wallpaper_group][wallpaper_index]
 theme.font                                      = "Terminus 9"
 theme.font_bold                                 = "Terminus Bold 9"
 theme.fg_normal                                 = "#ff0000" -- "#d9d9d9" --"#DDDDFF"
@@ -248,12 +247,10 @@ function theme.at_screen_connect(s)
     -- Quake application
     s.quake = lain.util.quake({ app = awful.util.terminal })
 
-    -- If wallpaper is a function, call it with the screen
-    local wallpaper = theme.wallpaper
-    if type(wallpaper) == "function" then
-        wallpaper = wallpaper(s)
-    end
-    gears.wallpaper.maximized(wallpaper, s, true)
+    ext_group = 0
+    ext_index = 0
+    ext_noti = false
+    assert(loadfile(userdir .. '/.config/dotfiles/scripts/wallpaper.lua', 't', _ENV))()
 
     -- Create a promptbox for each screen
     --s.mypromptbox = awful.widget.prompt()
