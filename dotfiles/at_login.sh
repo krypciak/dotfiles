@@ -23,8 +23,5 @@ export CM_LAUNCHER=rofi
 
 export USER1=$USER
 
-# Set deafult x11 to awesome
-export XINITRC="$XDG_CONFIG_HOME/awesome/run/xinitrc"
-export XAUTHORITY="$HOME/.config/awesome/run/Xauthority"
 
 
