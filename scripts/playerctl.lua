@@ -27,6 +27,13 @@ else
 end
 
 
+function os.capture(cmd)
+    local handle = assert(io.popen(cmd, "r"))
+    local output = assert(handle:read("*a"))
+    handle:close()
+    return output
+end
+
 function split_by_line_ending(str)
     local t = {}
     local function helper(line)
