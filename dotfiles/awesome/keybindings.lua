@@ -42,70 +42,10 @@ local function gen_screenshot_key(key, desc, command, prefix)
     )
 end
 
---[[
-local main_player
-local secondary_player
-
-local function playerctl_action(action, playernumber)
-    local output = os.capture("playerctl --list-all")
-    output = string.sub(output, 0, -2)
-    local split = split_by_line_ending(output)
-
-    if #split == 0 then return end
-    if #split == 1 then
-        main_player = split[1]
-        secondary_player = nil
-    else
-        if not list_contains(split, main_player) then
-            main_player = secondary_player
-            secondary_player = nil
-            if not list_contains(split, main_player) then
-                main_player = split[1]
-                secondary_player = split[2]
-            end
-        end
-        assert(main_player ~= nil)
-        if not list_contains(split, secondary_player) then
-            if split[2] == main_player then
-                secondary_player = split[1]
-            else
-                secondary_player = split[2]
-            end
-        end
-    end
-    assert(main_player ~= secondary_player)
-   
-    if action == "swap" then
-        if main_player and secondary_player then
-            local t1 = main_player 
-            main_player = secondary_player
-            secondary_player = t1
-        elseif secondary_player then 
-            main_player = secondary_player
-            secondary_player = nil
-        end
-
-        return
-    end
-
-    local player
-    if playernumber == 1 then player = main_player
-    elseif playernumber == 2 then player = secondary_player
-    end
-    if player then
-        local cmd = "playerctl --player=" .. player .. " " .. action
-        awful.spawn(cmd)
-    else
-        noti("Player doesn't exist", "Player " .. playernumber .. " doesn't exist.")
-    end
-end
---]]
-
 local function gen_playerctl_key(key, action, desc)
     return awful.util.table.join(
         -- Primary control
         awful.key({capskey}, key, function() 
-            --playerctl_action(action, 1) 
             ext_action = action
             ext_playernumber = 1
             assert(loadfile(userdir .. '/.config/dotfiles/scripts/playerctl.lua', 't', _ENV))()
@@ -113,7 +53,6 @@ local function gen_playerctl_key(key, action, desc)
         
         -- Secondary control
         awful.key({capskey, shiftkey}, key, function() 
-            --playerctl_action(action, 2) 
             ext_action = action
             ext_playernumber = 2
             assert(loadfile(userdir .. '/.config/dotfiles/scripts/playerctl.lua', 't', _ENV))()
@@ -122,9 +61,11 @@ local function gen_playerctl_key(key, action, desc)
 end
 
 local globalkeys_media = awful.util.table.join (
-    awful.key({capskey, ctrlkey}, "Tab", 
-        function() playerctl_action("swap") end,
-        { description = "Swap playerctl players", group = "multimedia" }),
+    awful.key({capskey, ctrlkey}, "Tab", function()
+         ext_action = "swap"
+         ext_playernumber = -1
+         assert(loadfile(userdir .. '/.config/dotfiles/scripts/playerctl.lua', 't', _ENV))()
+        end, { description = "Swap playerctl players", group = "multimedia" }),
 
     gen_playerctl_key("Tab", "play-pause"),
     gen_playerctl_key("q", "next"),

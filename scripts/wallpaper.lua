@@ -1,5 +1,5 @@
 local userdir = os.getenv('HOME')
-local wallpaper_dir = userdir .. '/.config/wallpapers/'
+wallpaper_dir = userdir .. '/.config/wallpapers/'
 local wallpaper_selected_file = wallpaper_dir .. 'selected'
 
 local default_group = 1
