@@ -1,11 +1,11 @@
-userdir = os.getenv('HOME')
-wallpaper_dir = userdir .. '/.config/wallpapers/'
-wallpaper_selected_file = wallpaper_dir .. 'selected'
+local userdir = os.getenv('HOME')
+local wallpaper_dir = userdir .. '/.config/wallpapers/'
+local wallpaper_selected_file = wallpaper_dir .. 'selected'
 
-default_group = 1
-default_index = 1
+local default_group = 1
+local default_index = 1
 
-wallpapers = { 
+local wallpapers = { 
     {  'oneshot/library.png', 'oneshot/main.png', 'oneshot/factory.png', 'oneshot/asteroid.png' }, 
     { 'autumn.png' }, 
     { '#000000', '#303030' } 
@@ -21,10 +21,10 @@ else
     in_index = ext_index
 end
 
-group = default_group
-index = default_index
+local group = default_group
+local index = default_index
 
-file = io.open(wallpaper_selected_file, "r")
+local file = io.open(wallpaper_selected_file, "r")
 
 if file then
     lines = file:lines()
