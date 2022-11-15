@@ -54,12 +54,11 @@ file:close()
 if os.getenv("WAYLAND_DISPLAY") then
     function set_wallpaper(wallpaper) 
         if wallpaper:find('^#') then
-            os.execute('swaybg --color "' .. wallpaper .. '"')
+            os.execute('swww clear "' .. wallpaper .. '"')
         else
-            os.execute('swaybg --mode stretch --image ' .. wallpaper_dir .. wallpaper)
+            os.execute('swww img ' .. wallpaper_dir .. wallpaper .. " --transition-type=center --transition-fps 255")
         end
     end
-    os.execute("pkill swaybg")
 end
 
 set_wallpaper(wallpapers[group][index], not ext_noti)
