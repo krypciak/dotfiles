@@ -42,6 +42,7 @@ local function gen_screenshot_key(key, desc, command, prefix)
     )
 end
 
+--[[
 local main_player
 local secondary_player
 
@@ -98,19 +99,25 @@ local function playerctl_action(action, playernumber)
         noti("Player doesn't exist", "Player " .. playernumber .. " doesn't exist.")
     end
 end
-
+--]]
 
 local function gen_playerctl_key(key, action, desc)
     return awful.util.table.join(
         -- Primary control
-        awful.key({capskey}, key, 
-            function() playerctl_action(action, 1) end, 
-            { description = action .. " playerctl media", group = "multimedia" }),
+        awful.key({capskey}, key, function() 
+            --playerctl_action(action, 1) 
+            ext_action = action
+            ext_playernumber = 1
+            assert(loadfile(userdir .. '/.config/dotfiles/scripts/playerctl.lua', 't', _ENV))()
+            end, { description = action .. " playerctl media", group = "multimedia" }),
         
         -- Secondary control
-        awful.key({capskey, shiftkey}, key, 
-            function() playerctl_action(action, 2) end, 
-            { description = action .. " playerctl media (Secondary)", group = "multimedia" })
+        awful.key({capskey, shiftkey}, key, function() 
+            --playerctl_action(action, 2) 
+            ext_action = action
+            ext_playernumber = 2
+            assert(loadfile(userdir .. '/.config/dotfiles/scripts/playerctl.lua', 't', _ENV))()
+            end, { description = action .. " playerctl media (Secondary)", group = "multimedia" })
     )
 end
 
