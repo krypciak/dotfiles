@@ -29,7 +29,6 @@ else
     playernumber = ext_playernumber
 end
 
-
 function os.capture(cmd)
     local handle = assert(io.popen(cmd, "r"))
     local output = assert(handle:read("*a"))
@@ -58,7 +57,7 @@ local function playerctl_action(action, playernumber)
     local output = os.capture("playerctl --list-all")
     output = string.sub(output, 0, -2)
     local split = split_by_line_ending(output)
-
+    
     if #split == 0 then return end
     if #split == 1 then
         main_player = split[1]
@@ -102,9 +101,11 @@ local function playerctl_action(action, playernumber)
     end
     if player then
         local cmd = "playerctl --player=" .. player .. " " .. action
-        awful.spawn(cmd)
-    else
-        noti("Player doesn't exist", "Player " .. playernumber .. " doesn't exist.")
+        if awful then
+            awful.spawn(cmd)
+        else
+            os.execute(cmd)
+        end
     end
 end
 
