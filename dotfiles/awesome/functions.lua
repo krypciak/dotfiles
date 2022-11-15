@@ -17,13 +17,13 @@ function noti(title, text, timeout)
 end
 
 function split_by_line_ending(str)
-   local t = {}
-   local function helper(line)
-      table.insert(t, line)
-      return ""
-   end
-   helper((str:gsub("(.-)\r?\n", helper)))
-   return t
+    local t = {}
+    local function helper(line)
+        table.insert(t, line)
+        return ""
+    end
+    helper((str:gsub("(.-)\r?\n", helper)))
+    return t
 end
 
 function list_contains(list, key) 
