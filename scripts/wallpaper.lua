@@ -28,7 +28,7 @@ local file = io.open(wallpaper_selected_file, "r")
 
 if file then
     lines = file:lines()
-    i = 0
+    local i = 0
     for line in lines do
         i = i + 1
         if i == 1 then group = tonumber(line)
