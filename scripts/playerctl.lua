@@ -13,6 +13,9 @@ if file then
         elseif i == 2 then secondary_player = line
         else break end
     end
+
+    if main_player == "nil" then mail_player = nil end
+    if secondary_player == "nil" then secondary_player = nil end
 end
 
 local action
@@ -92,6 +95,21 @@ local function playerctl_action(action, playernumber)
 
         return
     end
+
+    local player
+    if playernumber == 1 then player = main_player
+    elseif playernumber == 2 then player = secondary_player
+    end
+    if player then
+        local cmd = "playerctl --player=" .. player .. " " .. action
+        awful.spawn(cmd)
+    else
+        noti("Player doesn't exist", "Player " .. playernumber .. " doesn't exist.")
+    end
 end
 
 playerctl_action(action, playernumber)
+
+file = io.open(player_cache_file, "w")
+file:write(main_player .. '\n' .. tostring(secondary_player))
+file:close()
