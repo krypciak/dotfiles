@@ -5,6 +5,8 @@ function install_misc() {
 
 function configure_misc() {
     rc-update add cupsd default
+
+    sed -i "s/USER_HOME/$USER_HOME/g" /etc/artools/artools-base.conf
 }
 
 
