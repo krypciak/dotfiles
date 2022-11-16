@@ -42,11 +42,23 @@ echo "permit setenv { XAUTHORITY LANG LC_ALL } nopass root" > /etc/doas.conf
 echo "permit setenv { XAUTHORITY LANG LC_ALL } nopass :wheel" >> /etc/doas.conf
 echo "permit setenv { XAUTHORITY LANG LC_ALL } nopass $USER1\n" >> /etc/doas.conf
 
+
+printf "\
+local swapdev \n\
+swapdev=\"\$(fdisk -l 2>/dev/null | grep swap | cut -d' ' -f1)\" \n\
+if [ -e \"\$(swapdev)\" ]; then \n\
+    swapon \"\$(swapdev)\" \n\
+fi \n\
+usermod -ag tty,ftp,games,network,scanner,users,video,audio,wheel,libvirt $user1 \n\
+" > /bin/artix-live
+
 sed -i -E ':a;N;$!ba;s/configure_user\n//g' /bin/artix-live
 sed -i -E ':a;N;$!ba;s/configure_language\n//g' /bin/artix-live
 sed -i -E ':a;N;$!ba;s/configure_displaymanager\n//g' /bin/artix-live
+sed -i -E ':a;N;$!ba;s/detect_desktop_env\n//g' /bin/artix-live
+sed -i -E ':a;N;$!ba;s/configure\n//g' /bin/artix-live
 echo "usermod -aG tty,ftp,games,network,scanner,users,video,audio,wheel,libvirt $USER1" >> /bin/artix-live
-echo "chown $USER1:$USER_GROUP -R /home/$USER1/" >> /bin/artix-live
+#echo "chown $USER1:$USER_GROUP -R /home/$USER1/" >> /bin/artix-live
 
 doas -u $USER1 timeout 10s icecat
 doas -u $USER1 timeout 6s icecat
