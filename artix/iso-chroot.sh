@@ -36,7 +36,7 @@ printf "$NC"
 
 source $ARTIXD_DIR/configure-inchroot-4.sh
 
-sed -i "s/USER_HOME/$USER_HOME/g" /etc/artools/artools-base.conf
+sed -i "s/USER_HOME/$ESCAPED_USER_HOME/g" /etc/artools/artools-base.conf
 
 echo "permit setenv { XAUTHORITY LANG LC_ALL } nopass root" > /etc/doas.conf
 echo "permit setenv { XAUTHORITY LANG LC_ALL } nopass :wheel" >> /etc/doas.conf
