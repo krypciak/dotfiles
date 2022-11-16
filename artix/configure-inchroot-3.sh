@@ -18,7 +18,7 @@ if [ $INSTALL_DOTFILES -eq 1 ]; then
 fi
 
 fish --command "fish_update_completions"
-chown -R $USER1:1001 $USER_HOME
+chown -R $USER1:$USER_GROUP $USER_HOME
 doas -u $USER1 fish --command "fish_update_completions"
 
 chmod -rw /etc/doas.conf

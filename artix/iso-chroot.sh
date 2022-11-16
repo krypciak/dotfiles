@@ -46,7 +46,7 @@ sed -i -E ':a;N;$!ba;s/configure_user\n//g' /bin/artix-live
 sed -i -E ':a;N;$!ba;s/configure_language\n//g' /bin/artix-live
 sed -i -E ':a;N;$!ba;s/configure_displaymanager\n//g' /bin/artix-live
 echo "usermod -aG tty,ftp,games,network,scanner,users,video,audio,wheel,libvirt $USER1" >> /bin/artix-live
-echo "chown $USER1:1001 -R /home/$USER1/" >> /bin/artix-live
+echo "chown $USER1:$USER_GROUP -R /home/$USER1/" >> /bin/artix-live
 
 doas -u $USER1 timeout 10s icecat
 doas -u $USER1 timeout 6s icecat
@@ -62,3 +62,4 @@ neofetch
 if [ $PAUSE_AFTER_DONE -eq 1 ]; then
     confirm "" "ignore"
 fi
+bash

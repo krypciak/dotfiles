@@ -19,6 +19,8 @@ printf "$NC"
 
 source $ARTIXD_DIR/configure-inchroot-4.sh
 
+paru --noconfirm -Scc > /dev/null 2>&1
+
 pri "Configuring fstab"
 ROOT_UUID=$(blkid $LVM_DIR/root -s UUID -o value)
 ESCAPED_ROOT_UUID=$(printf '%s\n' "$ROOT_UUID" | sed -e 's/[\/&]/\\&/g')
