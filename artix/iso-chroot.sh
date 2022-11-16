@@ -63,6 +63,12 @@ echo "usermod -aG tty,ftp,games,network,scanner,users,video,audio,wheel,libvirt 
 doas -u $USER1 timeout 10s icecat
 doas -u $USER1 timeout 6s icecat
 
+rc-update del agetty.tty2 default
+rc-update del agetty.tty3 default
+rc-update del agetty.tty4 default
+rc-update del agetty.tty5 default
+rc-update del agetty.tty6 default
+
 pri "Cleaning up (iso)"
 umount /var/cache/pacman/pkg
 umount $USER_HOME/.cache/paru/clone
