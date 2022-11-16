@@ -7,7 +7,6 @@ function configure_basic() {
     pri "Configuring greetd"
     sed -i "s/USER_HOME/$ESCAPED_USER_HOME/g" /etc/greetd/config.toml
     sed -i "s/USER1/$USER1/g" /etc/greetd/config.toml
-    cat /etc/greetd/config.toml
     chown greeter:greeter /etc/greetd/config.toml
     rc-update add greetd default
     rc-update del agetty.tty1 default
