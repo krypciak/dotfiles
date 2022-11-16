@@ -40,8 +40,11 @@ mv /90-mkinitcpio-install.hook /usr/share/libalpm/hooks/90-mkinitcpio-install.ho
 
 
 pri "Configuring greetd"
+echo "user1: $USER1"
+echo "user_home: $USER_HOME"
 sed -i "s/USER_HOME/$ESCAPED_USER_HOME/g" /etc/greetd/config.toml
 sed -i "s/USER1/$USER1/g" /etc/greetd/config.toml
+bash
 cat /etc/greetd/config.toml
 chown greeter:greeter /etc/greetd/config.toml
 rc-update add greetd default
