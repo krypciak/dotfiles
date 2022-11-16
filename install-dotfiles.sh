@@ -38,7 +38,6 @@ SYMLINK_FROM_TO=(
     "wallpapers"            ".config"
     "rofi"                  ".config"
     "applications"          ".local/share/applications/"
-    "artools"               ".config"
 )
 
 

@@ -20,3 +20,5 @@ dotfiles/copyq/copyq-scripts.ini
 *.o
 *-protocol.c
 *-protocol.h
+
+artix/artools-workspace/buildiso
