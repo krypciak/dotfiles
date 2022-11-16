@@ -65,9 +65,14 @@ KERNEL='linux-zen'
 PACKAGE_GROUPS=(
     'drivers'
     'basic'
+    'gui'
     'audio'
-    #'media'
+    'media'
     'browsers'
+    'X11'
+    'awesome'
+    #'wayland'
+    #'dwl'
     #'coding'
     #'fstools'
     #'gaming'
@@ -76,7 +81,6 @@ PACKAGE_GROUPS=(
     #'misc'
     #'bluetooth'
     #'virt'
-    'awesome'
 )
 
 INSTALL_CRON=1

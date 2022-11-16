@@ -25,11 +25,16 @@ PACMAN_ARGUMENTS='--noconfirm --needed'
 PARU_ARGUMENTS='--noremovemake --skipreview --noupgrademenu'
 
 PACKAGE_GROUPS=(
-    'drivers'
     'basic'
+    'drivers'
+    'gui'
     'audio'
     'media'
     'browsers'
+    'X11'
+    'awesome'
+    'wayland'
+    'dwl'
     'coding'
     'fstools'
     'gaming'
@@ -38,7 +43,7 @@ PACKAGE_GROUPS=(
     'misc'
     'bluetooth'
     'virt'
-    'awesome'
+    'android'
 )
 
 INSTALL_CRON=0
