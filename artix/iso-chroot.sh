@@ -2,16 +2,15 @@
 export ARTIXD_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 export USER_GROUP='1001'
 
-sed -i 's/CheckSpace/#CheckSpace/g' /etc/pacman.conf
-
 source $ARTIXD_DIR/configure-inchroot-1.sh
 
 pacman-key --init
 pacman-key --populate artix
 
+sed -i 's/CheckSpace/#CheckSpace/g' /etc/pacman.conf
+bash
 source $ARTIXD_DIR/configure-inchroot-2.sh
 
-sed -i 's/CheckSpace/#CheckSpace/g' /etc/pacman.conf
 
 
 DOTFILES_DIR=$USER_HOME/home/.config/dotfiles
