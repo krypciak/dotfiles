@@ -22,6 +22,10 @@ cp $CONFIGD_DIR/root/etc/pacman.conf /etc/pacman.conf
 cp -r $CONFIGD_DIR/root/etc/pacman.d /etc/
 pacman -Sy 
 
+if [ "$ISO" == "yes" ]; then
+    sed -i 's/CheckSpace/#CheckSpace/g' /etc/pacman.conf
+fi
+
 pri "Adding user $USER1"
 if ! id "$USER1" &>/dev/null; then
     useradd -s /bin/bash -G tty,ftp,games,network,scanner,users,video,audio,wheel $USER1

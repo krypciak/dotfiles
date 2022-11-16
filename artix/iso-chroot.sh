@@ -1,6 +1,7 @@
 #!/bin/bash
 export ARTIXD_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 export USER_GROUP='1001'
+export ISO="yes"
 
 source $ARTIXD_DIR/configure-inchroot-1.sh
 
@@ -8,10 +9,7 @@ pacman-key --init
 pacman-key --populate artix
 
 sed -i 's/CheckSpace/#CheckSpace/g' /etc/pacman.conf
-bash
 source $ARTIXD_DIR/configure-inchroot-2.sh
-
-
 
 DOTFILES_DIR=$USER_HOME/home/.config/dotfiles
 pri "Copying the repo to $DOTFILES_DIR"

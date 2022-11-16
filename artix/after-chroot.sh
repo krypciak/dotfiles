@@ -1,6 +1,7 @@
 #!/bin/bash
 export ARTIXD_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 export USER_GROUP="$USER1"
+export ISO="no"
 
 source $ARTIXD_DIR/configure-inchroot-1.sh
 
