@@ -39,6 +39,15 @@ pri "Enabling mkinitpckio"
 mv /90-mkinitcpio-install.hook /usr/share/libalpm/hooks/90-mkinitcpio-install.hook
 
 
+pri "Configuring greetd"
+sed -i "s/USER_HOME/$ESCAPED_USER_HOME/g" /etc/greetd/config.toml
+sed -i "s/USER1/$USER1/g" /etc/greetd/config.toml
+cat /etc/greetd/config.toml
+chown greeter:greeter /etc/greetd/config.toml
+rc-update add greetd default
+rc-update del agetty.tty1 default
+
+
 mkdir -p /mnt/pen /mnt/hdd /mnt/ssd /mnt/share
 
 pri "Cleaning up"
