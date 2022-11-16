@@ -3,7 +3,6 @@
 export DOTFILES_DIR=$ARTIXD_DIR/..
 export CONFIGD_DIR=$DOTFILES_DIR/config-files
 export ESCAPED_USER_HOME=$(printf '%s\n' "$USER_HOME" | sed -e 's/[\/&]/\\&/g')
-export ESCAPED_USER_HOME=$(printf '%s\n' "$USER_HOME" | sed -e 's/[\/&]/\\&/g')
 
 
 source "$ARTIXD_DIR/iso-vars.sh"
