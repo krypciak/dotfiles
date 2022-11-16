@@ -56,10 +56,12 @@ umount /var/cache/pacman/pkg
 umount $USER_HOME/.cache/paru/clone
 umount $USER_HOME/.cargo
 
+pacman-key --populate
 
 neofetch
 
 if [ $PAUSE_AFTER_DONE -eq 1 ]; then
     confirm "" "ignore"
 fi
-bash
+
+
