@@ -53,6 +53,6 @@ mkdir -p /mnt/pen /mnt/hdd /mnt/ssd /mnt/share
 pri "Cleaning up"
 rm -f /usr/share/applications/icecat-safe.desktop
 
-pacman $PACMAN_ARGUMENTS -Rs $(pacman -Qqtd)
+pacman --noconfirm -Rs $(pacman -Qqtd)
 
 rm -r /dotfiles 
