@@ -33,14 +33,12 @@ SYMLINK_FROM_TO=(
     #"swaylock"              ".config"
     "Ferdium/config"        ".config"
     ".mozilla/icecat/profiles.ini" ""
-    ".mozilla/icecat/rgvol6f2.default/extension-settings.json" ""
     ".mozilla/icecat/rgvol6f2.default/extension-preferences.json" ""
     ".mozilla/icecat/rgvol6f2.default/extensions" ""
-    ".mozilla/icecat/rgvol6f2.default/extensions.json" ""
-    ".mozilla/icecat/rgvol6f2.default/sessionCheckpoints.json" ""
     "wallpapers"            ".config"
     "rofi"                  ".config"
     "applications"          ".local/share/applications/"
+    "artools"               ".config"
 )
 
 
@@ -65,6 +63,9 @@ COPY_FROM_TO=(
     ".mozilla/icecat/rgvol6f2.default/storage" "%"
     ".mozilla/icecat/rgvol6f2.default/storage.sqlite" "%"
     ".mozilla/icecat/rgvol6f2.default/cookies.sqlite" "%"
+    ".mozilla/icecat/rgvol6f2.default/extension-settings.json" "%"
+    ".mozilla/icecat/rgvol6f2.default/extensions.json" "%"
+    ".mozilla/icecat/rgvol6f2.default/sessionCheckpoints.json" "%"
 )
 
 LINK_HOME_DIRS=(

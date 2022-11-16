@@ -6,6 +6,9 @@ USER_HOME="/home/$USER1"
 DIRS=(
 	".mozilla/icecat/rgvol6f2.default/extension-settings.json"      ""
     ".mozilla/icecat/rgvol6f2.default/search.json.mozlz4"           ""
+    ".mozilla/icecat/rgvol6f2.default/extension-settings.json"      ""
+    ".mozilla/icecat/rgvol6f2.default/extensions.json"              ""
+    ".mozilla/icecat/rgvol6f2.default/sessionCheckpoints.json"      ""
 )
 
 echo "Syncing..."
