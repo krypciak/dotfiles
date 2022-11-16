@@ -73,11 +73,3 @@ until [ "$n" -ge 5 ]; do
 done
 if [ "$n" -eq 5 ]; then pri "${RED}ERROR. Exiting..."; exit; fi
 
-for group in "${PACKAGE_GROUPS[@]}"; do
-    CONFIG_FUNC="configure_$group"
-    if command -v "$CONFIG_FUNC" &> /dev/null; then
-        pri "Configuring $group"
-        eval "$CONFIG_FUNC"
-    fi
-done
-
