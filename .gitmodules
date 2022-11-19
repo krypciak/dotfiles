@@ -4,3 +4,6 @@
 [submodule "dotfiles/dwl/dwl-dotfiles"]
 	path = dotfiles/dwl/dwl-dotfiles
 	url = https://github.com/krypciak/dwl-dotfiles
+[submodule "dotfiles/dwl/somebar"]
+	path = dotfiles/dwl/somebar
+	url = https://github.com/krypciak/somebar
