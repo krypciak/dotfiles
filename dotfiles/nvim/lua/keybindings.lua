@@ -22,6 +22,8 @@ map('n', '<leader>t', '', { noremap = true, callback = function()
 map('n', '<leader>b', '', { noremap = true, callback = function()
         ftype = vim.bo.filetype
         if ftype == 'rust' then rust_build()
+        elseif ftype == 'c' then c_build()
+        elseif ftype == 'cpp' then c_build()
         else print('Unsupported filetype: '.. ftype) end
    end })
 
@@ -67,4 +69,5 @@ map('', '<leader>aa', ':%y<cr>')
 
 require("lang/rust")
 require("lang/python")
+require("lang/c")
 
