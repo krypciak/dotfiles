@@ -3,6 +3,7 @@ if [ $(whoami) != "root" ]; then
     echo "This script requires root privilages"
     exit 1
 fi
+paru --noconfirm -Syu
 
 ARTIX_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 
