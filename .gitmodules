@@ -7,3 +7,6 @@
 [submodule "dotfiles/dwl/somebar"]
 	path = dotfiles/dwl/somebar
 	url = https://github.com/krypciak/somebar
+[submodule "dotfiles/dwl/someblocks"]
+	path = dotfiles/dwl/someblocks
+	url = https://github.com/krypciak/someblocks
