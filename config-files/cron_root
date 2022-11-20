@@ -1,1 +1,1 @@
-0 */3 * * * pacman --noconfirm -Syuw
+0 */3 * * * pacman --noconfirm -Syuw && echo "$(pacman -Qu | wc -l)" > /tmp/updates.txt
