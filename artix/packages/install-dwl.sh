@@ -11,4 +11,7 @@ function configure_dwl() {
     meson build
     cd $USER_HOME/.config/dwl/somebar/build
     ninja
+
+    cd $USER_HOME/.config/dwl/dpms-off
+    cargo build --release
 }
