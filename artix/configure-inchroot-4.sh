@@ -1,11 +1,5 @@
 #!/bin/bash
 
-if [ "$AWESOME_START_TUTANOTA" -eq 0 ]; then
-    ESCAPED_T1=$(printf '%s\n' "run_if_not_running_pgrep({ \"tutanota\" }" | sed -e 's/[\/&]/\\&/g')
-    sed -i "s/$ESCAPED_T1/--$ESCAPED_T1/g" $USER_HOME/.config/awesome/after_5sec.lua
-fi
-
-
 pri "Set password for user $USER1"
 if [ "$USER_PASSWORD" != "" ]; then
     pri "${LBLUE}Automaticly filling password..."

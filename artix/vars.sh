@@ -95,8 +95,6 @@ GPU=''
 #CPU='amd'
 CPU=''
 
-AWESOME_START_TUTANOTA=1
-
 # Installer
 YOLO=1
 AUTO_REBOOT=0

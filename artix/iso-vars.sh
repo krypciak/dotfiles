@@ -48,8 +48,6 @@ PACKAGE_GROUPS=(
 
 INSTALL_CRON=0
 
-AWESOME_START_TUTANOTA=0
-
 
 # If ALL_DRIVERS is set to 1, GPU and CPU options are ignored
 ALL_DRIVERS=1
