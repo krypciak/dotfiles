@@ -137,7 +137,7 @@ if [ $? -ne 0 ]; then pri "${RED}ERROR. Exiting..."; exit; fi
 # Prepare to chroot
 confirm "Basestrap basic packages?"
 export LANG
-basestrap -C $ARTIXD_DIR/../config-files/pacman.conf.install $INSTALL_DIR base openrc elogind-openrc artix-keyring artix-mirrorlist pacman autoconf automake bison fakeroot flex gcc groff libtool m4 make patch pkgconf texinfo which iptables-nft
+basestrap -C $ARTIXD_DIR/../config-files/pacman.conf.install $INSTALL_DIR base openrc elogind-openrc artix-keyring artix-mirrorlist pacman autoconf automake bison fakeroot flex gcc groff libtool m4 make patch pkgconf texinfo which iptables-nft $KERNEL $KERNEL-headers
 
 
 DOTFILES_DIR=$INSTALL_DIR$USER_HOME/home/.config/dotfiles
