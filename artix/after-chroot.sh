@@ -11,6 +11,7 @@ source $ARTIXD_DIR/configure-inchroot-2.sh
 source $ARTIXD_DIR/configure-inchroot-3.sh
 
 pri "Enabling services"
+paru -S networkmanager-openrc
 rc-update add NetworkManager default
 
 
