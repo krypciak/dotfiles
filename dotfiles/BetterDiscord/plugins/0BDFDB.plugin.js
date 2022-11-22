@@ -2,7 +2,7 @@
  * @name BDFDB
  * @author DevilBro
  * @authorId 278543574059057154
- * @version 2.9.8
+ * @version 2.9.9
  * @description Required Library for DevilBro's Plugins
  * @invite Jx3TjNS
  * @donate https://www.paypal.me/MircoWittrien
@@ -1228,7 +1228,7 @@ module.exports = (_ => {
 						s1 = config.ignoreCase ? s1.toString().toLowerCase() : s1.toString();
 						return config.hasNot ? s1.indexOf(s2) == -1 : s1.indexOf(s2) > -1;
 					};
-					return [strings].flat(10).filter(n => typeof n == "string").map(config.ignoreCase ? (n => n.toLowerCase()) : (n => n)).every(string => module && ((typeof module == "function" || typeof module == "strings") && (check(module, string) || typeof module.__originalFunction == "function" && check(module.__originalFunction, string)) || typeof module.type == "function" && check(module.type, string) || (typeof module == "function" || typeof module == "object") && module.prototype && Object.keys(module.prototype).filter(n => n.indexOf("render") == 0).some(n => check(module.prototype[n], string))));
+					return [strings].flat(10).filter(n => typeof n == "string").map(config.ignoreCase ? (n => n.toLowerCase()) : (n => n)).every(string => module && ((typeof module == "function" || typeof module == "string") && (check(module, string) || typeof module.__originalFunction == "function" && check(module.__originalFunction, string)) || typeof module.type == "function" && check(module.type, string) || (typeof module == "function" || typeof module == "object") && module.prototype && Object.keys(module.prototype).filter(n => n.indexOf("render") == 0).some(n => check(module.prototype[n], string))));
 				};
 				Internal.checkModuleProps = function (module, properties, config = {}) {
 					return [properties].flat(10).filter(n => typeof n == "string").every(prop => {
@@ -3836,7 +3836,7 @@ module.exports = (_ => {
 													BDFDB.ReactUtils.createElement(Internal.LibraryComponents.Flex.Child, {
 														children: [
 															BDFDB.ReactUtils.createElement(Internal.LibraryComponents.FormComponents.FormTitle, {
-																tag: Internal.LibraryComponents.FormComponents.FormTitle.Tags.H4,
+																tag: Internal.LibraryComponents.FormComponents.FormTags.H4,
 																children: config.header
 															}),
 															BDFDB.ReactUtils.createElement(Internal.LibraryComponents.TextElement, {
@@ -5170,7 +5170,7 @@ module.exports = (_ => {
 										BDFDB.ReactUtils.forceUpdate(this);
 									},
 									children: BDFDB.ReactUtils.createElement(Internal.LibraryComponents.FormComponents.FormTitle, {
-										tag: Internal.LibraryComponents.FormComponents.FormTitle.Tags.H5,
+										tag: Internal.LibraryComponents.FormComponents.FormTags.H5,
 										className: BDFDB.disCN.collapsecontainertitle,
 										children: this.props.title
 									})
@@ -6087,7 +6087,7 @@ module.exports = (_ => {
 										this.props.title != null || this.props.error != null ? BDFDB.ReactUtils.createElement(Internal.LibraryComponents.Flex.Child, {
 											wrap: true,
 											children: BDFDB.ReactUtils.createElement(Internal.LibraryComponents.FormComponents.FormTitle, {
-												tag: this.props.tag || Internal.LibraryComponents.FormComponents.FormTitle.Tags.H5,
+												tag: this.props.tag || Internal.LibraryComponents.FormComponents.FormTags.H5,
 												disabled: this.props.disabled,
 												required: this.props.required,
 												error: this.props.error,
@@ -6421,20 +6421,20 @@ module.exports = (_ => {
 					render() {
 						let color = BDFDB.ColorUtils.convert(this.props.role.colorString, "RGB") || Internal.DiscordConstants.Colors.PRIMARY_DARK_300;
 						return BDFDB.ReactUtils.createElement("li", {
-							className: BDFDB.DOMUtils.formatClassName(BDFDB.disCN.userpopoutrole, this.props.className),
+							className: BDFDB.DOMUtils.formatClassName(BDFDB.disCN.userrole, this.props.className),
 							style: {borderColor: BDFDB.ColorUtils.setAlpha(color, 0.6)},
 							onClick: this.handleClick.bind(this),
 							onContextMenu: this.handleContextMenu.bind(this),
 							children: [
 								!this.props.noCircle ? BDFDB.ReactUtils.createElement("div", {
-									className: BDFDB.disCN.userpopoutroleremovebutton,
+									className: BDFDB.disCN.userroleremovebutton,
 									children: BDFDB.ReactUtils.createElement("span", {
-										className: BDFDB.disCN.userpopoutrolecircle,
+										className: BDFDB.disCN.userrolecircle,
 										style: {backgroundColor: color}
 									})
 								}) : null,
 								BDFDB.ReactUtils.createElement("div", {
-									className: BDFDB.disCN.userpopoutrolename,
+									className: BDFDB.disCN.userrolename,
 									children: this.props.role.name
 								})
 							].filter(n => n)
@@ -7052,7 +7052,7 @@ module.exports = (_ => {
 								}) : null,
 								typeof this.props.title == "string" ? BDFDB.ReactUtils.createElement(Internal.LibraryComponents.FormComponents.FormTitle, {
 									className: BDFDB.disCN.marginbottom4,
-									tag: Internal.LibraryComponents.FormComponents.FormTitle.Tags.H3,
+									tag: Internal.LibraryComponents.FormComponents.FormTags.H3,
 									children: this.props.title
 								}) : null,
 								BDFDB.ReactUtils.createElement("div", {
@@ -8072,8 +8072,7 @@ module.exports = (_ => {
 					after: [
 						"DiscordTag",
 						"UseCopyIdItem",
-						"UserPopoutAvatar",
-						"UserThemedPopoutAvatar"
+						"UserPopoutAvatar"
 					],
 					componentDidMount: [
 						"Account",
@@ -8164,7 +8163,7 @@ module.exports = (_ => {
 					const user = BDFDB.ReactUtils.findValue(e.instance, "user");
 					if (!user) return;
 					const avatar = e.instance.props.section != Internal.DiscordConstants.AnalyticsSections.PROFILE_POPOUT && e.node.querySelector(BDFDB.dotCN.avatarwrapper);
-					const wrapper = e.node.querySelector(BDFDB.dotCNC.userpopout + BDFDB.dotCN.userprofile) || e.node;
+					const wrapper = e.node.querySelector(BDFDB.dotCNC.userpopoutouter + BDFDB.dotCN.userprofilemodal) || e.node;
 					if (avatar) Internal._processAvatarMount(user, avatar, wrapper);
 				};
 				Internal.processBlobMask = function (e) {
@@ -8301,11 +8300,6 @@ module.exports = (_ => {
 					let [children, index] = BDFDB.ReactUtils.findParent(e.returnvalue, {props: [["className", BDFDB.disCN.userpopoutavatarwrapper]]});
 					if (index > -1) children[index] = Internal._processAvatarRender(e.instance.props.user, children[index], e.instance) || children[index];
 				};
-				Internal.processUserThemedPopoutAvatar = function (e) {
-					if (!e.instance.props.user) return;
-					let [children, index] = BDFDB.ReactUtils.findParent(e.returnvalue, {props: [["className", BDFDB.disCN.userpopoutthemedavatarwrapper]]});
-					if (index > -1) children[index] = Internal._processAvatarRender(e.instance.props.user, children[index], e.instance) || children[index];
-				};
 				
 				MyReact.instanceKey = Object.keys(document.querySelector(BDFDB.dotCN.app) || {}).some(n => n.startsWith("__reactInternalInstance")) ? "_reactInternalFiber" : "_reactInternals";
 
@@ -8319,9 +8313,9 @@ module.exports = (_ => {
 				Internal.addContextPatches(BDFDB);
 				
 				const possibleRenderPaths = ["render", "type", "type.render"];
-				BDFDB.PatchUtils.patch(BDFDB, LibraryModules.React, "createElement", {
+				const createElementPatches = {
 					before: e => {
-						if (!e.methodArguments[0] || typeof e.methodArguments[0] == "strings") return;
+						if (!e.methodArguments[0] || typeof e.methodArguments[0] == "string") return;
 						let renderFunction = null;
 						if (typeof e.methodArguments[0] == "function") renderFunction = e.methodArguments[0];
 						else for (const path of possibleRenderPaths) {
@@ -8407,7 +8401,9 @@ module.exports = (_ => {
 							break;
 						}
 					}
-				});
+				};
+				BDFDB.PatchUtils.patch(BDFDB, LibraryModules.React, "createElement", createElementPatches);
+				if (Internal.LibraryModules.InternalReactUtils) for (let key in Internal.LibraryModules.InternalReactUtils) if (typeof Internal.LibraryModules.InternalReactUtils[key] == "function" && Internal.LibraryModules.InternalReactUtils[key].toString().indexOf("return{$$typeof:") > -1) BDFDB.PatchUtils.patch(BDFDB, Internal.LibraryModules.InternalReactUtils, key, createElementPatches);
 				
 				let languageChangeTimeout;
 				BDFDB.PatchUtils.patch(BDFDB, Internal.LibraryModules.AppearanceSettingsUtils, "updateLocale", {after: e => {
