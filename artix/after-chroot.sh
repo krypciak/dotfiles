@@ -5,8 +5,10 @@ export ISO="no"
 
 source $ARTIXD_DIR/configure-inchroot-1.sh
 
+
 source $ARTIXD_DIR/configure-inchroot-2.sh
 
+source $ARTIXD_DIR/configure-inchroot-3.sh
 
 pri "Enabling services"
 rc-update add NetworkManager default
