@@ -73,6 +73,7 @@ pri "Cleaning up (iso)"
 umount /var/cache/pacman/pkg
 umount $USER_HOME/.cache/paru/clone
 umount $USER_HOME/.cargo
+rm /after-chroot.sh -f
 
 neofetch
 
