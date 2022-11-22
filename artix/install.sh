@@ -36,10 +36,10 @@ echo 1 # to EFI partition
 echo n # Create LVM partition
 echo 2 # partion number 2
 echo " "  # default, start immediately after preceding partition
-if [ $CRYPTLVM_SIZE == '' ]; then
+if [ "$CRYPT_SIZE" == '' ]; then
     echo
 else
-    echo +${CRYPTLVM_SIZE}
+    echo +${CRYPT_SIZE}
 fi
 echo t # set partition type
 echo 2
