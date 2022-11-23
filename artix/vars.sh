@@ -23,7 +23,7 @@ INSTALL_DIR="/mnt"
 # Disk managment
 DISK="/dev/vda"
 BOOT_PART="${DISK}1"
-BOOT_SIZE='400M'
+BOOT_SIZE='500M'
 CRYPT_PART="${DISK}2"
 # None means all remaining space
 CRYPT_SIZE=''
