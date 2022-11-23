@@ -3,8 +3,10 @@ export ARTIXD_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null &&
 export USER_GROUP="$USER1"
 export ISO="no"
 
-source $ARTIXD_DIR/configure-inchroot-1.sh
+source "$ARTIXD_DIR/vars.sh"
 
+
+source $ARTIXD_DIR/configure-inchroot-1.sh
 
 source $ARTIXD_DIR/configure-inchroot-2.sh
 

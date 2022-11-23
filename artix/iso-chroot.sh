@@ -3,6 +3,7 @@ export ARTIXD_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null &&
 export USER_GROUP='1001'
 export ISO="yes"
 
+source "$ARTIXD_DIR/iso-vars.sh"
 source $ARTIXD_DIR/configure-inchroot-1.sh
 
 pacman-key --init
