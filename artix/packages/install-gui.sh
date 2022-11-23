@@ -12,6 +12,7 @@ function configure_gui() {
         chown $USER1:$USER1 /var/spool/cron/$USER1
 
         cp $CONFIGD_DIR/cron_root /var/spool/cron/root
+        sed -i "s/USER_HOME/$ESCAPED_USER_HOME/g" /var/spool/cron/root
         chown root:root /var/spool/cron/root
 
         rc-update add cronie default
