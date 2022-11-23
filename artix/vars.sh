@@ -34,9 +34,9 @@ BOOT_DIR=${INSTALL_DIR}${BOOT_DIR_ALONE}
 # LUKS
 CRYPT_NAME='lvmcrypt'
 CRYPT_DIR="/dev/mapper/$CRYPT_NAME"
-KEY_SIZE=512
-ITER_TIME=5000
-HASH='sha512'
+KEY_SIZE=256
+ITER_TIME=3000
+HASH='sha256'
 LUKSFORMAT_ARUGMNETS="--key-size $KEY_SIZE --hash $HASH --iter-time $ITER_TIME"
 
 # LVM
@@ -71,16 +71,17 @@ PACKAGE_GROUPS=(
     'browsers'
     'X11'
     'awesome'
-    #'wayland'
-    #'dwl'
-    #'coding'
-    #'fstools'
-    #'gaming'
-    #'security'
-    #'social'
-    #'misc'
-    #'bluetooth'
-    #'virt'
+    'wayland'
+    'dwl'
+    'coding'
+    'fstools'
+    'gaming'
+    'security'
+    'social'
+    'misc'
+    'bluetooth'
+    'virt'
+    'android'
 )
 
 INSTALL_CRON=1
