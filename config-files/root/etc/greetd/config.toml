@@ -6,5 +6,5 @@ command = "tuigreet -s USER_HOME/.config/xsessions -t -r --power-shutdown 'login
 user = "greeter"
 
 [initial_session]
-command = "USER_HOME/.config/awesome/run/run.sh"
+command = "USER_HOME/.config/dwl/run/run.sh"
 user = "USER1"
