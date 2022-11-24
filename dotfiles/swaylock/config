@@ -1,4 +1,4 @@
 ignore-empty-password
-image=/home/krypek/.config/awesome/theme/wallpapers/oneshot/main.png
+image=~/.config/wallpapers/oneshot/main.png
 scaling=center
 hide-keyboard-layout
