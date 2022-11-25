@@ -50,3 +50,5 @@ rm -f /usr/share/applications/icecat-safe.desktop
 pacman --noconfirm -Rs $(pacman -Qqtd)
 
 rm -r /dotfiles 
+
+echo "0" > ~/.cache/update
