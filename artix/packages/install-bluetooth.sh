@@ -1,5 +1,5 @@
 #!/bin/bash
 function install_bluetooth() {
-    echo 'bluez bluez-utils'
+    echo 'bluez bluez-utils blueman'
 }
 
