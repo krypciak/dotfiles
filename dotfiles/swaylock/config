@@ -1,4 +1,5 @@
 ignore-empty-password
 image=~/.config/wallpapers/oneshot/main.png
-scaling=center
+scaling=stretch
 hide-keyboard-layout
+
