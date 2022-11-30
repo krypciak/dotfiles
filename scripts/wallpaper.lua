@@ -56,7 +56,7 @@ if os.getenv("WAYLAND_DISPLAY") then
         if wallpaper:find('^#') then
             os.execute('swww clear "' .. wallpaper .. '"')
         else
-            os.execute('swww img ' .. wallpaper_dir .. wallpaper .. " --transition-type=center --transition-fps 255")
+            os.execute('swww img ' .. wallpaper_dir .. wallpaper .. " --transition-type=center --transition-fps 144 --transition-step 255")
         end
     end
 end
