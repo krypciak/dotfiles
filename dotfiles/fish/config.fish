@@ -17,4 +17,7 @@ if status is-interactive
     alias topcmds='history | awk \'{print $1}\' | sort | uniq -c | sort -nr | head -20'
 
     source /usr/share/autojump/autojump.fish
+
+    atuin init fish | source
+
 end
