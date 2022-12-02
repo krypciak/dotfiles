@@ -5,6 +5,7 @@ if status is-interactive
     alias la='lsd -a'
     alias lla='lsd -la'
     alias lt='lsd --tree'
+    alias tree='lsd --tree'
 
     alias reboot='loginctl reboot'
     alias poweroff='loginctl poweroff'
@@ -19,5 +20,15 @@ if status is-interactive
     source /usr/share/autojump/autojump.fish
 
     atuin init fish | source
+    
+    alias cat=bat
+    alias htop=btm
+    alias top=btm
+    alias diff=difft
+    alias du='echo Use dust.'
+    alias find='echo Use fd.'
+    alias ti='hyperfine'
+    alias df='echo Use lfs.'
+    alias ps='echo Use procs.'
 
 end
