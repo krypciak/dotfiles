@@ -11,7 +11,13 @@ require('packer').startup(function()
 
   use 'itchyny/lightline.vim'
 
+  use 'rubixninja314/vim-mcfunction'
+
+  use 'rust-lang/rust.vim'
   use 'vim-syntastic/syntastic'
+
+  use 'tjdevries/nlua.nvim'
+  use 'euclidianAce/BetterLua.vim'
 
   use {
     'nvim-telescope/telescope.nvim', tag = '0.1.0',
@@ -20,6 +26,8 @@ require('packer').startup(function()
   use 'nvim-telescope/telescope-fzf-native.nvim'
   use 'nvim-lua/plenary.nvim'
   use 'nvim-treesitter/nvim-treesitter'
+
+  use 'ervandew/supertab'
 
 end)
 
