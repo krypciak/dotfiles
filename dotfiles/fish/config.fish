@@ -22,8 +22,6 @@ if status is-interactive
     atuin init fish | source
     
     alias cat=bat
-    alias htop=btm
-    alias top=btm
     alias diff=difft
     alias du='echo Use dust.'
     alias find='echo Use fd.'
