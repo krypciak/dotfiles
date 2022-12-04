@@ -64,8 +64,7 @@ sed -i -E ':a;N;$!ba;s/configure\n//g' /bin/artix-live
 echo "usermod -aG tty,ftp,games,network,scanner,users,video,audio,wheel,libvirt $USER1" >> /bin/artix-live
 #echo "chown $USER1:$USER_GROUP -R /home/$USER1/" >> /bin/artix-live
 
-doas -u $USER1 timeout 10s icecat
-doas -u $USER1 timeout 6s icecat
+
 
 rc-update del agetty.tty2 default
 rc-update del agetty.tty3 default

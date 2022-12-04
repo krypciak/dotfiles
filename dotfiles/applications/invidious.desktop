@@ -1,0 +1,19 @@
+[Desktop Entry]
+Version=1.0
+Name=Invidious
+Exec=sh -c 'XAPP_FORCE_GTKWINDOW_ICON="~/.local/share/ice/icons/Invidious.png" firefox --class invidious --profile ~/.local/share/ice/firefox/invidious --no-remote "https://invidious.sethforprivacy.com/"'
+
+Terminal=false
+X-MultipleArgs=false
+Type=Application
+Icon=USER_HOME/.local/share/ice/icons/Invidious.png
+Categories=GTK;WebApps;
+MimeType=text/html;text/xml;application/xhtml_xml;
+StartupWMClass=invidious
+StartupNotify=true
+X-WebApp-Browser=Firefox
+X-WebApp-URL=https://invidious.sethforprivacy.com/
+X-WebApp-CustomParameters=
+X-WebApp-Navbar=False
+X-WebApp-PrivateWindow=False
+X-WebApp-Isolated=true

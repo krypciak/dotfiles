@@ -37,7 +37,9 @@ SYMLINK_FROM_TO=(
     ".mozilla/icecat/rgvol6f2.default/extensions" ""
     "wallpapers"            ".config"
     "rofi"                  ".config"
-    "applications"          ".local/share/applications/"
+    "ice/icons"             ".local/share"
+    "ice/firefox/invidious/extension-preferences.json" "%.local/share"
+    "ice/firefox/invidious/extensions" "%.local/share"
 )
 
 
@@ -57,6 +59,11 @@ COPY_FROM_TO=(
     "qt5ct"                 ".config"
     "kdeglobals"            ".config"
     "keepassxc"             ".config"
+    "applications/tutanota-desktop.desktop" ".local/share"
+    "applications/arch-update.desktop"  ".local/share"
+    "applications/invidious.desktop"  ".local/share"
+
+
     ".mozilla/icecat/rgvol6f2.default/prefs.js" "%"
     ".mozilla/icecat/rgvol6f2.default/search.json.mozlz4" "%"
     ".mozilla/icecat/rgvol6f2.default/storage" "%"
@@ -65,7 +72,17 @@ COPY_FROM_TO=(
     ".mozilla/icecat/rgvol6f2.default/extension-settings.json" "%"
     ".mozilla/icecat/rgvol6f2.default/extensions.json" "%"
     ".mozilla/icecat/rgvol6f2.default/sessionCheckpoints.json" "%"
-    "tutanota-desktop.desktop" ".local/share/applications/"
+
+    "ice/firefox/invidious/prefs.js" "%.local/share"
+    "ice/firefox/invidious/search.json.mozlz4" "%.local/share"
+    "ice/firefox/invidious/storage" "%.local/share"
+    "ice/firefox/invidious/storage.sqlite" "%.local/share"
+    "ice/firefox/invidious/cookies.sqlite" "%.local/share"
+    "ice/firefox/invidious/extension-settings.json" "%.local/share"
+    "ice/firefox/invidious/extensions.json" "%.local/share"
+    "ice/firefox/invidious/sessionCheckpoints.json" "%.local/share"
+    "ice/firefox/invidious/user.js" "%.local/share"
+    "ice/firefox/invidious/chrome" "%.local/share"
 )
 
 LINK_HOME_DIRS=(
@@ -163,6 +180,11 @@ ESCAPED_USER_HOME=$(printf '%s\n' "$USER_HOME" | sed -e 's/[\/&]/\\&/g')
 sed -i "s/USER_HOME/$ESCAPED_USER_HOME/g" $USER_HOME/.local/share/multimc/multimc.cfg
 ESCAPED_HOSTNAME=$(printf '%s\n' "$(hostname)" | sed -e 's/[\/&]/\\&/g')
 sed -i "s/HOSTNAME/$ESCAPED_HOSTNAME/g" $USER_HOME/.local/share/multimc/multimc.cfg
+
+sed -i "s/USER_HOME/$ESCAPED_USER_HOME/g" $USER_HOME/.local/share/applications/invidious.desktop
+sed -i "s/USER_HOME/$ESCAPED_USER_HOME/g" $USER_HOME/.local/share/applications/arch-update.desktop
+
+
 
 chmod +x $USER_HOME/.config/awesome/run/run.sh
 chmod +x $USER_HOME/.config/at_login.sh
