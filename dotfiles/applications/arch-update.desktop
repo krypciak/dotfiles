@@ -3,5 +3,5 @@ Name=Update arch
 Comment=paru -Syu
 Exec=alacritty --class 'System update' --title 'System update' -e paru -Syu
 Terminal=false
-Icon=~/.config/dotfiles/resources/Archlinux-icon-crystal-64.svg
+Icon=USER_HOME/.config/dotfiles/resources/Archlinux-icon-crystal-64.svg
 Type=Application
