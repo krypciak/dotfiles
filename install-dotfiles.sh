@@ -52,7 +52,7 @@ COPY_FROM_TO=(
     "tutanota-desktop/conf.json"    ".config"
     "discord/settings.json"         ".config"
     "FreeTube/settings.db"          ".config"
-    "multimc/multimc.cfg"           ".local/share"
+    "PrismLauncher/multimc.cfg"           ".local/share"
     "gtk-2.0"               ".config"
     "gtk-3.0"               ".config"
     "gtk-4.0"               ".config"
@@ -177,9 +177,9 @@ done
 
 
 ESCAPED_USER_HOME=$(printf '%s\n' "$USER_HOME" | sed -e 's/[\/&]/\\&/g')
-sed -i "s/USER_HOME/$ESCAPED_USER_HOME/g" $USER_HOME/.local/share/multimc/multimc.cfg
+sed -i "s/USER_HOME/$ESCAPED_USER_HOME/g" $USER_HOME/.local/share/PrismLauncher/multimc.cfg
 ESCAPED_HOSTNAME=$(printf '%s\n' "$(hostname)" | sed -e 's/[\/&]/\\&/g')
-sed -i "s/HOSTNAME/$ESCAPED_HOSTNAME/g" $USER_HOME/.local/share/multimc/multimc.cfg
+sed -i "s/HOSTNAME/$ESCAPED_HOSTNAME/g" $USER_HOME/.local/share/PrismLauncher/multimc.cfg
 
 sed -i "s/USER_HOME/$ESCAPED_USER_HOME/g" $USER_HOME/.local/share/applications/invidious.desktop
 sed -i "s/USER_HOME/$ESCAPED_USER_HOME/g" $USER_HOME/.local/share/applications/arch-update.desktop
