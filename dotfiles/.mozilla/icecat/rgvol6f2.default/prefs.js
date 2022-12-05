@@ -1,1 +1,1 @@
-/home/krypek/.config/dotfiles/dotfiles/private/mozilla/icecat/rgvol6f2.default/prefs.js
+/home/krypek/home/.config/dotfiles/dotfiles/private/mozilla/icecat/rgvol6f2.default/prefs.js
