@@ -1,0 +1,37 @@
+{
+   "action": {
+      "default_icon": "/icons/document.png",
+      "default_popup": "/popup.html"
+   },
+   "background": {
+      "service_worker": "/scripts/background.js"
+   },
+   "commands": {
+      "_execute_action": {
+         "suggested_key": {
+            "chromeos": "Ctrl+Shift+U",
+            "linux": "Ctrl+Shift+J",
+            "mac": "Command+Shift+Y",
+            "windows": "Ctrl+Shift+Y"
+         }
+      },
+      "run-dark-mode": {
+         "description": "Apply dark mode to the current page",
+         "suggested_key": {
+            "default": "Ctrl+Shift+9",
+            "mac": "Command+Shift+9"
+         }
+      }
+   },
+   "description": "Adds a simple dark mode functionality for PDF files in Google Chrome and Microsoft Edge",
+   "host_permissions": [ "\u003Call_urls>" ],
+   "icons": {
+      "128": "/icons/document.png"
+   },
+   "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAvhIQgch+gfwVWl1XYKmJSmIYSoQRCniWuOHawydaUnxAwWp17XW+1aeWCyrrsTwX+/aTMEKHEacnzVziqFSjlu41EmICqvWTaYsZUmIARjU52WbD1Bxa+Bm+fqOpxS5VDsiLPPXaZzK/zPRLWXM7Clpb8sZ9ngquOz0aevqua57+qKB7LliRNyPXMEx8fxkp0log7q1HiRZ6PsETGDXPc9gSy0u06WY7rCT3ycqHHOGX8xkC+ILKv8uI8MdNRBEUFwKv55RqYnCg2V7nc0lZx9unwuvaothAPlEVfik4qt3rSMvZLa41YXk3r1LAWX7BaRN7hGVRfI7d6FUVBPxkOwIDAQAB",
+   "manifest_version": 3,
+   "name": "DarkPDF",
+   "permissions": [ "activeTab", "storage", "tabs", "scripting" ],
+   "update_url": "https://clients2.google.com/service/update2/crx",
+   "version": "1.41"
+}
