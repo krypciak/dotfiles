@@ -16,12 +16,12 @@ export WINEPREFIX="$XDG_DATA_HOME/wine"
 export $(dbus-launch)
 export QT_QPA_PLATFORMTHEME=qt5ct
 
+export USER1=$USER
 export PATH="/home/$USER1/.local/bin:$PATH"
 
 export EDITOR='nvim'
 export CM_LAUNCHER=rofi
 
-export USER1=$USER
 
 
 
