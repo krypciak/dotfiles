@@ -14,6 +14,6 @@ while $do ||  [ -f /tmp/restart_dwl ]; do
     do=false
     rm -rf /tmp/restart_dwl > /dev/null 2>&1
     ~/.config/dwl/dwl-dotfiles/dwl -s ~/.config/dwl/somebar/build/somebar > ~/.config/dwl/run/log.txt 2>&1
-    echo Restarting dwl...
+    [ -f /tmp/restart_dwl ] && echo Restarting dwl...
 done
 
