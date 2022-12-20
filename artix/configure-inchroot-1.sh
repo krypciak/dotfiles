@@ -14,6 +14,8 @@ export PRIVATE_DOTFILES_PASSWORD
 
 pri "Setting time"
 ln -sf /usr/share/zoneinfo/$REGION/$CITY /etc/localtime
+echo "$REGION/$CITY" > /etc/timezone
+ntpd
 hwclock --systohc
 
 pri "Generating locale"
