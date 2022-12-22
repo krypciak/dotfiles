@@ -1,6 +1,6 @@
 #!/bin/bash
 function install_dwl() {
-    echo 'meson ninja'
+    echo 'meson ninja xdg-desktop-portal-wlr'
 }
 
 function configure_dwl() {
