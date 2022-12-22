@@ -40,6 +40,7 @@ o.shiftwidth = 4
 o.expandtab = true
 o.foldmethod = 'indent'
 
+
 cmd [[
     let mapleader=" "
 
@@ -49,8 +50,10 @@ cmd [[
 
 cmd [[
     :highlight Folded ctermbg=237
+    :highlight Pmenu ctermbg=233 ctermfg=254
+    
+    :highlight PmenuSel ctermbg=238 ctermfg=255
 ]]
-
 
 -- Return to last edit position when opening files
 cmd [[
