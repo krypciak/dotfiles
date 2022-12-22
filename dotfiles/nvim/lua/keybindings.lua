@@ -6,11 +6,12 @@ function map(mode, combo, mapping, opts)
     vim.api.nvim_set_keymap(mode, combo, mapping, options)
 end
 
+
 -- NvimTree keybindings
 map('n', '<C-n>', ':NvimTreeToggle<CR>', { noremap = true })
 
 -- Run/Compile keybinding
-map('n', '<leader>t', '', { noremap = true, callback = function()
+map('n', '<leader>j', '', { noremap = true, callback = function()
         ftype = vim.bo.filetype
         if ftype == 'rust' then rust_run()
         elseif ftype == 'python' then python_run()
@@ -19,14 +20,13 @@ map('n', '<leader>t', '', { noremap = true, callback = function()
 
 
 -- Build keybinding
-map('n', '<leader>b', '', { noremap = true, callback = function()
+map('n', '<leader>k', '', { noremap = true, callback = function()
         ftype = vim.bo.filetype
         if ftype == 'rust' then rust_build()
         elseif ftype == 'c' then c_build()
         elseif ftype == 'cpp' then c_build()
         else print('Unsupported filetype: '.. ftype) end
    end })
-
 
 
 -- d stands for delete not cut
@@ -57,17 +57,21 @@ map('n', '<leader>n', '', { noremap = true, callback = function()
 
 map('n', '<leader>w', ':set wrap!<cr>', { noremap = true })
 
-map('n', '<leader>]', ':noh<cr>', { noremap = true })
+map('n', '<leader>l', ':noh<cr>', { noremap = true })
 
-map('n', '<leader>ff', '<cmd>Telescope find_files<cr>')
+map('n', '<leader>a', '<cmd>Telescope find_files<cr>')
 --'nnoremap <leader>ff <cmd>Telescope find_files<cr>'
 --nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 --nnoremap <leader>fb <cmd>Telescope buffers<cr>
 --nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 
-map('', '<leader>aa', ':%y<cr>')
+map('', '<leader>z', ':%y<cr>')
 
-require("lang/rust")
+map('', '<leader>kl', ':set langmap=\'q,\\\\,w,.e,pr,yt,fy,gu,ci,ro,lp,/[,=],aa,os,ed,uf,ig,dh,hj,tk,nl,s\\\\;,-\',\\\\;z,qx,jc,kv,xb,bn,mm,w\\\\,,v.,z/,[-,]=,\"Q,<W,>E,PR,YT,FY,GU,CI,RO,LP,?{,+},AA,OS,ED,UF,IG,DH,HJ,TK,NL,S:,_\",:Z,QX,JC,KV,XB,BN,MM,W<,V>,Z?')
+
+require("lspconf")
+
+
 require("lang/python")
+require("lang/rust")
 require("lang/c")
-

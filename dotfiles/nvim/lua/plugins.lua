@@ -27,13 +27,17 @@ require('packer').startup(function()
   use 'nvim-lua/plenary.nvim'
   use 'nvim-treesitter/nvim-treesitter'
 
-  use 'ervandew/supertab'
+  use 'neovim/nvim-lspconfig'
+
+  use 'smbl64/vim-black-macchiato'
 
 end)
 
 
 require('nvim-tree').setup{}
 cmd('highlight NvimTreeFolderIcon guibg=blue')
+
+require'lspconfig'.pyright.setup{}
 
 
 
