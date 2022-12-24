@@ -1,13 +1,13 @@
 {
 	"all": {
 		"changeLogs": {
-			"BDFDB": "2.9.9",
-			"BetterFriendList": "1.4.7",
+			"BDFDB": "3.0.6",
+			"BetterFriendList": "1.5.1",
 			"CreationDate": "9.9.9",
-			"GameActivityToggle": "1.1.7",
-			"ImageUtilities": "4.9.7",
+			"GameActivityToggle": "1.1.8",
+			"ImageUtilities": "5.0.8",
 			"ReadAllNotificationsButton": "1.7.3",
-			"ServerDetails": "1.1.3",
+			"ServerDetails": "1.1.4",
 			"ShowConnections": "1.1.6"
 		},
 		"choices": {
@@ -20,8 +20,8 @@
 			"useChromium": false
 		},
 		"hashes": {
-			"0BDFDB.data.json": "3cb1972c6c0783f132a32b75cdf9521a262e2f74",
-			"0BDFDB.raw.css": "900f672f247ea363e712ba1e3083e40d91fbe85a"
+			"0BDFDB.data.json": "659987a7bebd34b7e120d6f6bda0475555940893",
+			"0BDFDB.raw.css": "a1c4a8b6f28c4765c6af2853ddf13a35922a2b9e"
 		}
 	}
 }
