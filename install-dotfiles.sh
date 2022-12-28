@@ -202,11 +202,18 @@ sed -i "s/HOSTNAME/$ESCAPED_HOSTNAME/g" $USER_HOME/.local/share/PrismLauncher/mu
 sed -i "s/USER_HOME/$ESCAPED_USER_HOME/g" $USER_HOME/.local/share/applications/invidious.desktop
 sed -i "s/USER_HOME/$ESCAPED_USER_HOME/g" $USER_HOME/.local/share/applications/arch-update.desktop
 
+cp $USER_HOME/.config/dotfiles/scripts/update-arch.sh-tofill $USER_HOME/.config/dotfiles/scripts/update-arch.sh
+sed -i "s/USER_HOME/$ESCAPED_USER_HOME/g" $USER_HOME/.config/dotfiles/scripts/update-arch.sh
+
+
 
 
 chmod +x $USER_HOME/.config/awesome/run/run.sh
 chmod +x $USER_HOME/.config/at_login.sh
+chmod +x $USER_HOME/.config/dotfiles/scripts/*.sh
+
 
 
 # Update nvim plugins
+echo Updating neovim plugins...
 nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync' > /dev/null 2>&1

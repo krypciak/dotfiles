@@ -23,3 +23,5 @@ dotfiles/copyq/copyq-scripts.ini
 *-protocol.h
 
 artix/artools-workspace/buildiso
+
+scripts/update-arch.sh

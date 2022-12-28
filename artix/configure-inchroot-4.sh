@@ -51,7 +51,8 @@ pacman --noconfirm -Rs $(pacman -Qqtd)
 
 rm -r /dotfiles 
 
-echo "0" > ~/.cache/update
+echo "0" > $USER_HOME/.cache/update
+chown -R $USER1:$USER_GROUP $USER_HOME/.cache/update
 
 # Let firefox extensions init
 doas -u $USER1 timeout 5s icecat --headless
