@@ -32,14 +32,23 @@ SYMLINK_FROM_TO=(
     "fuzzel"                ".config"
     "swaylock"              ".config"
     "Ferdium/config"        ".config"
+
     ".mozilla/icecat/profiles.ini" ""
     ".mozilla/icecat/rgvol6f2.default/extension-preferences.json" ""
     ".mozilla/icecat/rgvol6f2.default/extensions" ""
+
+    ".librewolf/native-messaging-hosts" ""
+    ".librewolf/profiles.ini" ""
+    ".librewolf/profile0/extension-preferences.json" ""
+    ".librewolf/profile0/extensions" ""
+
     "wallpapers"            ".config"
     "rofi"                  ".config"
     "ice/icons"             ".local/share"
     "ice/firefox/invidious/extension-preferences.json" "%.local/share"
     "ice/firefox/invidious/extensions" "%.local/share"
+
+    "tridactyl"             ".config"
 )
 
 
@@ -72,6 +81,15 @@ COPY_FROM_TO=(
     ".mozilla/icecat/rgvol6f2.default/extension-settings.json" "%"
     ".mozilla/icecat/rgvol6f2.default/extensions.json" "%"
     ".mozilla/icecat/rgvol6f2.default/sessionCheckpoints.json" "%"
+
+    ".librewolf/profile0/prefs.js" "%"
+    ".librewolf/profile0/search.json.mozlz4" "%"
+    ".librewolf/profile0/storage" "%"
+    ".librewolf/profile0/storage.sqlite" "%"
+    ".librewolf/profile0/cookies.sqlite" "%"
+    ".librewolf/profile0/extension-settings.json" "%"
+    ".librewolf/profile0/extensions.json" "%"
+    ".librewolf/profile0/sessionCheckpoints.json" "%"
 
     "ice/firefox/invidious/prefs.js" "%.local/share"
     "ice/firefox/invidious/search.json.mozlz4" "%.local/share"

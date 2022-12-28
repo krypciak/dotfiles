@@ -12,6 +12,14 @@ DIRS=(
     ".mozilla/icecat/rgvol6f2.default/extensions.json" ""
     ".mozilla/icecat/rgvol6f2.default/sessionCheckpoints.json" ""
 
+    ".librewolf/profile0/prefs.js" ""
+    ".librewolf/profile0/search.json.mozlz4" ""
+    ".librewolf/profile0/storage.sqlite" ""
+    ".librewolf/profile0/cookies.sqlite" ""
+    ".librewolf/profile0/extension-settings.json" ""
+    ".librewolf/profile0/extensions.json" ""
+    ".librewolf/profile0/sessionCheckpoints.json" ""
+
     "ice/firefox/invidious/prefs.js" ".local/share"
     "ice/firefox/invidious/search.json.mozlz4" ".local/share"
     "ice/firefox/invidious/storage" ".local/share"
