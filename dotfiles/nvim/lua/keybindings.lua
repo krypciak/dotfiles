@@ -61,8 +61,8 @@ map('v', '<leader>d', '"+d', { noremap = true })
 
 map('',  '<leader>q', ':q<cr>', { noremap = true })
 map('',  '<leader>w', ':w<cr>', { noremap = true })
-map('',  '<leader>e', ':q!<cr>', { noremap = true })
-map('',  '<leader>r', ':wq<cr>', { noremap = true })
+map('',  '<leader>r', ':q!<cr>', { noremap = true })
+map('',  '<leader>e', ':wq<cr>', { noremap = true })
 
 
 -- Set jk to <esc>
