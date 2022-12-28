@@ -7,6 +7,24 @@ function map(mode, combo, mapping, opts)
 end
 
 
+local to_dvorak = ':set langmap=\'q,\\\\,w,.e,pr,yt,fy,gu,ci,ro,lp,/[,=],aa,os,ed,uf,ig,dh,hj,tk,nl,s\\\\;,-\',\\\\;z,qx,jc,kv,xb,bn,mm,w\\\\,,v.,z/,[-,]=,\\\"Q,<W,>E,PR,YT,FY,GU,CI,RO,LP,?{,+},AA,OS,ED,UF,IG,DH,HJ,TK,NL,S:,_\\\",:Z,QX,JC,KV,XB,BN,MM,W<,V>,Z?<cr>'
+
+--map('', '<leader>kl', to_dvorak, { noremap = true })
+
+function os.capture(cmd)
+    local handle = assert(io.popen(cmd, "r"))
+    local output = assert(handle:read("*a"))
+    handle:close()
+    return output
+end
+
+local layout = os.capture("cat /tmp/keyboard_layout")
+if string.find(layout, "dvorak") then
+    cmd(to_dvorak)
+end
+
+
+
 -- NvimTree keybindings
 map('n', '<C-n>', ':NvimTreeToggle<CR>', { noremap = true })
 
@@ -41,11 +59,25 @@ map('n', '<leader>d', '"+d', { noremap = true })
 map('n', '<leader>D', '"+D', { noremap = true })
 map('v', '<leader>d', '"+d', { noremap = true })
 
+map('',  '<leader>q', ':q<cr>', { noremap = true })
+map('',  '<leader>w', ':w<cr>', { noremap = true })
+map('',  '<leader>e', ':q!<cr>', { noremap = true })
+map('',  '<leader>r', ':wq<cr>', { noremap = true })
+
+
 -- Set jk to <esc>
-map('', ';;', '<esc>', { noremap = true})
-map('i', ';l', '<esc>', { noremap = true})
 map('', '<esc>', '<nop>', { noremap = true })
 map('i', '<esc>', '<nop>', { noremap = true })
+
+if string.find(layout, "qwerty") then
+    map('', ';;', '<esc>', { noremap = true})
+    map('i', ';l', '<esc>', { noremap = true})
+elseif string.find(layout, "dvorak") then
+    map('', 'sl', '<esc>', { noremap = true})
+    map('i', 'sl', '<esc>', { noremap = true})
+end
+
+
 
 local foldcolumn = 0;
 cmd(':set foldcolumn=' .. foldcolumn)
@@ -55,7 +87,7 @@ map('n', '<leader>n', '', { noremap = true, callback = function()
         cmd(':set foldcolumn='..foldcolumn)
     end,})
 
-map('n', '<leader>w', ':set wrap!<cr>', { noremap = true })
+map('n', '<leader>t', ':set wrap!<cr>', { noremap = true })
 
 map('n', '<leader>l', ':noh<cr>', { noremap = true })
 
@@ -67,10 +99,7 @@ map('n', '<leader>a', '<cmd>Telescope find_files<cr>')
 
 map('', '<leader>z', ':%y<cr>')
 
-map('', '<leader>kl', ':set langmap=\'q,\\\\,w,.e,pr,yt,fy,gu,ci,ro,lp,/[,=],aa,os,ed,uf,ig,dh,hj,tk,nl,s\\\\;,-\',\\\\;z,qx,jc,kv,xb,bn,mm,w\\\\,,v.,z/,[-,]=,\"Q,<W,>E,PR,YT,FY,GU,CI,RO,LP,?{,+},AA,OS,ED,UF,IG,DH,HJ,TK,NL,S:,_\",:Z,QX,JC,KV,XB,BN,MM,W<,V>,Z?')
-
 require("lspconf")
-
 
 require("lang/python")
 require("lang/rust")
