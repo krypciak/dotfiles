@@ -1,7 +1,7 @@
 {
 	"all": {
 		"changeLogs": {
-			"BDFDB": "3.0.6",
+			"BDFDB": "3.0.7",
 			"BetterFriendList": "1.5.1",
 			"CreationDate": "9.9.9",
 			"GameActivityToggle": "1.1.8",
@@ -20,7 +20,7 @@
 			"useChromium": false
 		},
 		"hashes": {
-			"0BDFDB.data.json": "659987a7bebd34b7e120d6f6bda0475555940893",
+			"0BDFDB.data.json": "27f7e5c6a1d60b913a0b39b89d7668cc23acbae2",
 			"0BDFDB.raw.css": "a1c4a8b6f28c4765c6af2853ddf13a35922a2b9e"
 		}
 	}
