@@ -1,1 +1,1 @@
-0 */3 * * * pacman --noconfirm -Syuw && echo "$(pacman -Qu | wc -l)" > USER_HOME/.cache/update
+0 */1 * * * pacman --noconfirm -Syuw && echo "$(pacman -Qu | wc -l)" > USER_HOME/.cache/update
