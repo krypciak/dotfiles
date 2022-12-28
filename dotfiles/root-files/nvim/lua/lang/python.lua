@@ -1,3 +1,7 @@
+function python_cmd(str)
+    cmd(':autocmd FileType python ' .. str)
+end
+
 function python_run()
     cmd(":w")
     
@@ -20,3 +24,5 @@ function python_run()
         cmd(bul)
     end
 end
+
+python_cmd(":noremap <buffer> <leader>f :BlackMacchiato<cr>")

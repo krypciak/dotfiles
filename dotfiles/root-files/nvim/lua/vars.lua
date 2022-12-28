@@ -31,8 +31,6 @@ else
     }
 end
 --
-g.SuperTabDefaultCompletionType = "<c-n>"
-
 
 o.relativenumber = true
 vim.wo.number = true
@@ -42,16 +40,20 @@ o.shiftwidth = 4
 o.expandtab = true
 o.foldmethod = 'indent'
 
+
 cmd [[
+    let mapleader=" "
+
     set undofile
     set undodir=~/.cache/nvim/undo/
 ]]
 
 cmd [[
-
     :highlight Folded ctermbg=237
+    :highlight Pmenu ctermbg=233 ctermfg=254
+    
+    :highlight PmenuSel ctermbg=238 ctermfg=255
 ]]
-
 
 -- Return to last edit position when opening files
 cmd [[
