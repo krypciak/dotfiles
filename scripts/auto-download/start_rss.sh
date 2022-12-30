@@ -11,11 +11,11 @@ mkdir -p $TEMP_DIR
 mkdir -p $VIDEOS_DIR
 
 
-YT_DLP_ARGS="--sponsorblock-remove all --embed-thumbnail --add-metadata --embed-metadata --embed-chapters --all-subs --embed-subs --audio-quality 0 --rm-cache-dir -R infinite --retry-sleep 60 -S quality,ext:mp4,filesize --download-archive downloaded.txt --no-post-overwrites --restrict-filenames --ignore-errors --newline"
+YT_DLP_ARGS="--sponsorblock-remove all --embed-thumbnail --add-metadata --embed-metadata --embed-chapters --all-subs --embed-subs --audio-quality 0 --rm-cache-dir -R infinite --retry-sleep 900 -S quality,ext:mp4,filesize --download-archive downloaded.txt --no-post-overwrites --restrict-filenames --ignore-errors --newline"
 
 
 function listen_rss() {
-    rsstail -l -N -n 1 -i 300 -P -u "$1" | while read url; do
+    rsstail -l -N -n 1 -i 900 -P -u "$1" | while read url; do
 
         # If there is less than 2 GiB space left
         while [[ "$(df $VIDEOS_DIR | awk 'NR==2{print $4}')" -le 2097152 ]]; do
