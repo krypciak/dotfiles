@@ -29,7 +29,6 @@ function listen_rss() {
         done
 
         if [[ "$url" == http* ]]; then 
-            echo
             echo -e "\e[32m${url}\e[0m"
             yt-dlp $YT_DLP_ARGS -o "%(uploader)s - %(title)s.%(ext)s" -P "$VIDEOS_DIR" -P "temp:$TEMP_DIR" "$url"
             echo -e "\e[32mDownload Done\e[0m"
