@@ -25,3 +25,13 @@ dotfiles/copyq/copyq-scripts.ini
 artix/artools-workspace/buildiso
 
 scripts/update-arch.sh
+
+scripts/auto-download/temp
+scripts/auto-download/videos
+scripts/auto-download/downloaded.txt
+scripts/auto-download/log.txt
+scripts/auto-download/subs.sh
+
+
+
+
