@@ -11,7 +11,7 @@ mkdir -p $TEMP_DIR
 mkdir -p $VIDEOS_DIR
 
 
-YT_DLP_ARGS="--sponsorblock-remove all --embed-thumbnail --add-metadata --embed-metadata --embed-chapters --all-subs --embed-subs --audio-quality 0 --rm-cache-dir -R infinite --retry-sleep 900 -S quality,ext:mp4,filesize --download-archive downloaded.txt --no-post-overwrites --restrict-filenames --ignore-errors --newline"
+YT_DLP_ARGS="--sponsorblock-remove all --embed-thumbnail --add-metadata --embed-metadata --embed-chapters --all-subs --embed-subs --audio-quality 0 -R infinite --retry-sleep 900 -S quality,ext:mp4,filesize --download-archive downloaded.txt --no-post-overwrites --restrict-filenames --ignore-errors --newline"
 
 
 function listen_rss() {
