@@ -53,7 +53,7 @@ function listen_rss() {
 i=0
 for feed in ${CHANNEL_FEEDS[@]}; do
     listen_rss "${INSTANCES[$i]}/feed/channel/$feed" &
-    #sleep 300
+    sleep 300
 
     i=$((i+1))
     if [[ ${#INSTANCES[@]} -eq $i ]]; then
@@ -63,6 +63,6 @@ done
 
 for feed in ${ODYSEE_FEEDS[@]}; do
     listen_rss "https://odysee.com/$/rss/$feed" &
-    #sleep 300
+    sleep 300
 done
 
