@@ -43,7 +43,7 @@ function listen_rss() {
                 echo -e "${BLUE}File exists, skipping${NC}"
             else
                 echo -e "${BLUE}Download URL: ${GREEN}${url}${NC}"
-                #yt-dlp $YT_DLP_ARGS -o "$TITLE" -P "$VIDEOS_DIR" -P "temp:$TEMP_DIR" "$url"
+                yt-dlp $YT_DLP_ARGS -o "$TITLE" -P "$VIDEOS_DIR" -P "temp:$TEMP_DIR" "$url"
                 echo -e "${GREEN}Video: '${BLUE}${filename}${GREEN}' download done${NC}"
             fi
         fi
