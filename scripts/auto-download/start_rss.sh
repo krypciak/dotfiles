@@ -20,6 +20,7 @@ YT_DLP_ARGS='--sponsorblock-remove all --embed-thumbnail --add-metadata --embed-
 
 TITLE='%(channel)s - %(title)s.%(ext)s'
 
+
 function listen_rss() {
     rsstail -z -l -N -n 1 -i 300 -P -u "$1" | while read url; do
         # If there is less than 2 GiB space left
@@ -37,8 +38,8 @@ function listen_rss() {
         if [[ "$url" == http* ]]; then 
             echo -e "${BLUE}Recived RSS URL: ${GREEN}${url}${NC}"
 
-            filename=$(yt-dlp "$url" -o "$TITLE" --no-warnings --print filename)
-            old_filename=$(yt-dlp "$url" -o "$TITLE" --no-warnings --restrict-filenames --print filename)
+            filename=$(yt-dlp "$url" -o "$TITLE" $YT_DLP_ARGS --no-warnings --print filename)
+            old_filename=$(yt-dlp "$url" -o "$TITLE" $YT_DLP_ARGS --no-warnings --restrict-filenames --print filename)
             if [ -f "$VIDEOS_DIR/$filename" ] || [ -f "$VIDEOS_DIR/$old_filename" ]; then 
                 echo -e "${GREEN}Filename: '${BLUE}${filename}${GREEN}' exists, skipping${NC}"
             else
