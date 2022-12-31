@@ -23,7 +23,7 @@ YT_DLP_ARGS='--sponsorblock-remove all --embed-thumbnail --add-metadata --embed-
 TITLE='%(channel)s - %(title)s.%(ext)s'
 
 function listen_rss() {
-    rsstail -z -l -N -n 1 -i 900 -P -u "$1" | while read url; do
+    rsstail -z -l -N -n 1 -i 300 -P -u "$1" | while read url; do
 
         # If there is less than 2 GiB space left
         while [[ "$(df $VIDEOS_DIR | awk 'NR==2{print $4}')" -le 2097152 ]]; do
