@@ -10,8 +10,6 @@ NC='\e[0m'
 TEMP_DIR="$DIR/temp"
 VIDEOS_DIR="$DIR/videos"
 
-
-
 source $DIR/subs.sh
 
 mkdir -p $TEMP_DIR
@@ -53,7 +51,7 @@ function listen_rss() {
 i=0
 for feed in ${CHANNEL_FEEDS[@]}; do
     listen_rss "${INSTANCES[$i]}/feed/channel/$feed" &
-    sleep 15
+    sleep 60
 
     i=$((i+1))
     if [[ ${#INSTANCES[@]} -eq $i ]]; then
@@ -63,6 +61,6 @@ done
 
 for feed in ${ODYSEE_FEEDS[@]}; do
     listen_rss "https://odysee.com/$/rss/$feed" &
-    sleep 15
+    sleep 60
 done
 
