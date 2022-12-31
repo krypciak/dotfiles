@@ -22,7 +22,7 @@ TITLE='%(channel)s - %(title)s.%(ext)s'
 
 function check_space() {
         # If there is less than 2 GiB space left
-        while [[ "$(df $VIDEOS_DIR --output=avail | tail +2)" -le 2097152 ]]; do
+        while [[ "$(df $VIDEOS_DIR --output=avail | tail +2)" -le 5242880 ]]; do
             # If no files left to delete, exit
             if [[ "$(ls $VIDEOS_DIR | wc -l)" -eq 0 ]]; then
                 echo -e "${RED}Less than 2GiB on $VIDEOS_DIR, exiting${NC}"
