@@ -37,6 +37,8 @@ require('packer').startup(function()
   use 'L3MON4D3/LuaSnip' -- Snippets plugin
 
   use 'tridactyl/vim-tridactyl'
+
+  use 'preservim/vim-markdown'
 end)
 
 
