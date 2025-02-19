@@ -20,8 +20,8 @@ alias 'rmm'='rmtrash'
 
 alias 'vim'='nvim'
 
-alias reboot='loginctl reboot'
-alias poweroff='loginctl poweroff'
+alias reboot='sh $HOME/.config/scripts/reboot.sh'
+alias poweroff='sh $HOME/.config/scripts/poweroff.sh'
 # alias suspend='awesome-client "suspend()"'
 # alias hibernate='awesome-client "hibernate()"'
 
@@ -65,3 +65,5 @@ alias tsc='npx tsc'
 alias ffmpeg='ffmpeg -hide_banner'
 
 alias gdb='gdb -q'
+
+alias vlc='env QT_QPA_PLATFORMTHEME=qt5ct vlc'

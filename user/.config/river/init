@@ -75,15 +75,15 @@ riverctl spawn 'alacritty --class cmus --title cmus -e cmus 2>&1'
 riverctl spawn 'wl-paste --watch cliphist -max-items 30000 store > /dev/null 2>&1'
 # riverctl spawn 'amixer set Capture nocap > /dev/null 2>&1'
 riverctl spawn 'fnott > /dev/null 2>&1'
-riverctl spawn 'pgrep keepassxc > /dev/null || keepassxc > /dev/null 2>&1'
-# riverctl spawn 'sleep 15; pgrep tutanota > /dev/null || tutanota-desktop --enable-features=UseOzonePlatform --ozone-platform=wayland > /dev/null 2>&1'
+riverctl spawn 'pgrep keepassxc > /dev/null || keepassxc --platformtheme qt5ct > /dev/null 2>&1'
+riverctl spawn 'sleep 15; pgrep tutanota > /dev/null || tutanota-desktop --enable-features=UseOzonePlatform --ozone-platform=wayland > /dev/null 2>&1'
 # riverctl spawn 'blueman-applet > /dev/null 2>&1'
 riverctl spawn 'sleep 5; librewolf > /dev/null 2>&1'
 riverctl spawn 'safeeyes > /dev/null 2>&1'
 riverctl spawn 'prettierd start'
 
 # systemd stuff
-riverctl spawn 'systemctl --user import-environment WAYLAND_DISPLAY; dbus-update-activation-environment --systemd WAYLAND_DISPLAY'
+# riverctl spawn 'systemctl --user import-environment WAYLAND_DISPLAY; dbus-update-activation-environment --systemd WAYLAND_DISPLAY'
 
 # riverctl spawn '/usr/lib/xdg-desktop-portal-kde -r'
 # riverctl spawn '/usr/lib/xdg-desktop-portal-wlr -r'
