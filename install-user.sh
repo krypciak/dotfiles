@@ -55,8 +55,6 @@ SYMLINK_FROM_TO="\
     \
     .config/tridactyl \
     \
-    .config/gtkrc \
-    .config/gtkrc-2.0 \
     .config/krunnerrc \
     .config/plasmarc \
     .config/plasmashellrc \
@@ -65,11 +63,9 @@ SYMLINK_FROM_TO="\
 
 # If path starts with %, will not override
 COPY_FROM_TO="\
-    .config/gtk-2.0 \
     .config/gtk-3.0 \
-    .config/gtk-4.0 \
     .config/qt5ct \
-    .config/kdeglobals \
+    .config/qt6ct \
     \
     .config/tutanota-desktop/conf.json \
     \
