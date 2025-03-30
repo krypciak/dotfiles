@@ -1,30 +1,34 @@
 #!/bin/sh
 # MODULE='eth0'
-MODULE='enp7s0'
+# MODULE='enp9s0'
+# MODULE='wlp3s0'
 TIME='4'
 MULTI='1'
+INTERFACES="$(ip -br a | awk '{print $1}' | grep -v lo | xargs)"
 
-function format_KiB() {
+format_KiB() {
     KiB=$((($2 - $1) / 1024 / $TIME))
     if [ $KiB -gt 100 ]; then
-        echo "scale = 1; $KiB / 1024" | bc | tr -d '\n'; printf 'MiB'
+        echo "scale = 1; $KiB / 1024" | bc | tr -d '\n'
+        printf 'MiB'
     else
         printf "${KiB}KiB"
     fi
 }
 
-# if nc -z 8.8.8.8 53 -w 1; then
+for MODULE in $INTERFACES; do
     rx1=$(cat /sys/class/net/$MODULE/statistics/rx_bytes)
     tx1=$(cat /sys/class/net/$MODULE/statistics/tx_bytes)
     sleep $TIME
     rx2=$(cat /sys/class/net/$MODULE/statistics/rx_bytes)
     tx2=$(cat /sys/class/net/$MODULE/statistics/tx_bytes)
 
+    printf $MODULE ' '
     printf ''
-    format_KiB $rx1 $rx2 
-    
+    format_KiB $rx1 $rx2
+
     printf ' '
     format_KiB $tx1 $tx2
-# else 
+    printf '  '
+done
 #     printf '󰈂'
-# fi

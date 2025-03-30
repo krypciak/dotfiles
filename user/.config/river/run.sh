@@ -14,6 +14,10 @@ export XDG_CURRENT_DESKTOP=river
 export SDL_VIDEODRIVER=wayland
 export _JAVA_AWT_WM_NONREPARENTING=1
 
+export GTK_IM_MODULE='fcitx'
+export QT_IM_MODULE='fcitx'
+export SDL_IM_MODULE='fcitx'
+export XMODIFIERS='@im=fcitx'
 
 systemctl --user import-environment XDG_CURRENT_DESKTOP &
 dbus-update-activation-environment --systemd XDG_CURRENT_DESKTOP &

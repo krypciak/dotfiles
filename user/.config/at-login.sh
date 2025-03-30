@@ -44,7 +44,7 @@ export NODE_REPL_HISTORY="$XDG_DATA_HOME"/node_repl_history
 # shellcheck disable=SC2155
 # export XDG_RUNTIME_DIR=$(mktemp -d /tmp/$(id -u)-runtime-dir.XXX)
 
-[ -f "/tmp/keyboard_layout" ] || echo 'qwerty' > /tmp/keyboard_layout
+[ -f "/tmp/keyboard_layout" ] || echo 'qwerty' >/tmp/keyboard_layout
 
 # source /usr/share/nvm/init-nvm.sh
 
@@ -57,3 +57,11 @@ export ANDROID_HOME="$USER_HOME/Programming/android/sdk"
 export ANDROID_SDK_ROOT="$USER_HOME/Programming/android/sdk"
 export ANDROID_AVD_HOME="$USER_HOME/.android/avd"
 export PATH="$PATH:$USER_HOME/Programming/android/sdk/tools"
+
+# pnpm
+export PNPM_HOME="$USER_HOME/.local/share/pnpm"
+case ":$PATH:" in
+*":$PNPM_HOME:"*) ;;
+*) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
