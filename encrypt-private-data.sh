@@ -25,7 +25,7 @@ cd "$REPOHUB"/dotfiles/user
 info_barr "Encrypting private dotfiles..."
 info_garr "Enter the password into the gui"
 export GPG_TTY=$(tty)
-tar -cz private --exclude-caches-all --exclude-backups --exclude-vcs | gpg --batch --yes --symmetric --output "$PRIVATE_ARCHIVE"
+tar --exclude-caches-all --exclude-backups --exclude-vcs -cz private | gpg --batch --yes --symmetric --output "$PRIVATE_ARCHIVE"
 
 sha512sum private.tar.gz.gpg > "$PRIVATE_ARCHIVE".sha512
 
