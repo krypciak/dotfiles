@@ -58,6 +58,8 @@ export ANDROID_SDK_ROOT="$USER_HOME/Programming/android/sdk"
 export ANDROID_AVD_HOME="$USER_HOME/.android/avd"
 export PATH="$PATH:$USER_HOME/Programming/android/sdk/tools"
 
+export PATH="$PATH:$USER_HOME/.dotnet/tools"
+
 # pnpm
 export PNPM_HOME="$USER_HOME/.local/share/pnpm"
 case ":$PATH:" in

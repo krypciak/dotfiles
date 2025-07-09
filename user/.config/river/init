@@ -67,7 +67,7 @@ sandbar_run="$HOME/.config/dwl/someblocks/someblocks -m 1 | awk '{print \"all \"
 # Autostart
 riverctl spawn 'wlr-randr --output HDMI-A-2 --mode 2560x1440@143.912003Hz'
 # riverctl spawn 'wlr-randr --output DP-2 --off'
-riverctl spawn 'swww init > /dev/null 2>&1'
+riverctl spawn 'swww-daemon > /dev/null 2>&1'
 riverctl spawn "$wallpaper_script inc 0 0 > /dev/null 2>&1"
 riverctl spawn 'gammastep -r > /dev/null 2>&1'
 riverctl spawn "$sandbar_run"
@@ -78,14 +78,16 @@ riverctl spawn 'fnott > /dev/null 2>&1'
 riverctl spawn 'pgrep keepassxc > /dev/null || keepassxc --platformtheme qt5ct > /dev/null 2>&1'
 riverctl spawn 'sleep 15; pgrep tutanota > /dev/null || tutanota-desktop --enable-features=UseOzonePlatform --ozone-platform=wayland > /dev/null 2>&1'
 # riverctl spawn 'blueman-applet > /dev/null 2>&1'
-riverctl spawn 'sleep 5; librewolf > /dev/null 2>&1'
+riverctl spawn 'sleep 1; librewolf > /dev/null 2>&1'
 riverctl spawn 'safeeyes > /dev/null 2>&1'
 riverctl spawn 'prettierd start'
 
 riverctl spawn 'fcitx -d'
 
 # systemd stuff
-# riverctl spawn 'systemctl --user import-environment WAYLAND_DISPLAY; dbus-update-activation-environment --systemd WAYLAND_DISPLAY'
+systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
+dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=river
+systemctl --user restart xdg-desktop-portal
 
 # riverctl spawn '/usr/lib/xdg-desktop-portal-kde -r'
 # riverctl spawn '/usr/lib/xdg-desktop-portal-wlr -r'
