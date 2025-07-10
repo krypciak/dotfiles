@@ -17,18 +17,20 @@ format_KiB() {
 }
 
 for MODULE in $INTERFACES; do
-    rx1=$(cat /sys/class/net/$MODULE/statistics/rx_bytes)
-    tx1=$(cat /sys/class/net/$MODULE/statistics/tx_bytes)
-    sleep $TIME
-    rx2=$(cat /sys/class/net/$MODULE/statistics/rx_bytes)
-    tx2=$(cat /sys/class/net/$MODULE/statistics/tx_bytes)
+    if [ -f /sys/class/net/$MODULE/statistics/tx_bytes ]; then
+        rx1=$(cat /sys/class/net/$MODULE/statistics/rx_bytes)
+        tx1=$(cat /sys/class/net/$MODULE/statistics/tx_bytes)
+        sleep $TIME
+        rx2=$(cat /sys/class/net/$MODULE/statistics/rx_bytes)
+        tx2=$(cat /sys/class/net/$MODULE/statistics/tx_bytes)
 
-    printf $MODULE ' '
-    printf ''
-    format_KiB $rx1 $rx2
+        printf $MODULE ' '
+        printf ''
+        format_KiB $rx1 $rx2
 
-    printf ' '
-    format_KiB $tx1 $tx2
-    printf '  '
+        printf ' '
+        format_KiB $tx1 $tx2
+        printf '  '
+    fi
 done
 #     printf '󰈂'
