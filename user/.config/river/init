@@ -38,6 +38,7 @@ tag 'H' 'h'
 
 # tag rules
 riverctl rule-add -app-id 'discord' tags $(get_tag 'd')
+riverctl rule-add -app-id 'discord-stable' tags $(get_tag 'd')
 riverctl rule-add -app-id 'LibreWolf' tags $(get_tag 's')
 riverctl rule-add -app-id 'librewolf' tags $(get_tag 's')
 riverctl rule-add -app-id 'chromium' tags $(get_tag 's')

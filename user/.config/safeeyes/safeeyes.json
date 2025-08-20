@@ -11,7 +11,7 @@
         }
     ],
     "meta": {
-        "config_version": "6.0.3"
+        "config_version": "6.0.4"
     },
     "persist_state": false,
     "plugins": [
@@ -68,7 +68,7 @@
             "version": "0.0.3"
         },
         {
-            "enabled": true,
+            "enabled": false,
             "id": "smartpause",
             "settings": {
                 "idle_time": 120.0,
@@ -109,9 +109,9 @@
         }
     ],
     "postpone_duration": 2,
+    "postpone_unit": "minutes",
     "pre_break_warning_time": 15,
     "random_order": true,
-    "rpc_port": 7200,
     "short_break_duration": 20,
     "short_break_interval": 20,
     "short_breaks": [
@@ -140,6 +140,5 @@
     "shortcut_disable_time": 2,
     "shortcut_postpone": 65,
     "shortcut_skip": 9,
-    "strict_break": true,
-    "use_rpc_server": true
+    "strict_break": true
 }
