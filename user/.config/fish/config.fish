@@ -7,7 +7,10 @@ if status is-interactive
 
     source /usr/share/autojump/autojump.fish
 
-    atuin init fish | source
+    # fish 4.0 deprecates `bind -k`. transform's Atuin's init to drop -k and ensure up-binding works
+    # remove 2>/dev/null when https://github.com/atuinsh/atuin/issues/2803 is resolved
+    atuin init fish | source 2>/dev/null 
+
     atuin gen-completions --shell fish | source
     
     function lsp

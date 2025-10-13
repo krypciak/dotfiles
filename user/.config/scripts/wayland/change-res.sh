@@ -11,7 +11,7 @@ else
     OUTPUT="$(echo "$MONITORS" | awk '{print $1}')"
 fi
 
-RES_TO_SORT="$(wlr-randr --output HDMI-A-1 | awk '/px/ {print $1 "@" $3 "@" int($3+0.5) }' | tr '\n' ' ')"
+RES_TO_SORT="$(wlr-randr --output HDMI-A-2 | awk '/px/ {print $1 "@" $3 "@" int($3+0.5) }' | tr '\n' ' ')"
 prev_res=''
 prev_ref=''
 prev_refr=''

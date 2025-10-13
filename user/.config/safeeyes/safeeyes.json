@@ -36,9 +36,10 @@
             "id": "audiblealert",
             "settings": {
                 "post_break_alert": true,
-                "pre_break_alert": true
+                "pre_break_alert": true,
+                "volume": 100
             },
-            "version": "0.0.3"
+            "version": "0.0.4"
         },
         {
             "enabled": false,

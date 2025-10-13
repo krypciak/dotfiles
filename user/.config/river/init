@@ -55,6 +55,7 @@ riverctl rule-add -title 'Launching...' tags $(get_tag 'h')
 riverctl rule-add -app-id 'Lutris' tags $(get_tag 'h')
 riverctl rule-add -app-id 'steap_app_960090' tags $(get_tag 'a')
 riverctl rule-add -title '*CrossCode*' tags $(get_tag 'a')
+riverctl rule-add -title 'Alabaster Dawn' tags $(get_tag 'a')
 riverctl rule-add -title '*DevTools*' tags $(get_tag 'a')
 riverctl rule-add -app-id 'MonkeyCity-Win.exe' tags $(get_tag 'a')
 riverctl rule-add -app-id 'steam_app_489830' tags $(get_tag 'a')
@@ -105,6 +106,7 @@ for mode in normal locked; do
     riverctl map $mode Super+Shift+Control Q exit
     riverctl map $mode Super+Shift+Control P spawn '$HOME/.config/scripts/poweroff.sh'
     riverctl map $mode Super+Shift+Control R spawn '$HOME/.config/scripts/reboot.sh'
+    riverctl map $mode Super+Shift+Control T spawn '$HOME/.config/scripts/soft-reboot.sh'
     riverctl map $mode Super+Shift+Control W spawn 'doas grub-reboot 2; $HOME/.config/scripts/reboot.sh'
     riverctl map $mode Super+Shift+Control S spawn 'playerctl pause -a; $HOME/.config/scripts/suspend.sh; swaylock'
     riverctl map $mode Super+Shift+Control H spawn '$HOME/.config/scripts/hibernate.sh; swaylock'
@@ -170,12 +172,12 @@ done
 riverctl map normal Mod3+Control Q spawn "pacmd set-default-sink \"\$(pactl list sinks short | awk '{print \$1 \" <> \" substr(\$2,13) }' | tr '-' ' ' | tr '_' ' ' | fuzzel -d --log-level=none --width 50 | awk '{print \$1}')\""
 
 # Misc caps keys
-CLIPHIST_MENU='cliphist list | fuzzel --width 100 -d --log-level=none | cliphist decode | wl-copy'
+CLIPHIST_MENU="$HOME/.config/scripts/cliphist-fuzzel.sh"
 riverctl map normal Mod3 1 spawn "$CLIPHIST_MENU"
 riverctl map normal Alt G spawn "$CLIPHIST_MENU"
 riverctl map normal Mod3+Control 1 spawn "cliphist wipe"
 riverctl map normal Mod3 3 spawn "$HOME/.config/scripts/wayland/togglemonitors.sh; pkill sandbar; $sandbar_run"
-riverctl map normal Mod3 4 spawn '$HOME/.config/scripts/wayland/change-res.sh'
+riverctl map normal Mod3 4 spawn "$HOME/.config/scripts/wayland/change-res.sh"
 
 riverctl map normal Mod3 T spawn "$wallpaper_script wayland-gui"
 riverctl map normal Mod3 Z spawn 'grim - | wl-copy'
