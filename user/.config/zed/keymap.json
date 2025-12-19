@@ -1,0 +1,124 @@
+// Zed keymap
+//
+// For information on binding keys, see the Zed
+// documentation: https://zed.dev/docs/key-bindings
+//
+// To see the default key bindings run `zed: open default keymap`
+// from the command palette.
+[
+    {
+        "context": "Editor && vim_mode == insert",
+        "bindings": {
+            "; l": "vim::NormalBefore",
+        },
+    },
+    {
+        "context": "Editor && vim_mode == visual",
+        "bindings": {
+            "; l": "vim::NormalBefore",
+        },
+    },
+    {
+        "context": "Terminal",
+        "bindings": {
+            "space q": "pane::CloseActiveItem",
+        },
+    },
+    {
+        "context": "FileFinder",
+        "bindings": {
+            "ctrl-v": "file_finder::ToggleSplitMenu",
+            "ctrl-x": "file_finder::ToggleSplitMenu",
+        },
+    },
+    {
+        "context": "Workspace",
+        "bindings": {
+            "space f a": "file_finder::Toggle",
+            "space f s": "project_symbols::Toggle",
+            "space f r": "projects::OpenRecent",
+            "space l t": "workspace::ToggleBottomDock",
+            "space l g": ["task::Spawn", { "task_name": "lazygit", "target": "center", "reveal_target": "center" }],
+            "space l r": "workspace::ToggleLeftDock",
+        },
+    },
+    {
+        "context": "Editor && vim_mode != normal",
+        "bindings": {
+            "space f a": null,
+            "space f s": null,
+            "space f r": null,
+            "space l t": null,
+            "space l g": null,
+            "space l r": null,
+        },
+    },
+    {
+        "bindings": {
+            "f8": "debugger::Continue",
+            "f9": "debugger::StepInto",
+            "f10": "debugger::StepOver",
+        },
+    },
+    {
+        "context": "Editor && vim_mode == normal && vim_operator == none && !VimWaiting",
+        "bindings": {
+            "space q": "pane::CloseActiveItem",
+            "space w": "workspace::Save",
+            "space g f": "editor::Format",
+            "space g d": "editor::GoToDefinition",
+            "space g D": "editor::GoToDefinitionSplit",
+            "space g s": "editor::FindAllReferences",
+            "space x": "editor::Rename",
+            "space c a": "editor::ToggleCodeActions",
+            "space g h": "editor::ToggleInlayHints",
+            "space a": "pane::ActivatePreviousItem",
+            "space s": "pane::ActivateNextItem",
+            "space e": "editor::ToggleSoftWrap",
+            "space d a": "debugger::Continue",
+            "space d s": "debugger::StepInto",
+            "space d f": "debugger::StepOver",
+            "space d r": "debugger::Start",
+            "space d e": "debugger::Stop",
+        },
+    },
+    {
+        "bindings": {},
+    },
+    {
+        "context": "Editor",
+        "bindings": {
+            "ctrl-k": null,
+        },
+    },
+    {
+        "bindings": {
+            "f7": null,
+        },
+    },
+    {
+        "context": "ApplicationMenu",
+        "bindings": {
+            "f10": null,
+        },
+    },
+    {
+        "context": "Workspace",
+        "bindings": {
+            "f10": null,
+        },
+    },
+    {
+        "context": "Editor",
+        "bindings": {},
+    },
+    {
+        "context": "Editor && vim_mode == normal && vim_operator == none && !VimWaiting",
+        "bindings": {
+            "ctrl-h": "workspace::ActivatePaneLeft",
+            "ctrl-l": "workspace::ActivatePaneRight",
+            "ctrl-k": "workspace::ActivatePaneUp",
+            "ctrl-j": "workspace::ActivatePaneDown",
+        },
+    },
+]

@@ -18,6 +18,7 @@ SYMLINK_FROM_TO="\
     .config/.bash-preexec.sh \
     .config/scripts \
     .config/nvim \
+    .config/zed \
     .zshrc \
     .config/zsh \
     .config/tealdeer \

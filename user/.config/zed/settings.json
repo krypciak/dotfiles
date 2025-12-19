@@ -1,0 +1,117 @@
+// Zed settings
+//
+// For information on how to configure Zed, see the Zed
+// documentation: https://zed.dev/docs/configuring-zed
+//
+// To see all of Zed's default settings without changing your
+// custom settings, run `zed: open default settings` from the
+// command palette (cmd-shift-p / ctrl-shift-p)
+{
+  "disable_ai": true,
+  "agent": {
+    "inline_assistant_model": {
+      "provider": "openrouter",
+      "model": "meta-llama/llama-4-scout"
+    },
+    "default_model": {
+      "provider": "openrouter",
+      "model": "meta-llama/llama-4-scout"
+    },
+    "model_parameters": []
+  },
+  "use_system_prompts": false,
+  "use_system_path_prompts": false,
+  "base_keymap": "VSCode",
+  "git": {
+    "inline_blame": {
+      "enabled": false
+    },
+    "git_gutter": "tracked_files"
+  },
+  "colorize_brackets": true,
+  "tab_bar": {
+    "show": true
+  },
+  "title_bar": {
+    "show_menus": false,
+    "show_user_picture": false,
+    "show_sign_in": false,
+    "show_onboarding_banner": false,
+    "show_project_items": false,
+    "show_branch_name": false,
+    "show_branch_icon": false
+  },
+  "status_bar": {
+    "cursor_position_button": true,
+    "active_language_button": false
+  },
+  "project_panel": {
+    "button": true
+  },
+  "use_smartcase_search": true,
+  "diagnostics": {
+    "inline": {
+      "enabled": true
+    }
+  },
+  "inlay_hints": {
+    "show_value_hints": true,
+    "enabled": false
+  },
+  "show_completions_on_input": true,
+  "show_whitespaces": "none",
+  "format_on_save": "off",
+  "indent_guides": {
+    "background_coloring": "disabled",
+    "enabled": false
+  },
+  "preferred_line_length": 120,
+  "soft_wrap": "none",
+  "auto_indent": true,
+  "tab_size": 4,
+  "toolbar": {
+    "selections_menu": true,
+    "quick_actions": true,
+    "breadcrumbs": true
+  },
+  "minimap": {
+    "show": "never"
+  },
+  "scrollbar": {
+    "axes": {
+      "vertical": true,
+      "horizontal": false
+    },
+    "selected_symbol": true,
+    "selected_text": true,
+    "search_results": true,
+    "git_diff": true,
+    "cursors": true,
+    "show": "auto"
+  },
+  "relative_line_numbers": "enabled",
+  "gutter": {
+    "folds": false,
+    "runnables": true,
+    "line_numbers": true
+  },
+  "auto_signature_help": false,
+  "sticky_scroll": {
+    "enabled": false
+  },
+  "horizontal_scroll_margin": 8.0,
+  "vertical_scroll_margin": 8.0,
+  "scroll_beyond_last_line": "one_page",
+  "cursor_blink": false,
+  "ui_font_family": "Hack",
+  "buffer_line_height": "standard",
+  "buffer_font_weight": 100.0,
+  "buffer_font_family": "Hack",
+  "vim_mode": true,
+  "ui_font_size": 13.0,
+  "buffer_font_size": 13.0,
+  "theme": "krypek Alacritty",
+  "vim": {
+    "use_system_clipboard": "on_yank"
+  }
+}
