@@ -175,6 +175,7 @@ riverctl map normal Mod3+Control Q spawn "pacmd set-default-sink \"\$(pactl list
 CLIPHIST_MENU="$HOME/.config/scripts/cliphist-fuzzel.sh"
 riverctl map normal Mod3 1 spawn "$CLIPHIST_MENU"
 riverctl map normal Alt G spawn "$CLIPHIST_MENU"
+riverctl map normal Alt Y spawn "$HOME/.config/scripts/pipewire-audio-source.sh"
 riverctl map normal Mod3+Control 1 spawn "cliphist wipe"
 riverctl map normal Mod3 3 spawn "$HOME/.config/scripts/wayland/togglemonitors.sh; pkill sandbar; $sandbar_run"
 riverctl map normal Mod3 4 spawn "$HOME/.config/scripts/wayland/change-res.sh"
