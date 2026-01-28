@@ -18,6 +18,7 @@ x-scheme-handler/geo=openstreetmap-geo-handler.desktop;google-maps-geo-handler.d
 x-scheme-handler/http=librewolf.desktop;
 x-scheme-handler/https=librewolf.desktop;
 x-scheme-handler/mailto=tutanota-desktop.desktop;
+text/csv=libreoffice-calc.desktop;
 
 [Default Applications]
 application/pdf=librewolf.desktop
