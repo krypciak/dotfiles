@@ -67,3 +67,5 @@ alias ffmpeg='ffmpeg -hide_banner'
 alias gdb='gdb -q'
 
 alias vlc='env QT_QPA_PLATFORMTHEME=qt5ct vlc'
+
+alias fd='fd --hidden'

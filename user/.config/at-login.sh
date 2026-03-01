@@ -60,6 +60,7 @@ export PATH="$PATH:$USER_HOME/Programming/android/sdk/tools"
 
 export PATH="$PATH:$USER_HOME/.dotnet/tools"
 
+export RIPGREP_CONFIG_PATH="$XDG_CONFIG_HOME/ripgrep/flags"
 export ANKI_WAYLAND=1
 
 # pnpm
