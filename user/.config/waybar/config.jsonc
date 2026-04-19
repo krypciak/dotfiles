@@ -1,0 +1,246 @@
+// -*- mode: jsonc -*-
+{
+    "layer": "top",
+    "position": "top",
+    "height": 27,
+    "spacing": 8,
+    "modules-left": [
+        "hyprland/workspaces"
+        // "custom/media"
+    ],
+    "modules-center": [
+        "hyprland/window"
+    ],
+    "modules-right": [
+        "custom/memory",
+        "custom/swap",
+        "cpu",
+        "temperature",
+        "custom/gammastep",
+        "custom/network",
+        "custom/uptime",
+        "clock"
+        // "mpd",
+        // "idle_inhibitor",
+        // "pulseaudio",
+        // "power-profiles-daemon",
+        // "temperature",
+        // "backlight",
+        // "keyboard-state",
+        // "hyprland/language",
+        // "battery",
+        // "battery#bat2",
+        // "tray",
+        // "custom/power"
+    ],
+    "hyprland/workspaces": {
+        "format": "{icon}",
+        "format-icons": {
+            "1": "T",
+            "2": "q",
+            "3": "w",
+            "4": "e",
+            "5": "n",
+            "6": "d",
+            "7": "s",
+            "8": "a",
+            "9": "z",
+            "10": "c",
+            "11": "h"
+        },
+        "persistent-workspaces": {
+            "*": 4
+        }
+    },
+    "hyprland/window": {},
+    "cpu": {
+        "format": " {usage}%",
+        "tooltip": false,
+        "interval": 2
+    },
+    "custom/memory": {
+        "format": " {}",
+        "exec": "$HOME/.config/scripts/bar/mem.sh",
+        "tooltip": false,
+        "interval": 2
+    },
+    "custom/swap": {
+        "format": "󰓡{swapUsed}",
+        "exec": "$HOME/.config/scripts/bar/swap.sh",
+        "tooltip": false,
+        "interval": 2
+    },
+    "custom/gammastep": {
+        "exec": "$HOME/.config/scripts/bar/screentemp-gammastep.sh",
+        "tooltip": false,
+        "interval": 15
+    },
+    "temperature": {
+        "hwmon-path": "/sys/class/hwmon/hwmon1/temp1_input",
+        "format": " {temperatureC}°C",
+        "tooltip": false,
+        "interval": 2
+    },
+    "custom/network": {
+        "exec": "$HOME/.config/scripts/bar/network-traffic.sh",
+        "tooltip": false,
+        "interval": 5
+    },
+    "custom/uptime": {
+        "exec": "$HOME/.config/scripts/bar/uptime.sh",
+        "tooltip": false,
+        "interval": 60
+    },
+    "clock": {
+        "format": "{:%d/%m %b %a %R}",
+        "tooltip-format": "{:%A, %d %B %Y %H:%M:%S}"
+    }
+
+    // "keyboard-state": {
+    //     "numlock": true,
+    //     "capslock": true,
+    //     "format": "{name} {icon}",
+    //     "format-icons": {
+    //         "locked": "",
+    //         "unlocked": ""
+    //     }
+    // },
+    // "mpd": {
+    //     "format": "{stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon}{artist} - {album} - {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S}) ⸨{songPosition}|{queueLength}⸩ {volume}% ",
+    //     "format-disconnected": "Disconnected ",
+    //     "format-stopped": "{consumeIcon}{randomIcon}{repeatIcon}{singleIcon}Stopped ",
+    //     "unknown-tag": "N/A",
+    //     "interval": 5,
+    //     "consume-icons": {
+    //         "on": " "
+    //     },
+    //     "random-icons": {
+    //         "off": "<span color=\"#f53c3c\"></span> ",
+    //         "on": " "
+    //     },
+    //     "repeat-icons": {
+    //         "on": " "
+    //     },
+    //     "single-icons": {
+    //         "on": "1 "
+    //     },
+    //     "state-icons": {
+    //         "paused": "",
+    //         "playing": ""
+    //     },
+    //     "tooltip-format": "MPD (connected)",
+    //     "tooltip-format-disconnected": "MPD (disconnected)"
+    // },
+    // "idle_inhibitor": {
+    //     "format": "{icon}",
+    //     "format-icons": {
+    //         "activated": "",
+    //         "deactivated": ""
+    //     }
+    // },
+    // "tray": {
+    //     // "icon-size": 21,
+    //     "spacing": 10
+    //     // "icons": {
+    //     //   "blueman": "bluetooth",
+    //     //   "TelegramDesktop": "$HOME/.local/share/icons/hicolor/16x16/apps/telegram.png"
+    //     // }
+    // },
+    // "backlight": {
+    //     // "device": "acpi_video1",
+    //     "format": "{percent}% {icon}",
+    //     "format-icons": [
+    //         "",
+    //         "",
+    //         "",
+    //         "",
+    //         "",
+    //         "",
+    //         "",
+    //         "",
+    //         ""
+    //     ]
+    // },
+    // "battery": {
+    //     "states": {
+    //         // "good": 95,
+    //         "warning": 30,
+    //         "critical": 15
+    //     },
+    //     "format": "{capacity}% {icon}",
+    //     "format-full": "{capacity}% {icon}",
+    //     "format-charging": "{capacity}% 󰃨",
+    //     "format-plugged": "{capacity}% ",
+    //     "format-alt": "{time} {icon}",
+    //     // "format-good": "", // An empty format will hide the module
+    //     // "format-full": "",
+    //     "format-icons": [
+    //         "",
+    //         "",
+    //         "",
+    //         "",
+    //         ""
+    //     ]
+    // },
+    // "battery#bat2": {
+    //     "bat": "BAT2"
+    // },
+    // "power-profiles-daemon": {
+    //     "format": "{icon}",
+    //     "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
+    //     "tooltip": true,
+    //     "format-icons": {
+    //         "default": "",
+    //         "performance": "",
+    //         "balanced": "",
+    //         "power-saver": ""
+    //     }
+    // },
+    // "pulseaudio": {
+    //     // "scroll-step": 1, // %, can be a float
+    //     "format": "{volume}% {icon} {format_source}",
+    //     "format-bluetooth": "{volume}% {icon} {format_source}",
+    //     "format-bluetooth-muted": "󰅶 {icon} {format_source}",
+    //     "format-muted": "󰅶 {format_source}",
+    //     "format-source": "{volume}% ",
+    //     "format-source-muted": "",
+    //     "format-icons": {
+    //         "headphone": "",
+    //         "hands-free": "󰂑",
+    //         "headset": "󰂑",
+    //         "phone": "",
+    //         "portable": "",
+    //         "car": "",
+    //         "default": [
+    //             "",
+    //             "",
+    //             ""
+    //         ]
+    //     },
+    //     "on-click": "pavucontrol"
+    // },
+    // "custom/media": {
+    //     "format": "{icon} {text}",
+    //     "return-type": "json",
+    //     "max-length": 40,
+    //     "format-icons": {
+    //         "spotify": "",
+    //         "default": "🎜"
+    //     },
+    //     "escape": true,
+    //     "exec": "$HOME/.config/waybar/mediaplayer.py 2> /dev/null" // Script in resources folder
+    //     // "exec": "$HOME/.config/waybar/mediaplayer.py --player spotify 2> /dev/null" // Filter player based on name
+    // },
+    // "custom/power": {
+    //     "format": "⏻ ",
+    //     "tooltip": false,
+    //     "menu": "on-click",
+    //     "menu-file": "$HOME/.config/waybar/power_menu.xml", // Menu file in resources folder
+    //     "menu-actions": {
+    //         "shutdown": "shutdown",
+    //         "reboot": "reboot",
+    //         "suspend": "systemctl suspend",
+    //         "hibernate": "systemctl hibernate"
+    //     }
+    // }
+}
