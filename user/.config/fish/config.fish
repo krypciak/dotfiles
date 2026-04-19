@@ -1,8 +1,4 @@
 if status is-interactive
-    if test -z "$AT_LOGIN_SOURCED" 
-        exec bash -c "source ~/.config/at-login.sh; exec fish"
-    end
-
     set fish_greeting
 
     source /usr/share/autojump/autojump.fish

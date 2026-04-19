@@ -10,15 +10,17 @@ export CM_LAUNCHER=rofi
 
 export GIT_DISCOVERY_ACROSS_FILESYSTEM=1
 
-[ "$USER1" = '' ] && export USER1=$USER
-
-export USER_HOME="/home/$USER1"
+if [ "$(whoami)" = 'root' ]; then
+    export USER_HOME="/root"
+else
+    export USER_HOME="/home/$USER"
+fi
 export PATH="$USER_HOME/.local/bin:$USER_HOME/.cargo/bin:$PATH:$USER_HOME/.config/scripts"
 
-export XDG_DATA_HOME="$USER_HOME/home/.local/share"
-export XDG_STATE_HOME="$USER_HOME/home/.local/state"
-export XDG_CONFIG_HOME="$USER_HOME/home/.config"
-export XDG_CACHE_HOME="$USER_HOME/home/.cache"
+export XDG_DATA_HOME="$USER_HOME/.local/share"
+export XDG_STATE_HOME="$USER_HOME/.local/state"
+export XDG_CONFIG_HOME="$USER_HOME/.config"
+export XDG_CACHE_HOME="$USER_HOME/.cache"
 # ~/.gtkrc-2.0
 export GTK2_RC_FILES="$XDG_CONFIG_HOME"/gtk-2.0/gtkrc
 # ~/.icons
@@ -44,8 +46,6 @@ export NODE_REPL_HISTORY="$XDG_DATA_HOME"/node_repl_history
 # unset XDG_RUNTIME_DIR
 # shellcheck disable=SC2155
 # export XDG_RUNTIME_DIR=$(mktemp -d /tmp/$(id -u)-runtime-dir.XXX)
-
-[ -f "/tmp/keyboard_layout" ] || echo 'qwerty' >/tmp/keyboard_layout
 
 # source /usr/share/nvm/init-nvm.sh
 
