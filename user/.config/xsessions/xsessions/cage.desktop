@@ -1,5 +1,0 @@
-[Desktop Entry]
-Name=cage
-Comment=One window wm
-Exec=cage -d -s -- alacritty
-Type=Application

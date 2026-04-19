@@ -1,0 +1,5 @@
+[Desktop Entry]
+Name=hyprland
+Comment=Hyprland
+Exec=~/.config/hypr/run.sh
+Type=Application

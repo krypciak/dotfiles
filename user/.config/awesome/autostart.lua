@@ -1,6 +1,6 @@
-awful.spawn("xrandr --output HDMI-A-0 --mode 2560x1440 --rate 144 --primary")
+-- awful.spawn("xrandr --output HDMI-A-0 --mode 2560x1440 --rate 144 --primary")
 
-run_if_not_running_pgrep({music_player_class}, function() awful.spawn(music_player) end)
+-- run_if_not_running_pgrep({music_player_class}, function() awful.spawn(music_player) end)
 
 -- Start redshift if not running
 run_if_not_running_pgrep({"redshift"}, function() awful.spawn("redshift -r") end)
@@ -30,7 +30,7 @@ awful.spawn("start-pulseaudio-x11")
 awful.spawn("clipmenud")
 
 -- Mute mic at startup
-awful.spawn("amixer set Capture nocap")
+-- awful.spawn("amixer set Capture nocap")
 
 
 -- Bluetooth
@@ -46,10 +46,10 @@ awful.spawn.easy_async_with_shell("sleep 5",
     function(_,_,_,_) require("after_5sec") end
 )
 
-run_if_not_running_pgrep("keepassxc")
+-- run_if_not_running_pgrep("keepassxc")
 
-run_if_not_running_pgrep({"tutanota"}, function() awful.spawn("tutanota-desktop") end)
+-- run_if_not_running_pgrep({"tutanota"}, function() awful.spawn("tutanota-desktop") end)
 
-run_if_not_running_pgrep("blueman-applet")
+-- run_if_not_running_pgrep("blueman-applet")
 
-awful.spawn("fcitx -d")
+-- awful.spawn("fcitx -d")

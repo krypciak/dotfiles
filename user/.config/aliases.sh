@@ -57,8 +57,8 @@ alias slazygit='lazygit --git-dir=$(git rev-parse --git-dir)'
 alias awesome='sh $HOME/.config/awesome/run/run.sh'
 alias dwl='sh $HOME/.config/dwl/run/run.sh'
 alias river='sh $HOME/.config/river/run.sh'
-
-alias lol='leagueoflegends kill; env AMD_VULKAN_ICD=RADV gamescope -W 2560 -H 1440 -m 1 --rt -f -- leagueoflegends start'
+alias hyprland='sh $HOME/.config/hypr/run.sh'
+alias start-hyprland='sh $HOME/.config/hypr/run.sh'
 
 alias tsc='npx tsc'
 

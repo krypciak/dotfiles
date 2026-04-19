@@ -1,5 +1,0 @@
-[Desktop Entry]
-Name=river
-Comment=River WM
-Exec=~/.config/river/run.sh
-Type=Application

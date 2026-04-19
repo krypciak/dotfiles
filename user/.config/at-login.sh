@@ -1,3 +1,4 @@
+#!/bin/bash
 export AT_LOGIN_SOURCED=1
 
 export QT_QPA_PLATFORMTHEME=gtk3:qt5ct:qt6ct
@@ -12,7 +13,7 @@ export GIT_DISCOVERY_ACROSS_FILESYSTEM=1
 [ "$USER1" = '' ] && export USER1=$USER
 
 export USER_HOME="/home/$USER1"
-export PATH="$USER_HOME/home/.local/bin:/home/$USER1/.cargo/bin:$PATH:/home/$USER1/home/.config/scripts"
+export PATH="$USER_HOME/.local/bin:$USER_HOME/.cargo/bin:$PATH:$USER_HOME/.config/scripts"
 
 export XDG_DATA_HOME="$USER_HOME/home/.local/share"
 export XDG_STATE_HOME="$USER_HOME/home/.local/state"

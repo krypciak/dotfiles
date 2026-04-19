@@ -1,5 +1,0 @@
-[Desktop Entry]
-Name=plasma-wayland
-Comment=Plasma Wayland
-Exec=~/.config/scripts/run-plasmawayland.sh
-Type=Application

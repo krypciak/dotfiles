@@ -14,7 +14,7 @@ local wallpapers = {
     { '#000000', '#303030' },
 }
 local custom_scaling_wallpapers = {}
-custom_scaling_wallpapers['oneshot/MemoryOfaDistantPlace.gif'] = { swww='Nearest', mpv='nearest' }
+custom_scaling_wallpapers['oneshot/MemoryOfaDistantPlace.gif'] = { awww='Nearest', mpv='nearest' }
 
 local wallpaper_name_map = {}
 for group=1, #wallpapers, 1 do
@@ -124,21 +124,21 @@ end
 if not isx11 then
     function set_wallpaper(wallpaper)
         if wallpaper:find('^#') then
-            print('swww clear "' .. wallpaper .. '"')
-            os.execute('swww clear "' .. wallpaper .. '"')
+            print('awww clear "' .. wallpaper .. '"')
+            os.execute('awww clear "' .. wallpaper .. '"')
         else
             local scaling_method = custom_scaling_wallpapers[wallpaper]
             if scaling_method then
-                scaling_method = '--filter ' .. scaling_method.swww .. ' '
+                scaling_method = '--filter ' .. scaling_method.awww .. ' '
             else
                 scaling_method=''
             end
 
-            os.execute('swww img --transition-type none ' .. scaling_method .. wallpaper_dir .. wallpaper)
+            os.execute('awww img --transition-type none ' .. scaling_method .. wallpaper_dir .. wallpaper)
         end
     end
 
-    local out = os.capture("swww query | awk '{print $8}' | tail -c +1 | head --lines 1 | head -c -2")
+    local out = os.capture("awww query | awk '{print $8}' | tail -c +1 | head --lines 1 | head -c -2")
     if out ~= '' then
         read_wallpaper = os.capture("cd $HOME/.config/wallpapers; find . -type f -iname '" .. out .. "' | awk '{print substr($1, 3)}' | head --lines 1 | head -c -1")
     end

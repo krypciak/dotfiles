@@ -1,11 +1,5 @@
 #!/bin/sh
 
-super='Mod4'
-alt='Mod4'
-ctrl='Mod4'
-sft='Mod4'
-caps='Mod4'
-
 export TAGS="T q w e n d s a z c h"
 get_tag() {
     # tag position in binary
@@ -69,7 +63,7 @@ sandbar_run="$HOME/.config/dwl/someblocks/someblocks -m 1 | awk '{print \"all \"
 # Autostart
 riverctl spawn 'wlr-randr --output HDMI-A-2 --mode 2560x1440@143.912003Hz'
 # riverctl spawn 'wlr-randr --output DP-2 --off'
-riverctl spawn 'swww-daemon > /dev/null 2>&1'
+riverctl spawn 'awww-daemon > /dev/null 2>&1'
 riverctl spawn "$wallpaper_script inc 0 0 > /dev/null 2>&1"
 riverctl spawn 'gammastep -r > /dev/null 2>&1'
 riverctl spawn "$sandbar_run"
@@ -84,7 +78,7 @@ riverctl spawn 'sleep 1; librewolf > /dev/null 2>&1'
 riverctl spawn 'safeeyes > /dev/null 2>&1'
 riverctl spawn 'prettierd start'
 
-riverctl spawn 'fcitx -d'
+riverctl spawn 'fcitx5 -d'
 
 # systemd stuff
 systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
