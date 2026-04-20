@@ -167,11 +167,11 @@ _util() {
             if [ "$short_name" != '' ]; then
                 short_names_toparse="$short_names_toparse,$(
                     printf -- "$short_name" | tail -c +2
-                    [ "$arg_required" = '1' ] && printf ':'
+                    [ "$arg_required" = '1' ] && printf ':' || true
                 )"
                 tocheck="$tocheck,$(
                     printf -- "$short_name"
-                    [ "$arg_required" = '1' ] && printf ':'
+                    [ "$arg_required" = '1' ] && printf ':' || true
                     [ "$required" = '1' ]
                     printf 'R'
                     printf "@$index"
@@ -182,11 +182,11 @@ _util() {
             if [ "$long_name" != '' ]; then
                 long_names_toparse="$long_names_toparse,$(
                     printf -- "$long_name" | tail -c +3
-                    [ "$arg_required" = '1' ] && printf ':'
+                    [ "$arg_required" = '1' ] && printf ':' || true
                 )"
                 tocheck="$tocheck,$(
                     printf -- "$long_name"
-                    [ "$arg_required" = '1' ] && printf ':'
+                    [ "$arg_required" = '1' ] && printf ':' || true
                     [ "$required" = '1' ]
                     printf 'R'
                     printf "@$index"
