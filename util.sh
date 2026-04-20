@@ -289,7 +289,6 @@ _util() {
 
     source_vars() {
         if [ "$VARS_SOURCED" != "1" ]; then
-            echo sourcing vars
             . "$1/system-install/vars.conf.sh"
             VARS_SOURCED=1
         fi
