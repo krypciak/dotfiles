@@ -37,4 +37,5 @@ cp -r "$DOTDIR" "$DEST_DOTFILES_DIR"
 
 info_barr "Chrooting"
 
+# genfstab -U "$INSTALL_DIR" > "$INSTALL_DIR"/etc/fstab
 arch-chroot "$INSTALL_DIR" $CMD_TO_RUN

@@ -13,7 +13,7 @@ if [ -d /tmp/paru ]; then rm -rf /tmp/paru; fi
 # If paru is already installed, skip this step
 if ! command -v "paru" >/dev/null 2>&1; then
     pacman $PACMAN_ARGUMENTS -Sy git doas debugedit
-    git clone https://aur.archlinux.org/paru-bin.git /tmp/paru
+    git clone https://aur.archlinux.org/paru.git /tmp/paru
     chown_user /tmp/paru
     chmod -R +wrx /tmp/paru
     cd /tmp/paru || exit 1

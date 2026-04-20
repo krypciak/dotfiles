@@ -38,7 +38,7 @@ sed -i -e "s|\(\/etc/pacman.d\/mirrorlist\)|$INSTALL_DIR\1|g" "$INSTALL_DIR"/etc
 info_barr "Straping packages"
 packages="$(arch_base_install)"
 flag="$([ "$(whoami)" != 'root' ] && echo '-N' || true)"
-pacstrap -C "$INSTALL_DIR"/etc/pacman.conf -c -K -M $flag "$INSTALL_DIR" $packages
+pacstrap -C "$INSTALL_DIR"/etc/pacman.conf -c -G -M $flag "$INSTALL_DIR" $packages
 
 # restore original config
 cp -r "$DOTDIR"/system-install/profile/arch/root/etc/pacman.conf "$INSTALL_DIR"/etc/

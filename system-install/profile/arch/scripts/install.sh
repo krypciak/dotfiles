@@ -6,6 +6,6 @@ DOTDIR="$DIR"/../../../..
 check_is_root
 source_vars "$DOTDIR"
 
-INSTALL_DIR="/tmp/arch"
-# . "$DIR"/strap-packages.sh
+INSTALL_DIR="/mnt/arch"
+. "$DIR"/strap-packages.sh
 . "$DIR"/chroot-into.sh --cmd /home/"$USER1"/.config/dotfiles/system-install/profile/arch/scripts/after-chroot.sh
