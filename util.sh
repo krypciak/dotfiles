@@ -97,7 +97,7 @@ _util() {
         set -a
     }
 
-    chown_user() { for path in "$@"; do chown -R $USER:$USER "$path"; done; }
+    chown_user() { for path in "$@"; do chown -R $USER1:$USER1 "$path"; done; }
 
     chown_root() { for path in "$@"; do chown -R root:root "$path"; done; }
 
