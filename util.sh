@@ -125,10 +125,10 @@ _util() {
         SYNTAX="-h|--help=_help,$1"
         shift
 
-        export short_names_toparse=''
-        export long_names_toparse=''
-        export tocheck=''
-        export required_set=''
+        short_names_toparse=''
+        long_names_toparse=''
+        tocheck=''
+        required_set=''
         IFS=','
         index=0
         for arg in $SYNTAX; do
@@ -172,7 +172,6 @@ _util() {
                 tocheck="$tocheck,$(
                     printf -- "$short_name"
                     [ "$arg_required" = '1' ] && printf ':' || true
-                    [ "$required" = '1' ]
                     printf 'R'
                     printf "@$index"
                     printf '='
@@ -187,7 +186,6 @@ _util() {
                 tocheck="$tocheck,$(
                     printf -- "$long_name"
                     [ "$arg_required" = '1' ] && printf ':' || true
-                    [ "$required" = '1' ]
                     printf 'R'
                     printf "@$index"
                     printf '='
@@ -288,6 +286,16 @@ _util() {
 
         unset IFS
     }
+
+    source_vars() {
+        if [ "$VARS_SOURCED" != "1" ]; then
+            echo sourcing vars
+            . "$1/system-install/vars.conf.sh"
+            VARS_SOURCED=1
+        fi
+    }
+
+    OS_VARIANT="$(grep '^ID=' /etc/os-release | cut -d= -f2)"
 
     USER_HOME="/home/$USER"
 

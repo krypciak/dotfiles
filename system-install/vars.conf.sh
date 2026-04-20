@@ -1,5 +1,5 @@
 #!/bin/sh
-[ "$REPOHUB" = '' ] && echo '$REPOHUB variable not set. This script is not ment to be run by the user.' && exit 1
+[ "$DOTDIR" = '' ] && echo '$DOTDIR variable not set. This script is not ment to be run by the user.' && exit 1
 set -a
 
 PORTABLE=0
