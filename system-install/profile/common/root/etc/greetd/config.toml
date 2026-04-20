@@ -1,0 +1,10 @@
+[terminal]
+vt = 1
+
+[default_session]
+command = "tuigreet -s /etc/greetd/sessions -t -r --power-shutdown 'loginctl poweroff' --power-reboot 'loginctl reboot'"
+user = "greeter"
+
+[initial_session]
+command = "USER_HOME/.config/river/run.sh"
+user = "USER1"

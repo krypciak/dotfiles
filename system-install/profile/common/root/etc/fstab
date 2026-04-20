@@ -1,0 +1,17 @@
+# /dev/LVM_GROUP_NAME/root
+UUID=ROOT_UUID ROOT_FSTAB_ARGS
+
+# $BOOT_PART
+UUID=BOOT_UUID BOOT_FSTAB_ARGS
+
+# /dev/LVM_GROUP_NAME/home
+UUID=HOME_UUID HOME_FSTAB_ARGS
+
+# /dev/LVM_GROUP_NAME/swap
+UUID=SWAP_UUID none swap defaults 0 0
+
+tmpfs /tmp      tmpfs rw,nodev,nosuid          0  0
+
+UUID=980E-3BB0 /mnt/redpen   exfat rw,noatime,user,nofail 0 2
+UUID=9F1E-D95D /mnt/blackpen exfat rw,noatime,user,nofail 0 2
+
