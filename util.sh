@@ -289,35 +289,6 @@ _util() {
         unset IFS
     }
 
-    inst() {
-        method="$1" # copy or link
-        path="$2"
-        override="$3"
-
-        from="$(realpath "./user/$path")"
-        dest="$USER_HOME/$path"
-
-        if [ -h "$dest" ]; then unlink "$dest"; fi
-        if [ -e "$dest" ]; then
-            if [ "$override" == 'nooverride' ]; then
-                warn "<path>$path</path> exists, skipping"
-                return
-            fi
-            [ "$YOLO" -eq 0 ] && confirm 'Y barr' "Do you want to override <path>${dest}</path> ?" "rm -rf $dest" 'export _continue=1'
-            [ "$_continue" = 1 ] && return
-        fi
-
-        mkdir -p "$(dirname "$dest" | head --lines 1)"
-        if [ "$method" = 'copy' ]; then
-            info_barr "Copying <path>$path</path> to <path>$dest</path>"
-            cp -rf "$from" "$dest"
-        else
-            info_barr "Linking <path>$path</path> to <path>$dest</path>"
-            ln -sfT "$from" "$dest"
-        fi
-        chown_user "$dest"
-    }
-
     USER_HOME="/home/$USER"
 
     [ -z "$YOLO" ] && YOLO=0
@@ -327,8 +298,6 @@ _util() {
     GIT_DISCOVERY_ACROSS_FILESYSTEM=1
 
     UTIL_SOURCED=1
-
-    set +e
 }
 
 if [ "$UTIL_SOURCED" != '1' ]; then
