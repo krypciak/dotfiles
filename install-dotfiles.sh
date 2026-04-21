@@ -135,7 +135,7 @@ if [ "$FOR_ROOT" != "1" ]; then
     chmod +x "$USER_HOME"/.config/scripts/pst
 else
     check_is_root
-    export USER1='/root'
+    export USER1='root'
     export USER_HOME='/root'
 
     info_garr "Installing dotfiles for root..."

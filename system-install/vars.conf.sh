@@ -1,11 +1,10 @@
-#!/bin/sh
+#!/bin/bash
 [ "$DOTDIR" = '' ] && echo '$DOTDIR variable not set. This script is not ment to be run by the user.' && exit 1
 set -a
 
 PORTABLE=0
 KERNEL='linux'
 # CACHY_REPOS=1
-# TODO: mkinitcpio toggle untoggles during cachy install
 
 # User configuration
 USER1='krypek'
@@ -45,11 +44,11 @@ PACKAGE_INSTALL_ATTEMPTS=1
 PACKAGE_GROUPS=""
 PACKAGE_GROUPS="$PACKAGE_GROUPS strap"     # packages installing pre-chroot
 PACKAGE_GROUPS="$PACKAGE_GROUPS system"    # bare minimum to get into bash shell
-PACKAGE_GROUPS="$PACKAGE_GROUPS drivers"   # cpu ucode and gpu drivers
+# PACKAGE_GROUPS="$PACKAGE_GROUPS drivers"   # cpu ucode and gpu drivers
 PACKAGE_GROUPS="$PACKAGE_GROUPS basic"     # make the shell usable and preety
-PACKAGE_GROUPS="$PACKAGE_GROUPS gui"       # platform independent gui apps
-PACKAGE_GROUPS="$PACKAGE_GROUPS audio"     # required for audio to work
-PACKAGE_GROUPS="$PACKAGE_GROUPS media"     # ffmpeg, vlc, yt-dlp
+# PACKAGE_GROUPS="$PACKAGE_GROUPS gui"       # platform independent gui apps
+# PACKAGE_GROUPS="$PACKAGE_GROUPS audio"     # required for audio to work
+# PACKAGE_GROUPS="$PACKAGE_GROUPS media"     # ffmpeg, vlc, yt-dlp
 # PACKAGE_GROUPS="$PACKAGE_GROUPS browsers"  # dialect, firefox, librewolf, ungoogled-chromium
 # PACKAGE_GROUPS="$PACKAGE_GROUPS office"    # libreoffice-fresh
 # PACKAGE_GROUPS="$PACKAGE_GROUPS X11"       # X11 server and utilities like screen locker
@@ -116,6 +115,6 @@ HOME_FSTAB_ARGS="$USER_HOME     btrfs      rw,noatime,ssd,space_cache=v2,subvoli
 
 # Installer
 # Don't ask for confirmation
-YOLO=0
+YOLO=1
 AUTO_REBOOT=0
 PAUSE_AFTER_DONE=1

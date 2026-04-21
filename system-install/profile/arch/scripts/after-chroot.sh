@@ -15,12 +15,18 @@ source_vars "$DOTDIR"
 . "$DIR"/install-packages.sh
 . "$DIR"/copy-configs.sh
 . "$DOTDIR"/system-install/profile/common/scripts/temp-doas.sh
-# . "$DB"/profile/common/scripts/install-dotfiles.sh
-# . "$DB"/profile/common/scripts/set-passwords.sh
-# . "$DOTDIR"/system-install/profile/common/scripts/configure-packages.sh
-
+. "$DOTDIR"/system-install/profile/common/scripts/install-dotfiles.sh
+. "$DOTDIR"/system-install/profile/common/scripts/set-passwords.sh
+. "$DOTDIR"/system-install/profile/common/scripts/configure-packages.sh
+. "$DOTDIR"/system-install/profile/common/scripts/cleanup.sh
 . "$DIR"/mkinitcpio-toggle.sh enable
+
+. "$DOTDIR"/system-install/profile/common/scripts/configure-fstab.sh
+. "$DOTDIR"/system-install/profile/common/scripts/install-grub.sh
+. "$DOTDIR"/system-install/profile/common/scripts/run-mkinitcpio.sh
 
 # TODO: remember to uncheck checkspace in pacman.conf!
 
-info 'All done'
+command -v 'neofetch' >/dev/null 2>&1 && neofetch
+
+[ "$PAUSE_AFTER_DONE" = '1' ] && confirm 'Y shell ignore' "Confirm to continue" '' 'err "Said no to continuation prompt"; exit 1'

@@ -6,6 +6,7 @@ check_is_root
 source_vars "$DOTDIR"
 
 info_garr 'Copying configs'
+rm -rf /usr/share/X11/xkb
 cp -L -r "$DOTDIR"/system-install/profile/common/root/* /
 
 # arch configs are already copied

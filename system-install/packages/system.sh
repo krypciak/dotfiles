@@ -7,14 +7,14 @@ _configure_greetd() {
     chown "greeter:greeter" -R /etc/greetd
 }
 
-arch_bare_install() {
+arch_system_install() {
     echo 'btrfs-progs clang dbus dbus dbus-glib dbus-python doas-sudo-shim'
     echo 'dosfstools efibootmgr git greetd grub mtools networkmanager'
     echo 'openbsd-netcat opendoas perl python python-pip ttf-dejavu ttf-hack'
     echo 'unrar unzip util-linux wget zip'
 }
 
-arch_bare_configure() {
+arch_system_configure() {
     _configure_greetd
 
     sed -i "s/USER1/$USER1/g" /etc/security/limits.conf
