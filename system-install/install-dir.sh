@@ -1,10 +1,15 @@
 #!/bin/bash
 DIR="$(printf "$(dirname $0)" | xargs realpath)"
-DOTDIR="$DIR"/../../../..
+DOTDIR="$DIR"/..
 . "$DOTDIR/util.sh"
 
 check_is_root
 source_vars "$DOTDIR"
+
+if [ "$OS_VARIANT" != 'arch' ]; then
+    err "Installing to dir is only possible on arch."
+    exit 1
+fi
 
 _help() {
     printf "Usage:\n"
@@ -25,7 +30,7 @@ fi
 
 mkdir -p "$INSTALL_DIR"
 
-. "$DIR"/strap-packages.sh
-. "$DIR"/chroot-into.sh --cmd /home/"$USER1"/.config/dotfiles/system-install/profile/arch/scripts/after-chroot.sh
+. "$DOTDIR"/system-install/profile/arch/scripts/strap-packages.sh
+. "$DOTDIR"/system-install/profile/arch/scripts/chroot-into.sh --cmd /home/"$USER1"/.config/dotfiles/system-install/profile/arch/scripts/after-chroot.sh
 
 info "Chroot done"

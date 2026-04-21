@@ -1,0 +1,11 @@
+[Unit]
+Description=iso script
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+ExecStart=greetd
+
+[Install]
+WantedBy=multi-user.target

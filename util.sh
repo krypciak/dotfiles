@@ -16,9 +16,9 @@ _util() {
     _process_msg() {
         printf '%s' "$*" |
             sed -e "s|<path>|$ORANGE|g" \
-                -e "s|</path>|$NC$BOLD|g" \
+                -e "s|</path>|$NC|g" \
                 -e "s|<user>|$ORANGE|g" \
-                -e "s|</user>|$NC$BOLD|g"
+                -e "s|</user>|$NC|g"
     }
 
     info() { printf "${BLUE}::${NC} ${BOLD}$(_process_msg "$(_process_msg "$*")")${NC}\n"; }

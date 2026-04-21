@@ -1,0 +1,42 @@
+message-font: "u_vga16 16"
+message-color: "#fcfcfc"
+message-bg-color: "#1d1f21"
+terminal-font: "u_vga16 16"
+desktop-color: "#1d1f21"
+title-text: ""
+
++ boot_menu {
+    left = 15%
+    top = 30%
+    width = 75%
+    height = 45%
+    item_font = "u_vga16 16"
+    item_color = "#fcfcfc"
+    selected_item_font = "u_vga16 16"
+    selected_item_color= "#62c0f8"
+    selected_item_pixmap_style= "highlight_*.png"
+    item_height = 32
+    item_padding = 0
+    item_spacing = 0
+    menu_pixmap_style = "menu_*.png"
+    align = "center"
+    scrollbar = false
+}
+
++ image {
+    left = 1%
+    top = 1%
+    width = 20%
+    height = 20%
+    file = "logo.png"
+}
+
++ label {
+    top = 90%
+    left = 40%
+    width = 20%
+    align = "center"
+    id = "__timeout__"
+    text = "Booting in %d seconds"
+    color = "#fcfcfc"
+}
