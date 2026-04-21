@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 arch_base_install() {
     echo "$KERNEL $KERNEL-headers"

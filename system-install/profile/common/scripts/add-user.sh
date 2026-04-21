@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 DIR="$(dirname -- "${BASH_SOURCE[0]}" | xargs realpath)"
 DOTDIR="$DIR"/../../../..
 . "$DOTDIR/util.sh"

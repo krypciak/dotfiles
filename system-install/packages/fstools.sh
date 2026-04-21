@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 arch_fstools_install() {
     echo 'arch-install-scripts btrfs-progs cdrtools dos2unix dosfstools'

@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 arch_cups_install() {
     echo 'cups'

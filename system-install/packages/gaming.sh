@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 arch_gaming_install() {
     arch_java_install

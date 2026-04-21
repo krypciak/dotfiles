@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 arch_wayland_install() {
     echo 'cliphist fnott fuzzel gammastep grim inotify-tools qt6-wayland'

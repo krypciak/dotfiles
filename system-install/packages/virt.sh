@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 arch_virt_install() {
     echo 'dnsmasq edk2-ovmf iptables-nft libvirt qemu-desktop virt-manager'

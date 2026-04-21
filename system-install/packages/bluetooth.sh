@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 arch_bluetooth_install() {
     echo 'blueman bluetooth-autoconnect bluez bluez-utils'

@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 _configure_awesome() {
     if [ "$PORTABLE" = 1 ]; then

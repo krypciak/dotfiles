@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 _make_sandbar() {
     info 'Compiling sandbar'

@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 arch_java_install() {
     echo 'jdk17-openjdk jdk8-openjdk jdk-openjdk'

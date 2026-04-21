@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 [ "$DOTDIR" = '' ] && echo '$DOTDIR variable not set. This script is not ment to be run by the user.' && exit 1
 
 check_is_root

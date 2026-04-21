@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 _configure_greetd() {
     sed -i "s|USER_HOME|$USER_HOME|g" /etc/greetd/config.toml

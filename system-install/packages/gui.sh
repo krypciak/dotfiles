@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 arch_gui_install() {
     echo 'alacritty breeze feh gnome-keyring'

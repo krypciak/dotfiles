@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 arch_drivers_install() {
     echo 'mesa lib32-mesa vulkan-icd-loader lib32-vulkan-icd-loader vulkan-headers mkinitcpio-firmware'

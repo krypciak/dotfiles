@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 arch_audio_install() {
     echo 'lib32-libpipewire lib32-pipewire lib32-pipewire-v4l2 libpipewire'

@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 set -e
 
 [ -z "$REPOHUB" ] && REPOHUB="$(printf "$(dirname $0)/../" | xargs realpath)" && export REPOHUB && . "$REPOHUB"/util.sh

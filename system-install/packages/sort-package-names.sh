@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 for file in ./*.sh; do
     # shellcheck disable=SC2002

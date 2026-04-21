@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # _init_browsers() {
 #     # Let firefox extensions init
