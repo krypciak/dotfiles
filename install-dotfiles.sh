@@ -69,7 +69,6 @@ if [ "$FOR_ROOT" != "1" ]; then
     inst link .bashrc
     inst link .bash_profile
     inst link .config/xsessions
-    inst link .config/neofetch
     inst link .config/topgrade.toml
     inst link .config/ttyper
     inst link .config/animdl

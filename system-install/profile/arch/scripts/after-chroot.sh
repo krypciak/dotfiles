@@ -27,6 +27,6 @@ source_vars "$DOTDIR"
 
 # TODO: remember to uncheck checkspace in pacman.conf!
 
-command -v 'neofetch' >/dev/null 2>&1 && neofetch
+command -v 'fastfetch' >/dev/null 2>&1 && fastfetch
 
 [ "$PAUSE_AFTER_DONE" = '1' ] && confirm 'Y shell ignore' "Confirm to continue" '' 'err "Said no to continuation prompt"; exit 1'
