@@ -19,12 +19,12 @@ handle_args "\
 --cmd:=export CMD_TO_RUN=\"\$2\",\
 " "$@"
 
-if [ "$INSTALL_DIR" == "" ]; then
+if [[ ! -v INSTALL_DIR ]]; then
     err "Argument missing: --dir"
     _help
 fi
 
-if [ "$CMD_TO_RUN" == "" ]; then
+if [[ ! -v CMD_TO_RUN ]]; then
     CMD_TO_RUN=/bin/sh
 fi
 

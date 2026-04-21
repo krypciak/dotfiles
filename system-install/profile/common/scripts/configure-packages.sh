@@ -6,7 +6,7 @@ DOTDIR="$DIR"/../../../..
 check_is_root
 source_vars "$DOTDIR"
 
-if [ -z "$GROUP_LIST" ]; then
+if [[ ! -v GROUP_LIST ]]; then
     . "$DOTDIR"/system-install/profile/common/scripts/gather-package-list.sh
 fi
 

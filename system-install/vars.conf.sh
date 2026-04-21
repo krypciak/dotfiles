@@ -42,10 +42,10 @@ fi
 PACKAGE_INSTALL_ATTEMPTS=1
 
 PACKAGE_GROUPS=""
-PACKAGE_GROUPS="$PACKAGE_GROUPS strap"     # packages installing pre-chroot
-PACKAGE_GROUPS="$PACKAGE_GROUPS system"    # bare minimum to get into bash shell
+PACKAGE_GROUPS="$PACKAGE_GROUPS strap"  # packages installing pre-chroot
+PACKAGE_GROUPS="$PACKAGE_GROUPS system" # bare minimum to get into bash shell
 # PACKAGE_GROUPS="$PACKAGE_GROUPS drivers"   # cpu ucode and gpu drivers
-PACKAGE_GROUPS="$PACKAGE_GROUPS basic"     # make the shell usable and preety
+PACKAGE_GROUPS="$PACKAGE_GROUPS basic" # make the shell usable and preety
 # PACKAGE_GROUPS="$PACKAGE_GROUPS gui"       # platform independent gui apps
 # PACKAGE_GROUPS="$PACKAGE_GROUPS audio"     # required for audio to work
 # PACKAGE_GROUPS="$PACKAGE_GROUPS media"     # ffmpeg, vlc, yt-dlp
@@ -66,52 +66,54 @@ PACKAGE_GROUPS="$PACKAGE_GROUPS basic"     # make the shell usable and preety
 # PACKAGE_GROUPS="$PACKAGE_GROUPS android"   # adb
 
 # Bootloader
+VARIANT_NAME="Arch"
 BOOTLOADER_ID="$VARIANT_NAME"
-BOOT_PART="${DISK}1"
-BOOT_SIZE='500M'
+if [ -v DISK ]; then
+    BOOT_PART="${DISK}1"
+    BOOT_SIZE='500M'
 
-# Encryption
-# 0 -> disable  1 -> enable
-ENCRYPT=1
-if [ "$ENCRYPT" = '1' ]; then
-    CRYPT_PART="${DISK}2"
-    # None means all remaining space
-    CRYPT_SIZE=''
-    LUKS_PASSWORD=123
+    # Encryption
+    # 0 -> disable  1 -> enable
+    ENCRYPT=1
+    if [ "$ENCRYPT" = '1' ]; then
+        CRYPT_PART="${DISK}2"
+        # None means all remaining space
+        CRYPT_SIZE=''
+        LUKS_PASSWORD=123
 
-    CRYPT_NAME="$VARIANT"
-    CRYPT_FILE="/dev/mapper/$CRYPT_NAME"
-    KEY_SIZE=256
-    ITER_TIME=3000
-    HASH='sha256'
-    LUKSFORMAT_ARUGMNETS="--key-size $KEY_SIZE --hash $HASH --iter-time $ITER_TIME"
-else
-    LVM_PART="${DISK}2"
-    # None means all remaining space
-    LVM_SIZE=''
+        CRYPT_NAME="$VARIANT"
+        CRYPT_FILE="/dev/mapper/$CRYPT_NAME"
+        KEY_SIZE=256
+        ITER_TIME=3000
+        HASH='sha256'
+        LUKSFORMAT_ARUGMNETS="--key-size $KEY_SIZE --hash $HASH --iter-time $ITER_TIME"
+    else
+        LVM_PART="${DISK}2"
+        # None means all remaining space
+        LVM_SIZE=''
+    fi
+
+    # LVM
+    ENABLE_SWAP=1
+    SWAP_SIZE='16G'
+    ROOT_SIZE='50G'
+    # user home takes the rest
+    LVM_NAME="${VARIANT}_lvm"
+    LVM_GROUP_NAME="$VARIANT"
+    LVM_DIR="/dev/$LVM_GROUP_NAME"
+
+    # File systems
+    BOOT_DIR_ALONE='/boot'
+
+    BOOT_FORMAT_COMMAND="mkfs.fat -n Boot $BOOT_PART"
+    BOOT_FSTAB_ARGS="$BOOT_DIR_ALONE    vfat       rw,relatime,fmask=0022,dmask=0022,codepage=437,iocharset=ascii,shortname=mixed,utf8,errors=remount-ro	0 2"
+
+    ROOT_FORMAT_COMMAND="mkfs.btrfs -f -L root $LVM_DIR/root"
+    ROOT_FSTAB_ARGS="/  btrfs     	rw,noatime,ssd,space_cache=v2,subvolid=5,subvol=/	0 0"
+
+    HOME_FORMAT_COMMAND="mkfs.btrfs -f -L home $LVM_DIR/home"
+    HOME_FSTAB_ARGS="$USER_HOME     btrfs      rw,noatime,ssd,space_cache=v2,subvolid=5,subvol=/"
 fi
-
-# LVM
-ENABLE_SWAP=1
-SWAP_SIZE='16G'
-ROOT_SIZE='50G'
-# user home takes the rest
-LVM_NAME="${VARIANT}_lvm"
-LVM_GROUP_NAME="$VARIANT"
-LVM_DIR="/dev/$LVM_GROUP_NAME"
-
-# File systems
-BOOT_DIR_ALONE='/boot'
-BOOT_DIR=${INSTALL_DIR}${BOOT_DIR_ALONE}
-
-BOOT_FORMAT_COMMAND="mkfs.fat -n Boot $BOOT_PART"
-BOOT_FSTAB_ARGS="$BOOT_DIR_ALONE    vfat       rw,relatime,fmask=0022,dmask=0022,codepage=437,iocharset=ascii,shortname=mixed,utf8,errors=remount-ro	0 2"
-
-ROOT_FORMAT_COMMAND="mkfs.btrfs -f -L root $LVM_DIR/root"
-ROOT_FSTAB_ARGS="/  btrfs     	rw,noatime,ssd,space_cache=v2,subvolid=5,subvol=/	0 0"
-
-HOME_FORMAT_COMMAND="mkfs.btrfs -f -L home $LVM_DIR/home"
-HOME_FSTAB_ARGS="$USER_HOME     btrfs      rw,noatime,ssd,space_cache=v2,subvolid=5,subvol=/"
 
 # Installer
 # Don't ask for confirmation

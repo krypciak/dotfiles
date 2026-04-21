@@ -18,6 +18,8 @@ _help() {
     exit 1
 }
 
+ISO_COPY_TO_DIR=''
+ISO_WAIT_FOR_DIR=''
 handle_args "\
 -y|--noconfirm=export YOLO=1,\
 --iso:=export ISO_OUT_DIR=\"\$2\",\
@@ -36,7 +38,6 @@ if [ "$OS_VARIANT" != 'arch' ]; then
 fi
 
 export VARIANT="arch"
-export VARIANT_NAME="Arch ISO"
 
 ISO_OUT_FILENAME="$VARIANT-iso-$(date -u +%Y-%m-%d).iso"
 ISO_OUT_FILE="$(echo "$ISO_OUT_DIR/$ISO_OUT_FILENAME" | xargs realpath)"

@@ -23,7 +23,7 @@ handle_args "\
 --dir:=export INSTALL_DIR=\"\$2\"; export TYPE='dir',\
 " "$@"
 
-if [ "$INSTALL_DIR" = '' ]; then
+if [[ ! -v INSTALL_DIR ]]; then
     err "Missing argument: --dir"
     _help
 fi

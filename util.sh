@@ -1,8 +1,8 @@
 #!/bin/bash
-set -e
+set -eu
 set +a
 
-if [ "$UTIL_SOURCED" != '1' ]; then
+if [[ ! -v UTIL_SOURCED ]]; then
     set -a
     RED="$(printf '\033[31m')"
     ORANGE="$(printf '\033[38;5;208m')"
@@ -291,7 +291,7 @@ if [ "$UTIL_SOURCED" != '1' ]; then
     }
 
     source_vars() {
-        if [ "$VARS_SOURCED" != "1" ]; then
+        if [ ! -v VARS_SOURCED ]; then
             if [ "$TYPE" = 'iso' ]; then
                 . "$1/system-install/vars.conf.iso.sh"
             else
@@ -305,7 +305,7 @@ if [ "$UTIL_SOURCED" != '1' ]; then
 
     USER_HOME="/home/$USER"
 
-    [ -z "$YOLO" ] && YOLO=0
+    [[ ! -v YOLO ]] && YOLO=0
 
     mkdir -p "$USER_HOME"
 
@@ -315,5 +315,5 @@ if [ "$UTIL_SOURCED" != '1' ]; then
     set +a
 fi
 
-set -euo pipefail
+set -eu
 set +a

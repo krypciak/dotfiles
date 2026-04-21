@@ -12,6 +12,7 @@ _help() {
     printf "    -r --root       Install for root\n"
     exit 0
 }
+
 handle_args "\
 -y|--noconfirm=export YOLO=1,\
 -r|--root=export FOR_ROOT=1,\
@@ -20,7 +21,7 @@ handle_args "\
 inst() {
     method="$1" # copy or link
     path="$2"
-    override="$3"
+    override="${3-}"
     _continue=0
 
     from="$(realpath "./user/$path")"
@@ -50,7 +51,7 @@ inst() {
 # info "Updating submodules..."
 # git submodule update --init --recursive
 
-if [ "$FOR_ROOT" != "1" ]; then
+if [[ ! -v FOR_ROOT ]]; then
     check_isnt_root
 
     info "Installing dotfiles for user..."
