@@ -33,7 +33,7 @@ mkdir -p "$INSTALL_DIR"/var/cache/pacman/pkg
 cp -r "$DOTDIR"/system-install/profile/arch/root/etc/pacman.conf "$INSTALL_DIR"/etc/
 cp -r "$DOTDIR"/system-install/profile/arch/root/etc/pacman.d "$INSTALL_DIR"/etc/
 
-sed -i -e "s|\(\/etc/pacman.d\/mirrorlist\)|$INSTALL_DIR\1|g" "$INSTALL_DIR"/etc/pacman.conf
+sed -i -e "s|\(\/etc/pacman.d\/\)|$INSTALL_DIR\1|g" "$INSTALL_DIR"/etc/pacman.conf
 
 info_barr "Straping packages"
 packages="$(arch_base_install)"
