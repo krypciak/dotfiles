@@ -27,5 +27,10 @@ arch_system_configure() {
         cp "$DOTDIR"/system-install/profile/iso/configs/arch-iso-service.sh /etc/
         chmod +x /etc/arch-iso-service.sh
         systemctl enable arch-iso-service
+        printf '\\S ISO \\r (\\l)' >/etc/issue
+        printf '' >>/etc/issue
+    else
+        printf '\\S \\r (\\l)' >/etc/issue
+        printf '' >>/etc/issue
     fi
 }
