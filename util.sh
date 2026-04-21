@@ -293,7 +293,7 @@ _util() {
 
     source_vars() {
         if [ "$VARS_SOURCED" != "1" ]; then
-            if [ "$MODE" = 'iso' ]; then
+            if [ "$TYPE" = 'iso' ]; then
                 . "$1/system-install/vars.conf.iso.sh"
             else
                 . "$1/system-install/vars.conf.sh"

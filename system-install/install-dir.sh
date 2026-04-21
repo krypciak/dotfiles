@@ -1,5 +1,5 @@
 #!/bin/bash
-DIR="$(printf "$(dirname $0)" | xargs realpath)"
+DIR="$(dirname -- "${BASH_SOURCE[0]}" | xargs realpath)"
 DOTDIR="$DIR"/..
 . "$DOTDIR/util.sh"
 
@@ -20,7 +20,7 @@ _help() {
 }
 handle_args "\
 -y|--noconfirm=export YOLO=1,\
---dir:=export INSTALL_DIR=\"\$2\"; export MODE='dir',\
+--dir:=export INSTALL_DIR=\"\$2\"; export TYPE='dir',\
 " "$@"
 
 if [ "$INSTALL_DIR" = '' ]; then

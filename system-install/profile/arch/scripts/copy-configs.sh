@@ -1,4 +1,4 @@
-DIR="$(printf "$(dirname $0)" | xargs realpath)"
+DIR="$(dirname -- "${BASH_SOURCE[0]}" | xargs realpath)"
 DOTDIR="$DIR"/../../../..
 . "$DOTDIR/util.sh"
 
@@ -11,6 +11,6 @@ cp -L -r "$DOTDIR"/system-install/profile/common/root/* /
 
 # arch configs are already copied
 
-if [ "$MODE" = 'iso' ]; then
+if [ "$TYPE" = 'iso' ]; then
     cp -L -r "$DOTDIR"/system-install/profile/iso/root/* /
 fi

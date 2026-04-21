@@ -1,5 +1,5 @@
 #!/bin/bash
-DIR="$(printf "$(dirname $0)" | xargs realpath)"
+DIR="$(dirname -- "${BASH_SOURCE[0]}" | xargs realpath)"
 DOTDIR="$DIR"/../../../..
 . "$DOTDIR/util.sh"
 

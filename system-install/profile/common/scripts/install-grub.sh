@@ -1,5 +1,5 @@
 #!/bin/bash
-DIR="$(printf "$(dirname $0)" | xargs realpath)"
+DIR="$(dirname -- "${BASH_SOURCE[0]}" | xargs realpath)"
 DOTDIR="$DIR"/../../../..
 . "$DOTDIR/util.sh"
 
@@ -13,7 +13,7 @@ if [ "$ENCRYPT" = '1' ]; then
     sed -i "s|CRYPT_NAME|$CRYPT_NAME|g" /etc/default/grub
 fi
 
-if [ "$MODE" != 'dir' ]; then
+if [ "$TYPE" != 'dir' ]; then
     info "Installing grub to <path>$BOOT_DIR_ALONE</path>"
     grub-install --target=x86_64-efi --efi-directory="$BOOT_DIR_ALONE" --bootloader-id="$BOOTLOADER_ID"
 

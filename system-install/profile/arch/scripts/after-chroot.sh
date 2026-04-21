@@ -1,5 +1,5 @@
 #!/bin/bash
-DIR="$(printf "$(dirname $0)" | xargs realpath)"
+DIR="$(dirname -- "${BASH_SOURCE[0]}" | xargs realpath)"
 DOTDIR="$DIR"/../../../..
 . "$DOTDIR/util.sh"
 
@@ -21,7 +21,7 @@ source_vars "$DOTDIR"
 . "$DOTDIR"/system-install/profile/common/scripts/cleanup.sh
 . "$DIR"/mkinitcpio-toggle.sh enable
 
-if [ "$MODE" = 'iso' ]; then
+if [ "$TYPE" = 'iso' ]; then
     . "$DOTDIR"/system-install/profile/iso/scripts/iso.sh
 else
     . "$DOTDIR"/system-install/profile/common/scripts/configure-fstab.sh
