@@ -1,8 +1,8 @@
 #!/bin/bash
 set -e
+set +a
 
 _util() {
-    set -a
     RED="$(printf '\033[31m')"
     ORANGE="$(printf '\033[38;5;208m')"
     BLUE="$(printf '\033[0;34m')"
@@ -32,7 +32,6 @@ _util() {
     err() { printf "${RED}::${NC} ${BOLD}$(_process_msg "$*")${NC}\n"; }
 
     confirm() {
-        set +a
         shell=0
         y='y'
         n='n'
@@ -98,7 +97,6 @@ _util() {
                 esac
             fi
         done
-        set -a
     }
 
     chown_user() { for path in "$@"; do chown -R $USER1:$USER1 "$path"; done; }

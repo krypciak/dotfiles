@@ -118,3 +118,5 @@ HOME_FSTAB_ARGS="$USER_HOME     btrfs      rw,noatime,ssd,space_cache=v2,subvoli
 YOLO=1
 AUTO_REBOOT=0
 PAUSE_AFTER_DONE=1
+
+set +a
