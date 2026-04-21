@@ -1,20 +1,42 @@
 #!/bin/bash
-export MODE='iso'
+export TYPE='iso'
 
-DIR="$(printf "$(dirname $0)" | xargs realpath)"
+DIR="$(dirname -- "${BASH_SOURCE[0]}" | xargs realpath)"
 DOTDIR="$DIR"/..
 . "$DOTDIR/util.sh"
 
 check_is_root
 source_vars "$DOTDIR"
 
+_help() {
+    printf "Usage:\n"
+    printf "    -h --help              Displays this message\n"
+    printf "    -y --noconfim          Skips confirmations\n"
+    printf "       --iso ISO           Destination directory for .iso image\n"
+    printf "       --iso-copy-to DIR   Copy the iso to that dir and delete all previous variant iso's\n"
+    printf "       --wait-for-dir DIR  Dont start iso build until that dir is mounted\n"
+    exit 1
+}
+
+handle_args "\
+-y|--noconfirm=export YOLO=1,\
+--iso:=export ISO_OUT_DIR=\"\$2\",\
+--iso-copy_to:=export ISO_COPY_TO_DIR=\"\$2\",\
+--wait-for-dir:=export ISO_WAIT_FOR_DIR=\"\$2\",\
+" "$@"
+
+if [ "$ISO_OUT_DIR" = '' ]; then
+    err "Missing argument (required for --mode=iso): --iso"
+    _help
+fi
+
 if [ "$OS_VARIANT" != 'arch' ]; then
     err "Creating iso is only possible on arch."
     exit 1
 fi
 
-VARIANT="arch"
-VARIANT_NAME="Arch ISO"
+export VARIANT="arch"
+export VARIANT_NAME="Arch ISO"
 
 ISO_OUT_FILENAME="$VARIANT-iso-$(date -u +%Y-%m-%d).iso"
 ISO_OUT_FILE="$(echo "$ISO_OUT_DIR/$ISO_OUT_FILENAME" | xargs realpath)"
@@ -24,7 +46,7 @@ ISO_WORK_DIR="/mnt/$VARIANT-iso"
 ISO_ROOT="$ISO_WORK_DIR/iso"
 ISO_LIVEOS="$ISO_ROOT/LiveOS"
 ISO_ROOTFS="$ISO_WORK_DIR/rootfs"
-INSTALL_DIR="$ISO_ROOTFS"
+export INSTALL_DIR="$ISO_ROOTFS"
 
 info "Building iso..."
 
@@ -49,7 +71,7 @@ _wait_dir_mount() {
 
 _wait_dir_mount
 
-. "$DOTDIR"/system-install/install-dir.sh
+bash "$DOTDIR"/system-install/install-dir.sh
 
 mkdir -p "$ISO_ROOT"/boot
 cp "$ISO_ROOTFS"/boot/initramfs-x86_64.img "$ISO_ROOTFS"/boot/*-ucode.img "$ISO_ROOT"/boot/
@@ -60,7 +82,7 @@ cp "$ISO_ROOTFS"/boot/initramfs-x86_64.img "$ISO_ROOTFS"/boot/*-ucode.img "$ISO_
 
 . "$DOTDIR"/system-install/profile/iso/scripts/mkiso.sh
 
-rm -rf "$ISO_ROOT"
+# rm -rf "$ISO_ROOT"
 
 chown_user "$ISO_OUT_FILE"
 info "Building ISO done."
