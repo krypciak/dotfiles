@@ -42,10 +42,10 @@ fi
 PACKAGE_INSTALL_ATTEMPTS=1
 
 PACKAGE_GROUPS=""
-PACKAGE_GROUPS="$PACKAGE_GROUPS strap"  # packages installing pre-chroot
-PACKAGE_GROUPS="$PACKAGE_GROUPS system" # bare minimum to get into bash shell
+PACKAGE_GROUPS="$PACKAGE_GROUPS strap"      # packages installing pre-chroot
+PACKAGE_GROUPS="$PACKAGE_GROUPS system"     # bare minimum to get into bash shell
 # PACKAGE_GROUPS="$PACKAGE_GROUPS drivers"   # cpu ucode and gpu drivers
-PACKAGE_GROUPS="$PACKAGE_GROUPS basic" # make the shell usable and preety
+PACKAGE_GROUPS="$PACKAGE_GROUPS basic"      # make the shell usable and preety
 # PACKAGE_GROUPS="$PACKAGE_GROUPS gui"       # platform independent gui apps
 # PACKAGE_GROUPS="$PACKAGE_GROUPS audio"     # required for audio to work
 # PACKAGE_GROUPS="$PACKAGE_GROUPS media"     # ffmpeg, vlc, yt-dlp

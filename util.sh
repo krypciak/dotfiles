@@ -17,9 +17,9 @@ if [[ ! -v UTIL_SOURCED ]]; then
     _process_msg() {
         printf '%s' "$*" |
             sed -e "s|<path>|$ORANGE|g" \
-                -e "s|</path>|$NC|g" \
+                -e "s|</path>|$NC$BOLD|g" \
                 -e "s|<user>|$ORANGE|g" \
-                -e "s|</user>|$NC|g"
+                -e "s|</user>|$NC$BOLD|g"
     }
 
     info() { printf "${BLUE}::${NC} ${BOLD}$(_process_msg "$(_process_msg "$*")")${NC}\n"; }
@@ -292,7 +292,7 @@ if [[ ! -v UTIL_SOURCED ]]; then
 
     source_vars() {
         if [ ! -v VARS_SOURCED ]; then
-            if [ "$TYPE" = 'iso' ]; then
+            if [ "${TYPE-}" = 'iso' ]; then
                 . "$1/system-install/vars.conf.iso.sh"
             else
                 . "$1/system-install/vars.conf.sh"

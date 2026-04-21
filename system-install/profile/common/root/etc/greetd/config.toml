@@ -2,9 +2,9 @@
 vt = 1
 
 [default_session]
-command = "tuigreet -s /etc/greetd/sessions -t -r --power-shutdown 'loginctl poweroff' --power-reboot 'loginctl reboot'"
+command = "agreety --cmd /bin/bash"
 user = "greeter"
 
 [initial_session]
-command = "USER_HOME/.config/river/run.sh"
+command = "USER_HOME/.config/scripts/autologin.sh"
 user = "USER1"

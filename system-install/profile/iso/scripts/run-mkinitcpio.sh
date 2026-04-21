@@ -8,7 +8,6 @@ source_vars "$DOTDIR"
 
 set +e
 mkinitcpio -P -R
-set -e
 
 info "Generating initramfs"
 # shellcheck disable=SC2010
@@ -17,3 +16,5 @@ mkinitcpio -g /boot/initramfs-x86_64.img --kernel "$KERNEL_VERSION"
 if [ -f /boot/vmlinuz-"$KERNEL" ]; then
     mv /boot/vmlinuz-"$KERNEL" /boot/vmlinuz-x86_64
 fi
+
+set -e

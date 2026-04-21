@@ -1,6 +1,6 @@
 #!/bin/bash
 
-arch_base_install() {
+arch_strap_install() {
     echo "$KERNEL $KERNEL-headers"
 
     echo 'archlinux-keyring cachyos-keyring pacman'

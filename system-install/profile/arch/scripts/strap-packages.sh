@@ -36,7 +36,7 @@ cp -r "$DOTDIR"/system-install/profile/arch/root/etc/pacman.d "$INSTALL_DIR"/etc
 sed -i -e "s|\(\/etc/pacman.d\/\)|$INSTALL_DIR\1|g" "$INSTALL_DIR"/etc/pacman.conf
 
 info_barr "Straping packages"
-packages="$(arch_base_install)"
+packages="$(arch_strap_install)"
 flag="$([ "$(whoami)" != 'root' ] && echo '-N' || true)"
 pacstrap -C "$INSTALL_DIR"/etc/pacman.conf -c -G -M $flag "$INSTALL_DIR" $packages
 

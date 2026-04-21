@@ -11,7 +11,7 @@ arch_system_install() {
     echo 'btrfs-progs clang dbus dbus dbus-glib dbus-python doas-sudo-shim'
     echo 'dosfstools efibootmgr git greetd grub mtools networkmanager'
     echo 'openbsd-netcat opendoas perl python python-pip ttf-dejavu ttf-hack'
-    echo 'unrar unzip util-linux wget zip'
+    echo 'unrar unzip util-linux wget zip memtest86+'
 }
 
 arch_system_configure() {

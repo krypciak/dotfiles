@@ -2,6 +2,7 @@
 DIR="$(dirname -- "${BASH_SOURCE[0]}" | xargs realpath)"
 export DOTDIR="$DIR"/../../../..
 . "$DOTDIR/util.sh"
+set -e
 
 check_is_root
 source_vars "$DOTDIR"
@@ -33,4 +34,6 @@ fi
 
 command -v 'fastfetch' >/dev/null 2>&1 && fastfetch
 
-[ "$PAUSE_AFTER_DONE" = '1' ] && confirm 'Y shell ignore' "Confirm to continue" '' 'err "Said no to continuation prompt"; exit 1'
+if [ "$TYPE" != 'iso' ]; then
+    [ "$PAUSE_AFTER_DONE" = '1' ] && confirm 'Y shell ignore' "Confirm to continue" '' 'err "Said no to continuation prompt"; exit 1'
+fi
