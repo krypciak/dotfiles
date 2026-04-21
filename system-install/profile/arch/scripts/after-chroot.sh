@@ -1,32 +1,32 @@
 #!/bin/bash
 DIR="$(dirname -- "${BASH_SOURCE[0]}" | xargs realpath)"
-DOTDIR="$DIR"/../../../..
+export DOTDIR="$DIR"/../../../..
 . "$DOTDIR/util.sh"
 
 check_is_root
 source_vars "$DOTDIR"
 
-. "$DIR"/mkinitcpio-toggle.sh disable
-. "$DIR"/time-lang.sh
-. "$DOTDIR"/system-install/profile/common/scripts/add-user.sh
-. "$DOTDIR"/system-install/profile/common/scripts/temp-doas.sh
-. "$DIR"/init-pacman.sh
-. "$DIR"/install-paru.sh
-. "$DIR"/install-packages.sh
-. "$DIR"/copy-configs.sh
-. "$DOTDIR"/system-install/profile/common/scripts/temp-doas.sh
-. "$DOTDIR"/system-install/profile/common/scripts/install-dotfiles.sh
-. "$DOTDIR"/system-install/profile/common/scripts/set-passwords.sh
-. "$DOTDIR"/system-install/profile/common/scripts/configure-packages.sh
-. "$DOTDIR"/system-install/profile/common/scripts/cleanup.sh
-. "$DIR"/mkinitcpio-toggle.sh enable
+./"$DIR"/mkinitcpio-toggle.sh disable
+./"$DIR"/time-lang.sh
+./"$DOTDIR"/system-install/profile/common/scripts/add-user.sh
+./"$DOTDIR"/system-install/profile/common/scripts/temp-doas.sh
+./"$DIR"/init-pacman.sh
+./"$DIR"/install-paru.sh
+./"$DIR"/install-packages.sh
+./"$DIR"/copy-configs.sh
+./"$DOTDIR"/system-install/profile/common/scripts/temp-doas.sh
+./"$DOTDIR"/system-install/profile/common/scripts/install-dotfiles.sh
+./"$DOTDIR"/system-install/profile/common/scripts/set-passwords.sh
+./"$DOTDIR"/system-install/profile/common/scripts/configure-packages.sh
+./"$DOTDIR"/system-install/profile/common/scripts/cleanup.sh
+./"$DIR"/mkinitcpio-toggle.sh enable
 
 if [ "$TYPE" = 'iso' ]; then
-    . "$DOTDIR"/system-install/profile/iso/scripts/iso.sh
+    ./"$DOTDIR"/system-install/profile/iso/scripts/iso.sh
 else
-    . "$DOTDIR"/system-install/profile/common/scripts/configure-fstab.sh
-    . "$DOTDIR"/system-install/profile/common/scripts/install-grub.sh
-    . "$DOTDIR"/system-install/profile/common/scripts/run-mkinitcpio.sh
+    ./"$DOTDIR"/system-install/profile/common/scripts/configure-fstab.sh
+    ./"$DOTDIR"/system-install/profile/common/scripts/install-grub.sh
+    ./"$DOTDIR"/system-install/profile/common/scripts/run-mkinitcpio.sh
 fi
 
 # TODO: remember to uncheck checkspace in pacman.conf!

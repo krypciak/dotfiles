@@ -22,11 +22,10 @@ arch_system_configure() {
     systemctl enable greetd
     systemctl enable NetworkManager
 
-    # TODO: iso
     if [ "$TYPE" = 'iso' ]; then
-        cp "$DB"/profile/iso/configs/arch-iso-net.service /usr/lib/systemd/system/
-        cp "$DB"/profile/iso/configs/arch-artix-net.sh /etc/
-        chmod +x /etc/arch-artix-net.sh
-        systemctl enable arch-iso-net
+        cp "$DOTDIR"/system-install/profile/iso/configs/arch-iso-service.service /usr/lib/systemd/system/
+        cp "$DOTDIR"/system-install/profile/iso/configs/arch-iso-service.sh /etc/
+        chmod +x /etc/arch-iso-service.sh
+        systemctl enable arch-iso-service
     fi
 }

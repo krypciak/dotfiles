@@ -2,7 +2,8 @@
 set -e
 set +a
 
-_util() {
+if [ "$UTIL_SOURCED" != '1' ]; then
+    set -a
     RED="$(printf '\033[31m')"
     ORANGE="$(printf '\033[38;5;208m')"
     BLUE="$(printf '\033[0;34m')"
@@ -311,8 +312,8 @@ _util() {
     GIT_DISCOVERY_ACROSS_FILESYSTEM=1
 
     UTIL_SOURCED=1
-}
-
-if [ "$UTIL_SOURCED" != '1' ]; then
-    _util
+    set +a
 fi
+
+set -euo pipefail
+set +a
