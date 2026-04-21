@@ -3,18 +3,22 @@ set -e
 
 _util() {
     set -a
-    RED='\x1b[31m'
-    ORANGE='\x1b[38;5;208m'
-    BLUE='\x1b[0;34m'
-    LIGHT_BLUE='\x1b[01;34m'
-    LIGHT_GREEN='\x1b[1;32m'
-    BOLD='\x1b[1m'
-    ITALIC='\x1b[3m'
-    UNDERLINE='\x1b[4m'
-    NC='\x1b[0m'
+    RED="$(printf '\033[31m')"
+    ORANGE="$(printf '\033[38;5;208m')"
+    BLUE="$(printf '\033[0;34m')"
+    LIGHT_BLUE="$(printf '\033[1;34m')"
+    LIGHT_GREEN="$(printf '\033[1;32m')"
+    BOLD="$(printf '\033[1m')"
+    ITALIC="$(printf '\033[3m')"
+    UNDERLINE="$(printf '\033[4m')"
+    NC="$(printf '\033[0m')"
 
     _process_msg() {
-        echo "$*" | sed -e "s|<path>|$ORANGE|g" | sed -e "s|</path>|$NC$BOLD|g" | sed -e "s|<user>|$ORANGE|g" | sed -e "s|</user>|$NC$BOLD|g"
+        printf '%s' "$*" |
+            sed -e "s|<path>|$ORANGE|g" \
+                -e "s|</path>|$NC$BOLD|g" \
+                -e "s|<user>|$ORANGE|g" \
+                -e "s|</user>|$NC$BOLD|g"
     }
 
     info() { printf "${BLUE}::${NC} ${BOLD}$(_process_msg "$(_process_msg "$*")")${NC}\n"; }
