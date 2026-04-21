@@ -11,11 +11,16 @@ source_vars "$DOTDIR"
 . "$DOTDIR"/system-install/profile/common/scripts/add-user.sh
 . "$DOTDIR"/system-install/profile/common/scripts/temp-doas.sh
 . "$DIR"/init-pacman.sh
-. "$DIR"/cachy-repos.sh
 . "$DIR"/install-paru.sh
-
+. "$DIR"/install-packages.sh
+. "$DIR"/copy-configs.sh
+. "$DOTDIR"/system-install/profile/common/scripts/temp-doas.sh
+# . "$DB"/profile/common/scripts/install-dotfiles.sh
+# . "$DB"/profile/common/scripts/set-passwords.sh
+# . "$DOTDIR"/system-install/profile/common/scripts/configure-packages.sh
 
 . "$DIR"/mkinitcpio-toggle.sh enable
+
 # TODO: remember to uncheck checkspace in pacman.conf!
 
 info 'All done'
