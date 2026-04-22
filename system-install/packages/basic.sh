@@ -1,5 +1,21 @@
 #!/bin/bash
 
+arch_basic_install() {
+    # already in system
+    echo 'git zip wget unzip unrar'
+
+    echo 'fish lsd fd dysk dust atuin autojump-rs-bin ouch'
+    echo 'tealdeer fastfetch bat bat-extras htop bottom hyperfine'
+    echo 'bc jq tmux fzf'
+    echo 'neovim neovim-symlinks tree-sitter-cli'
+    echo 'lazygit tokei ttyper'
+    echo 'ttf-nerd-fonts-symbols ttf-dejavu ttf-hack'
+    echo 'man-db man-pages'
+    echo 'imagemagick innoextract net-tools p7zip moreutils'
+    echo 'procs'
+    echo 'trash-cli'
+}
+
 _configure_tldr() {
     info "tldr"
     # Generate tealdeer pages
@@ -7,18 +23,6 @@ _configure_tldr() {
     tldr tldr >/dev/null 2>&1
     doas -u "$USER1" tldr --update
     doas -u "$USER1" tldr tldr >/dev/null 2>&1
-}
-
-arch_basic_install() {
-    # TODO: there are some questionable choices here
-    echo 'atuin autojump-rs-bin bat bat-extras bc bottom cage'
-    echo 'clang dog dust dysk fd fish fzf htop hyperfine imagemagick'
-    echo 'innoextract jq lazygit lsd man-db man-pages moreutils fastfetch'
-    echo 'neovim neovim-symlinks tree-sitter-cli'
-    echo 'net-tools nodejs ouch p7zip pastel'
-    echo 'pipr-bin pnpm procs pv pyright ripgrep rmtrash syntax-highlighting'
-    echo 'tealdeer tmux tokei trash-cli ttf-nerd-fonts-symbols ttyper'
-    echo 'xorg-server-xvfb xorg-server-xvfb npm'
 }
 
 arch_basic_configure() {

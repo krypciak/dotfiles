@@ -39,13 +39,13 @@ if [ "$ALL_DRIVERS" = "0" ]; then
     CPU='amd'
 fi
 
-PACKAGE_INSTALL_ATTEMPTS=1
+PACKAGE_INSTALL_ATTEMPTS=3
 
 PACKAGE_GROUPS=""
 PACKAGE_GROUPS="$PACKAGE_GROUPS strap"      # packages installing pre-chroot
 PACKAGE_GROUPS="$PACKAGE_GROUPS system"     # bare minimum to get into bash shell
 # PACKAGE_GROUPS="$PACKAGE_GROUPS drivers"   # cpu ucode and gpu drivers
-PACKAGE_GROUPS="$PACKAGE_GROUPS basic"      # make the shell usable and preety
+PACKAGE_GROUPS="$PACKAGE_GROUPS basic"      # basic shell utilities
 PACKAGE_GROUPS="$PACKAGE_GROUPS gui"       # platform independent gui apps
 PACKAGE_GROUPS="$PACKAGE_GROUPS audio"     # required for audio to work
 # PACKAGE_GROUPS="$PACKAGE_GROUPS media"     # ffmpeg, vlc, yt-dlp
@@ -55,16 +55,17 @@ PACKAGE_GROUPS="$PACKAGE_GROUPS audio"     # required for audio to work
 # PACKAGE_GROUPS="$PACKAGE_GROUPS awesome"   # awesomewm
 PACKAGE_GROUPS="$PACKAGE_GROUPS wayland"   # wayland base and utilities like screen locker
 PACKAGE_GROUPS="$PACKAGE_GROUPS hyprland"  # hyprland
-# PACKAGE_GROUPS="$PACKAGE_GROUPS coding"    # rust, git-filter-repo
+# PACKAGE_GROUPS="$PACKAGE_GROUPS dev-js"    # nodejs, bun, npm, esbuild
+# PACKAGE_GROUPS="$PACKAGE_GROUPS dev-cpp"   # gcc
 # PACKAGE_GROUPS="$PACKAGE_GROUPS java"      # open-jdk stuff
-# PACKAGE_GROUPS="$PACKAGE_GROUPS fstools"   # Filesystems, ventoy, testdisk
+# PACKAGE_GROUPS="$PACKAGE_GROUPS fstools"   # filesystems, ventoy, testdisk
 # PACKAGE_GROUPS="$PACKAGE_GROUPS gaming"    # steam. lib32 libraries, lutris, wine, some drivers, java
 # PACKAGE_GROUPS="$PACKAGE_GROUPS security"  # cpu-x, keepassxc, libfido2, libu2f-server, nmap, openbsd-netcat, yubikey-manager-qt
 # PACKAGE_GROUPS="$PACKAGE_GROUPS social"    # emojis, webcord
 # PACKAGE_GROUPS="$PACKAGE_GROUPS cups"      # printing
 # PACKAGE_GROUPS="$PACKAGE_GROUPS bluetooth" # blueman, bluez, bluetooth support at initcpio
 # PACKAGE_GROUPS="$PACKAGE_GROUPS virt"      # QEMU
-# PACKAGE_GROUPS="$PACKAGE_GROUPS android"   # adb
+# PACKAGE_GROUPS="$PACKAGE_GROUPSandroid"   # adb
 
 # Bootloader
 VARIANT_NAME="Arch"
