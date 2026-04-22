@@ -1,0 +1,9 @@
+[Trigger]
+Type = Package
+Operation = Install
+Operation = Upgrade
+Target = xkeyboard-config
+[Action]
+Description = Copying krypek caps modifier config
+When = PostTransaction
+Exec = /bin/sh -c 'cp /home/krypek/.config/dotfiles/system-install/profile/common/root/usr/share/X11/xkb/symbols/capslock /usr/share/X11/xkb/symbols/capslock'
