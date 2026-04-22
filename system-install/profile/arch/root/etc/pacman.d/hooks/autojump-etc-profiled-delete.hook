@@ -1,0 +1,9 @@
+[Trigger]
+Type = Package
+Operation = Install
+Operation = Upgrade
+Target = autojump-rs-bin
+[Action]
+Description = Removing autojump /etc/profile.d files
+When = PostTransaction
+Exec = /bin/sh -c 'rm -f /etc/profile.d/autojump.*'
