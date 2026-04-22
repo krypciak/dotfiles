@@ -15,17 +15,8 @@ _configure_river() {
 }
 
 
-artix_river_install() {
-    echo 'river-git xdg-desktop-portal-wlr filtile-git'
-}
-
 arch_river_install() {
     echo 'river-git xdg-desktop-portal-wlr filtile-git'
-}
-
-artix_river_configure() {
-    _configure_river
-    echo
 }
 
 arch_river_configure() {

@@ -1,7 +1,8 @@
 #!/bin/bash
 
 arch_wayland_install() {
-    echo 'cliphist fnott fuzzel gammastep grim inotify-tools qt6-wayland'
-    echo 'slurp swaylock awww wayland wayland-protocols wlr-randr xorg-xwayland'
+    echo 'wayland wayland-protocols wlr-randr xorg-xwayland'
+    echo 'inotify-tools qt6-wayland'
+    echo 'cliphist fnott fuzzel gammastep grim slurp'
+    echo 'brightnessctl slurp swaylock awww wayvnc'
 }
-

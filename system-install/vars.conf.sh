@@ -28,7 +28,7 @@ PACMAN_ARGUMENTS='--color=always --noconfirm --needed'
 PARU_ARGUMENTS='--noremovemake --skipreview --noupgrademenu'
 
 # If ALL_DRIVERS is set to 1, GPU and CPU options are ignored
-ALL_DRIVERS=0
+ALL_DRIVERS=1
 if [ "$ALL_DRIVERS" = "0" ]; then
     # NOTE: the only one tested is the amd one
 
@@ -46,14 +46,15 @@ PACKAGE_GROUPS="$PACKAGE_GROUPS strap"      # packages installing pre-chroot
 PACKAGE_GROUPS="$PACKAGE_GROUPS system"     # bare minimum to get into bash shell
 # PACKAGE_GROUPS="$PACKAGE_GROUPS drivers"   # cpu ucode and gpu drivers
 PACKAGE_GROUPS="$PACKAGE_GROUPS basic"      # make the shell usable and preety
-# PACKAGE_GROUPS="$PACKAGE_GROUPS gui"       # platform independent gui apps
-# PACKAGE_GROUPS="$PACKAGE_GROUPS audio"     # required for audio to work
+PACKAGE_GROUPS="$PACKAGE_GROUPS gui"       # platform independent gui apps
+PACKAGE_GROUPS="$PACKAGE_GROUPS audio"     # required for audio to work
 # PACKAGE_GROUPS="$PACKAGE_GROUPS media"     # ffmpeg, vlc, yt-dlp
 # PACKAGE_GROUPS="$PACKAGE_GROUPS browsers"  # dialect, firefox, librewolf, ungoogled-chromium
 # PACKAGE_GROUPS="$PACKAGE_GROUPS office"    # libreoffice-fresh
 # PACKAGE_GROUPS="$PACKAGE_GROUPS X11"       # X11 server and utilities like screen locker
 # PACKAGE_GROUPS="$PACKAGE_GROUPS awesome"   # awesomewm
-# PACKAGE_GROUPS="$PACKAGE_GROUPS wayland"   # wayland base and utilities like screen locker
+PACKAGE_GROUPS="$PACKAGE_GROUPS wayland"   # wayland base and utilities like screen locker
+PACKAGE_GROUPS="$PACKAGE_GROUPS hyprland"  # hyprland
 # PACKAGE_GROUPS="$PACKAGE_GROUPS coding"    # rust, git-filter-repo
 # PACKAGE_GROUPS="$PACKAGE_GROUPS java"      # open-jdk stuff
 # PACKAGE_GROUPS="$PACKAGE_GROUPS fstools"   # Filesystems, ventoy, testdisk
