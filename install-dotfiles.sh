@@ -156,6 +156,10 @@ chmod +x "$USER_HOME"/.config/aliases.sh
 # Update nvim plugins if there is internet
 if slient_err nc -z 8.8.8.8 53 -w 1; then
     info_barr 'Updating neovim plugins...'
-    timeout 20s nvim --headless "+Lazy! sync" +qa >/dev/null 2>&1
+    timeout 60s nvim --headless \
+        "+Lazy! sync" \
+        "+MasonToolsUpdate" \
+        "+TSUpdate" \
+        +qa
 fi
 info 'Done'

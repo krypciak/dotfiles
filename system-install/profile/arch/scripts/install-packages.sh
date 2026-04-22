@@ -21,6 +21,5 @@ until [ "$n" -ge $PACKAGE_INSTALL_ATTEMPTS ]; do
 done
 if [ "$n" -eq $PACKAGE_INSTALL_ATTEMPTS ]; then
     err "Package installation failed."
-    confirm 'Y barr' "Enter shell?" "/bin/sh" ''
     exit 1
 fi
