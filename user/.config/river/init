@@ -76,7 +76,6 @@ riverctl spawn 'pgrep keepassxc > /dev/null || keepassxc --platformtheme qt5ct >
 # riverctl spawn 'blueman-applet > /dev/null 2>&1'
 riverctl spawn 'sleep 1; librewolf > /dev/null 2>&1'
 riverctl spawn 'safeeyes > /dev/null 2>&1'
-riverctl spawn 'prettierd start'
 
 riverctl spawn 'fcitx5 -d'
 
