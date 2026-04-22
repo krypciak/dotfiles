@@ -124,6 +124,7 @@ end
 if not isx11 then
     function set_wallpaper(wallpaper)
         if wallpaper:find('^#') then
+            wallpaper = wallpaper:sub(2)
             print('awww clear "' .. wallpaper .. '"')
             os.execute('awww clear "' .. wallpaper .. '"')
         else
