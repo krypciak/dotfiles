@@ -1,3 +1,4 @@
+#!/bin/bash
 set -a
 USER1="$(ls /home/)"
 USER_HOME="$USER_HOME/home"
