@@ -7,5 +7,5 @@
 # }
 
 arch_browsers_install() {
-    echo 'chromium-extension-web-store firefox-pure librewolf-bin ungoogled-chromium-bin'
+    echo 'chromium-extension-web-store firefox librewolf-bin ungoogled-chromium-bin'
 }
