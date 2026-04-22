@@ -147,6 +147,7 @@ else
     inst copy .bashrc
     inst copy .config/at-login.sh
     inst copy .config/aliases.sh
+    inst link .config/scripts
 fi
 
 chmod +x "$USER_HOME"/.config/at-login.sh
