@@ -26,6 +26,7 @@ fi
 
 info_barr "Installing crossgrub theme"
 git clone https://github.com/krypciak/crossgrub /tmp/crossgrub
+mkdir -p /boot/grub/themes
 bash /tmp/crossgrub/install.sh
 
 info_barr "Installing grub to <path>$BOOT_DIR_ALONE</path>"
