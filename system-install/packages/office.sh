@@ -1,5 +1,9 @@
 #!/bin/bash
 
 arch_office_install() {
-    echo 'libreoffice-fresh onlyoffice-bin krita'
+    echo 'onlyoffice-bin'
+
+    if [ "$TYPE" != 'iso' ]; then
+        echo 'libreoffice-fresh  krita'
+    fi
 }

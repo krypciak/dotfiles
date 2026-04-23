@@ -1,9 +1,14 @@
 #!/bin/bash
 
 arch_java_install() {
-    echo 'jdk17-openjdk jdk8-openjdk jdk-openjdk'
+    echo 'jdk-openjdk'
+    if [ "$TYPE" != "iso" ]; then
+        echo 'jdk17-openjdk jdk8-openjdk'
+    fi
 }
 
 arch_java_configure() {
-    archlinux-java set java-17-openjdk
+    if [ "$TYPE" != "iso" ]; then
+        archlinux-java set java-17-openjdk
+    fi
 }
