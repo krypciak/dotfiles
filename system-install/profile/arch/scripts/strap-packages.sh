@@ -30,10 +30,7 @@ mkdir -p "$INSTALL_DIR"/tmp
 mkdir -p "$INSTALL_DIR"/var/lib/pacman
 mkdir -p "$INSTALL_DIR"/var/cache/pacman/pkg
 
-cp -r "$DOTDIR"/system-install/profile/arch/root/etc/pacman.conf "$INSTALL_DIR"/etc/
-cp -r "$DOTDIR"/system-install/profile/arch/root/etc/pacman.d "$INSTALL_DIR"/etc/
-
-sed -i -e "s|\(\/etc/pacman.d\/\)|$INSTALL_DIR\1|g" "$INSTALL_DIR"/etc/pacman.conf
+"$DOTDIR"/system-install/profile/arch/scripts/copy-pacman-config.sh "$INSTALL_DIR"
 
 info_barr "Straping packages"
 packages="$(arch_strap_install)"
@@ -41,6 +38,6 @@ flag="$([ "$(whoami)" != 'root' ] && echo '-N' || true)"
 pacstrap -C "$INSTALL_DIR"/etc/pacman.conf -c -G -M $flag "$INSTALL_DIR" $packages
 
 # restore original config
-cp -r "$DOTDIR"/system-install/profile/arch/root/etc/pacman.conf "$INSTALL_DIR"/etc/
+"$DOTDIR"/system-install/profile/arch/scripts/copy-pacman-config.sh
 
 info "Done"

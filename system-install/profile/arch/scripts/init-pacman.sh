@@ -11,7 +11,7 @@ info "Initializng pacman"
 pacman-key --init
 pacman-key --populate
 
-sed -i 's|CheckSpace|#CheckSpace|g' /etc/pacman.conf
+"$DIR"/copy-pacman-config.sh
 
 sed -i 's|#PACMAN_AUTH=()|PACMAN_AUTH=(doas)|' /etc/makepkg.conf
 sed -i 's|#MAKEFLAGS="-j2"|MAKEFLAGS="-j$(nproc)"|' /etc/makepkg.conf

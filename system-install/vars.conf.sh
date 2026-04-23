@@ -37,18 +37,20 @@ if [ "$ALL_DRIVERS" = "0" ]; then
     GPU='amd'
     # Options: amd intel
     CPU='amd'
+
+    LINUX_FIRMWARE_PACKAGES=""
 fi
 
 PACKAGE_INSTALL_ATTEMPTS=3
 
 PACKAGE_GROUPS=""
-PACKAGE_GROUPS="$PACKAGE_GROUPS strap"     # packages installing pre-chroot
-PACKAGE_GROUPS="$PACKAGE_GROUPS system"    # bare minimum to get into bash shell
-PACKAGE_GROUPS="$PACKAGE_GROUPS drivers"   # cpu ucode and gpu drivers
-PACKAGE_GROUPS="$PACKAGE_GROUPS basic"     # basic shell utilities
-PACKAGE_GROUPS="$PACKAGE_GROUPS gui"       # platform independent gui apps
-PACKAGE_GROUPS="$PACKAGE_GROUPS audio"     # required for audio to work
-PACKAGE_GROUPS="$PACKAGE_GROUPS media"     # ffmpeg, vlc, yt-dlp
+PACKAGE_GROUPS="$PACKAGE_GROUPS strap"   # packages installing pre-chroot
+PACKAGE_GROUPS="$PACKAGE_GROUPS system"  # bare minimum to get into bash shell
+PACKAGE_GROUPS="$PACKAGE_GROUPS drivers" # cpu ucode and gpu drivers
+PACKAGE_GROUPS="$PACKAGE_GROUPS basic"   # basic shell utilities
+PACKAGE_GROUPS="$PACKAGE_GROUPS gui"     # platform independent gui apps
+PACKAGE_GROUPS="$PACKAGE_GROUPS audio"   # required for audio to work
+PACKAGE_GROUPS="$PACKAGE_GROUPS media"   # ffmpeg, vlc, yt-dlp
 PACKAGE_GROUPS="$PACKAGE_GROUPS browsers"
 PACKAGE_GROUPS="$PACKAGE_GROUPS office"
 # PACKAGE_GROUPS="$PACKAGE_GROUPS X11"
@@ -59,14 +61,14 @@ PACKAGE_GROUPS="$PACKAGE_GROUPS dev-js"
 PACKAGE_GROUPS="$PACKAGE_GROUPS dev-cpp"
 PACKAGE_GROUPS="$PACKAGE_GROUPS dev-dotnet"
 PACKAGE_GROUPS="$PACKAGE_GROUPS java"
-PACKAGE_GROUPS="$PACKAGE_GROUPS fstools"   # filesystems, ventoy, testdisk
+PACKAGE_GROUPS="$PACKAGE_GROUPS fstools" # filesystems, ventoy, testdisk
 # PACKAGE_GROUPS="$PACKAGE_GROUPS gaming"    # steam. lib32 libraries, lutris, wine, some drivers, java
-PACKAGE_GROUPS="$PACKAGE_GROUPS security"  # cpu-x, keepassxc, libfido2, libu2f-server, nmap, openbsd-netcat, yubikey-manager-qt
+PACKAGE_GROUPS="$PACKAGE_GROUPS security" # cpu-x, keepassxc, libfido2, libu2f-server, nmap, openbsd-netcat, yubikey-manager-qt
 # PACKAGE_GROUPS="$PACKAGE_GROUPS social"    # emojis, webcord
 # PACKAGE_GROUPS="$PACKAGE_GROUPS cups"      # printing
 # PACKAGE_GROUPS="$PACKAGE_GROUPS bluetooth" # blueman, bluez, bluetooth support at initcpio
 # PACKAGE_GROUPS="$PACKAGE_GROUPS virt"      # QEMU
-PACKAGE_GROUPS="$PACKAGE_GROUPS android"   # adb
+PACKAGE_GROUPS="$PACKAGE_GROUPS android" # adb
 
 # Bootloader
 VARIANT_NAME="Arch"
@@ -123,6 +125,9 @@ fi
 YOLO=1
 AUTO_REBOOT=0
 PAUSE_AFTER_DONE=1
+if [[ ! -v TYPE ]]; then
+    TYPE='dir'
+fi
 DEV=1
 
 set +a

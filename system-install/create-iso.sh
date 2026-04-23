@@ -89,7 +89,12 @@ fi
 
 chown_user "$ISO_OUT_FILE"
 info "Building ISO done."
-echo $ISO_OUT_FILE
+echo "$ISO_OUT_FILE"
+if command -v dust; then
+    dust "$ISO_OUT_FILE"
+else
+    du -h "$ISO_OUT_FILE"
+fi
 
 if [ "$ISO_COPY_TO_DIR" != '' ]; then
     _wait_dir_mount
