@@ -64,8 +64,6 @@ if [[ ! -v FOR_ROOT ]]; then
     inst link .config/scripts
     inst link .config/nvim
     inst link .config/zed
-    inst link .zshrc
-    inst link .config/zsh
     inst link .config/fish
     inst link .config/tealdeer
     inst link .bashrc
