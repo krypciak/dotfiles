@@ -83,7 +83,9 @@ cp "$ISO_ROOTFS"/boot/initramfs-x86_64.img "$ISO_ROOTFS"/boot/*-ucode.img "$ISO_
 
 . "$DOTDIR"/system-install/profile/iso/scripts/mkiso.sh
 
-# rm -rf "$ISO_ROOT"
+if [ "$DEV" != "1" ]; then
+    rm -rf "$ISO_ROOT"
+fi
 
 chown_user "$ISO_OUT_FILE"
 info "Building ISO done."
