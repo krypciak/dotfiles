@@ -48,12 +48,12 @@ inst() {
     chown_user "$dest"
 }
 
-# info "Updating submodules..."
-# git submodule update --init --recursive
-
 if [[ ! -v FOR_ROOT ]]; then
     check_isnt_root
     export USER1="$USER"
+
+    info "Updating submodules..."
+    git submodule update --init --recursive
 
     info "Installing dotfiles for user..."
 
@@ -89,7 +89,6 @@ if [[ ! -v FOR_ROOT ]]; then
     inst link .config/redshift
     inst link .config/rofi
 
-    inst link .config/dwl
     inst link .config/river
     inst link .config/gammastep
     inst link .config/fuzzel
