@@ -10,6 +10,8 @@ user/.config/river/log.txt
 *.log
 */**/LOG
 */**/LOG.old
+*.png~
+*.kra~
 
 *.ldb
 

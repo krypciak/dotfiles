@@ -6,12 +6,9 @@ local default_group = 1
 local default_index = 2
 
 local wallpapers = {
-    {  'oneshot/main.png', 'oneshot/MemoryOfaDistantPlace.gif', 'oneshot/library.png', 'oneshot/factory.png' },
-    { 'autumn.png' },
-    { 'crosscode-curcuits.png' },
-    { 'anime/tenken-fran.png' },
-    { 'lea.gif' },
-    { '#000000', '#303030' },
+    {  'oneshot/main.png', 'oneshot/MemoryOfaDistantPlace.gif' },
+    { 'crosscode-circuits.png' },
+    { '#000000', '#303030', '#1d1f21' },
 }
 local custom_scaling_wallpapers = {}
 custom_scaling_wallpapers['oneshot/MemoryOfaDistantPlace.gif'] = { awww='Nearest', mpv='nearest' }
