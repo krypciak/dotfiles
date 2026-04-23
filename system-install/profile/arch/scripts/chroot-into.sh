@@ -28,6 +28,11 @@ if [[ ! -v CMD_TO_RUN ]]; then
     CMD_TO_RUN=/bin/sh
 fi
 
+if [ "$TYPE" = 'dir' ]; then
+    info "Running genfstab on <path>$INSTALL_DIR</path>"
+    genfstab -U "$INSTALL_DIR" >"$INSTALL_DIR"/etc/fstab-gen
+fi
+
 info_garr "Preparing to chroot into <path>$INSTALL_DIR</path>"
 
 info_barr "Copying dotfiles"
@@ -37,5 +42,4 @@ cp -r "$DOTDIR" "$DEST_DOTFILES_DIR"
 
 info_barr "Chrooting"
 
-# genfstab -U "$INSTALL_DIR" > "$INSTALL_DIR"/etc/fstab
 arch-chroot "$INSTALL_DIR" $CMD_TO_RUN

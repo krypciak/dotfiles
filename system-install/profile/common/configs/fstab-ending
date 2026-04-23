@@ -1,0 +1,6 @@
+
+tmpfs /tmp      tmpfs rw,nodev,nosuid          0  0
+
+UUID=980E-3BB0 /mnt/redpen   exfat rw,noatime,user,nofail 0 2
+UUID=9F1E-D95D /mnt/blackpen exfat rw,noatime,user,nofail 0 2
+
