@@ -1,9 +1,6 @@
 [submodule "user/.config/awesome/lain"]
 	path = user/.config/awesome/lain
 	url = https://github.com/lcpz/lain
-[submodule "user/.config/river/sandbar"]
-	path = user/.config/river/sandbar
-	url = https://github.com/krypciak/sandbar
 [submodule "user/.config/nvim"]
 	path = user/.config/nvim
 	url = https://github.com/krypciak/.nvim
