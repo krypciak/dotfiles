@@ -128,6 +128,6 @@ PAUSE_AFTER_DONE=1
 if [[ ! -v TYPE ]]; then
     TYPE='dir'
 fi
-DEV=1
+DEV=0
 
 set +a

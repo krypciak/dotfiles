@@ -10,4 +10,5 @@ chown_user "$USER_HOME"/*
 if [ "$DEV" != '1' ]; then
     info "Removing package cache"
     paru --noconfirm -Scc
+    rm -rf /var/cache/pacman/pkg /root/.cache/paru "$USER_HOME"/.cache/paru
 fi

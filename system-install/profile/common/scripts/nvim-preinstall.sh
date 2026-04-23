@@ -1,4 +1,5 @@
 #!/bin/bash
+set +e
 
 wait_time="${1-50000}"
 
@@ -9,3 +10,6 @@ timeout 60s nvim --headless \
     "+TSInstall $ts_langs" \
     "+MasonToolsUpdate" \
     "+lua vim.defer_fn(function() vim.cmd('qa') end, $wait_time)" >/dev/null 2>&1
+
+set -e
+exit 0

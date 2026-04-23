@@ -84,7 +84,7 @@ cp "$ISO_ROOTFS"/boot/initramfs-x86_64.img "$ISO_ROOTFS"/boot/*-ucode.img "$ISO_
 . "$DOTDIR"/system-install/profile/iso/scripts/mkiso.sh
 
 if [ "$DEV" != "1" ]; then
-    rm -rf "$ISO_ROOT"
+    rm -rf "$ISO_WORK_DIR"
 fi
 
 chown_user "$ISO_OUT_FILE"

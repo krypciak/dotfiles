@@ -13,7 +13,7 @@ if [ "$INSTALL_DOTFILES" = '1' ]; then
     doas -u "$USER1" sh "$DOTDIR"/install-dotfiles.sh
 
     info_barr 'Downloading user neovim plugins etc...'
-    doas -u "$USER1" ./"$DOTDIR"/system-install/profile/common/scripts/nvim-preinstall.sh
+    doas -u "$USER1" "$DOTDIR"/system-install/profile/common/scripts/nvim-preinstall.sh
 
     mkdir -p /root/.local/share
     if [ "$TYPE" = 'iso' ]; then
@@ -30,7 +30,7 @@ if [ "$INSTALL_DOTFILES" = '1' ]; then
     sh "$DOTDIR"/install-dotfiles.sh --root
 
     info_barr 'Downloading user neovim plugins etc...'
-    ./"$DOTDIR"/system-install/profile/common/scripts/nvim-preinstall.sh 10000
+    "$DOTDIR"/system-install/profile/common/scripts/nvim-preinstall.sh 10000
 
     chown_user "$USER_HOME"/.local/share/nvim
 fi
