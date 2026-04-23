@@ -53,6 +53,7 @@ inst() {
 
 if [[ ! -v FOR_ROOT ]]; then
     check_isnt_root
+    export USER1="$USER"
 
     info "Installing dotfiles for user..."
 
