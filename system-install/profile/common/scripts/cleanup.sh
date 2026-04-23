@@ -21,3 +21,7 @@ else
     cp "$DOTDIR"/system-install/profile/common/root/etc/doas.conf /etc/doas.conf
 fi
 chmod -c 0400 /etc/doas.conf
+
+if [ "$TYPE" != 'iso' ]; then
+    sed -i 's/#CheckSpace/CheckSpace/g' /etc/pacman.conf
+fi

@@ -31,8 +31,6 @@ fi
 ./"$DOTDIR"/system-install/profile/common/scripts/cleanup.sh
 ./"$DIR"/mkinitcpio-toggle.sh enable
 
-# TODO: remember to uncheck checkspace in pacman.conf!
-
 command -v 'fastfetch' >/dev/null 2>&1 && fastfetch
 
 if [ "$TYPE" != 'iso' ]; then
