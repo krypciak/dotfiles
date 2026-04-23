@@ -1,5 +1,0 @@
-DIRS=(
-    "videos"
-    "anime"
-)
-
