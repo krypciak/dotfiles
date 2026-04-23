@@ -19,8 +19,6 @@ source_vars "$DOTDIR"
 ./"$DOTDIR"/system-install/profile/common/scripts/install-dotfiles.sh
 ./"$DOTDIR"/system-install/profile/common/scripts/set-passwords.sh
 ./"$DOTDIR"/system-install/profile/common/scripts/configure-packages.sh
-./"$DOTDIR"/system-install/profile/common/scripts/cleanup.sh
-./"$DIR"/mkinitcpio-toggle.sh enable
 
 if [ "$TYPE" = 'iso' ]; then
     ./"$DOTDIR"/system-install/profile/iso/scripts/iso.sh
@@ -29,6 +27,9 @@ else
     ./"$DOTDIR"/system-install/profile/common/scripts/install-grub.sh
     ./"$DOTDIR"/system-install/profile/common/scripts/run-mkinitcpio.sh
 fi
+
+./"$DOTDIR"/system-install/profile/common/scripts/cleanup.sh
+./"$DIR"/mkinitcpio-toggle.sh enable
 
 # TODO: remember to uncheck checkspace in pacman.conf!
 
