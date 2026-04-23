@@ -9,7 +9,7 @@ source_vars "$DOTDIR"
 info_garr "Configuring grub"
 
 if [ "$TYPE" = 'dir' ]; then
-    echo a
+    BOOT_DIR_ALONE='/boot'
 elif [ "$TYPE" = 'disk' ]; then
     # GRUB_CMDLINE_LINUX="cryptdevice=UUID=CRYPT_UUID:CRYPT_NAME root=/dev/mapper/LVM_GROUP_NAME-root resume=UUID=SWAP_UUID"
 
