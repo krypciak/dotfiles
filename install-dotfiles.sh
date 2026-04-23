@@ -70,9 +70,7 @@ if [[ ! -v FOR_ROOT ]]; then
     inst link .bashrc
     inst link .bash_profile
     inst link .config/xsessions
-    inst link .config/topgrade.toml
     inst link .config/ttyper
-    inst link .config/animdl
     inst link .config/mimeapps.list
     inst link .config/atuin
     inst link .shellcheckrc
@@ -103,13 +101,15 @@ if [[ ! -v FOR_ROOT ]]; then
 
     inst link .config/tridactyl
 
-    inst link .config/krunnerrc
     inst link .config/plasmarc
-    inst link .config/plasmashellrc
 
     info_garr "Copying configuration files..."
 
+    inst copy .config/gtk-2.0 nooverride
     inst copy .config/gtk-3.0 nooverride
+    inst copy .config/gtk-4.0 nooverride
+    inst copy .config/gtkrc nooverride
+    inst copy .config/gtkrc-2.0 nooverride
     inst copy .config/qt5ct nooverride
     inst copy .config/qt6ct nooverride
 
