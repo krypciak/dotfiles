@@ -3,7 +3,7 @@ set +e
 
 wait_time="${1-50000}"
 
-ts_langs="asm bash c c_sharp cmake commonlisp cpp css d desktop diff dockerfile elixir fish fsharp git_config gitattributes gitcommit gitignore go groovy haskell html ini java javascript json jsonc julia kotlin latex lua make markdown nasm nix objdump pascal passwd pem perl php properties proto puppet python ruby rust scss sql toml tsx typescript vim vimdoc vue xml yaml zig"
+ts_langs="asm bash c c_sharp cmake commonlisp cpp css d desktop diff dockerfile elixir fish fsharp git_config gitattributes gitcommit gitignore go groovy haskell html ini java javascript json jsonc julia kotlin latex lua make markdown nasm nix objdump pascal passwd pem perl php properties proto puppet python ruby rust scss sql toml tsx typescript vim vimdoc vue xml yaml zig hyprlang"
 
 timeout 60s nvim --headless \
     "+Lazy! sync" \
