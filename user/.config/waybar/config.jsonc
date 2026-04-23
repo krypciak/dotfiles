@@ -5,11 +5,11 @@
     "height": 27,
     "spacing": 8,
     "modules-left": [
-        "hyprland/workspaces"
+        "hyprland/workspaces",
         // "custom/media"
+        "hyprland/window"
     ],
     "modules-center": [
-        "hyprland/window"
     ],
     "modules-right": [
         "custom/memory",
