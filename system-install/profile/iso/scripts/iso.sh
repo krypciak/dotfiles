@@ -6,6 +6,8 @@ DOTDIR="$DIR"/../../../..
 check_is_root
 source_vars "$DOTDIR"
 
+touch /etc/iso
+
 pacman $PACMAN_ARGUMENTS -S intel-ucode amd-ucode
 
 cp "$DOTDIR"/system-install/profile/iso/root/etc/doas.conf /etc/doas.conf
