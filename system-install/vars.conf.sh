@@ -122,7 +122,6 @@ fi
 # Installer
 # Don't ask for confirmation
 YOLO=1
-AUTO_REBOOT=0
 PAUSE_AFTER_DONE=1
 if [[ ! -v TYPE ]]; then
     TYPE='dir'
