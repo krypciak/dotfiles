@@ -13,11 +13,7 @@ if [ "$INSTALL_DOTFILES" = '1' ]; then
     doas -u "$USER1" sh "$DOTDIR"/install-dotfiles.sh
 
     info_barr 'Updating user neovim plugins...'
-    doas -u "$USER1" timeout 60s nvim --headless \
-        "+Lazy! sync" \
-        "+TSUpdate" \
-        "+MasonToolsUpdate" \
-        "+lua vim.defer_fn(function() vim.cmd('qa') end, 30000)" >/dev/null 2>&1
+    doas -u "$USER1" ./"$DOTDIR"/system-install/profile/common/scripts/nvim-preinstall.sh
 
     mkdir -p /root/.local/share
     cp -r "$USER_HOME"/.local/share/nvim /root/.local/share/nvim
@@ -25,12 +21,7 @@ if [ "$INSTALL_DOTFILES" = '1' ]; then
 
     info "Installing dotfiles for <user>root</user>"
     sh "$DOTDIR"/install-dotfiles.sh --root
-    timeout 60s nvim --headless \
-        "+Lazy! sync" \
-        "+TSUpdate" \
-        "+MasonToolsUpdate" \
-        "+lua vim.defer_fn(function() vim.cmd('qa') end, 30000)" >/dev/null 2>&1
-
+    ./"$DOTDIR"/system-install/profile/common/scripts/nvim-preinstall.sh
 fi
 
 info 'Generating fish completions'
