@@ -11,14 +11,18 @@ info_garr "Configuring grub"
 if [ "$TYPE" = 'dir' ]; then
     BOOT_DIR_ALONE='/boot'
 elif [ "$TYPE" = 'disk' ]; then
-    # GRUB_CMDLINE_LINUX="cryptdevice=UUID=CRYPT_UUID:CRYPT_NAME root=/dev/mapper/LVM_GROUP_NAME-root resume=UUID=SWAP_UUID"
-
-    [ "$ENABLE_SWAP" = '1' ] && sed -i "s|SWAP_UUID|$(blkid "$LVM_DIR"/swap -s UUID -o value)|g" /etc/default/grub
-    sed -i "s|LVM_GROUP_NAME|$LVM_GROUP_NAME|g" /etc/default/grub
-    if [ "$ENCRYPT" = '1' ]; then
-        sed -i "s/CRYPT_UUID/$(blkid "$CRYPT_PART" -s UUID -o value)/g" /etc/default/grub
-        sed -i "s|CRYPT_NAME|$CRYPT_NAME|g" /etc/default/grub
+    GRUB_CMDLINE_LINUX="root=/dev/mapper/$LVM_GROUP_NAME-root"
+    if [ "$ENABLE_SWAP" ]; then
+        SWAP_UUID="$(blkid "$LVM_DIR"/swap -s UUID -o value)"
+        GRUB_CMDLINE_LINUX="$GRUB_CMDLINE_LINUX resume=UUID=$SWAP_UUID"
     fi
+
+    if [ "$ENCRYPT" = '1' ]; then
+        CRYPT_UUID="$(blkid "$CRYPT_PART" -s UUID -o value)"
+        GRUB_CMDLINE_LINUX="cryptdevice=UUID=$CRYPT_UUID:$CRYPT_NAME $GRUB_CMDLINE_LINUX"
+    fi
+
+    sed -i "s/\(GRUB_CMDLINE_LINUX=\"\)/\1${GRUB_CMDLINE_LINUX}/g" /etc/default/grub
 else
     err "configure-fstab: unknown install type: $TYPE"
     exit 1
@@ -34,4 +38,3 @@ grub-install --target=x86_64-efi --efi-directory="$BOOT_DIR_ALONE" --bootloader-
 
 info_barr "Generating grub config"
 grub-mkconfig -o /boot/grub/grub.cfg
-
