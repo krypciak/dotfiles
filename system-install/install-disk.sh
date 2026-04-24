@@ -37,14 +37,14 @@ fi
 
 unmount() {
     set +e
-    info "Unmounting all"
+    info "Unmounting all (there may be errors)"
     sync
-    umount -q "$BOOT_PART" >/dev/null 2>&1
-    umount -Rq "$INSTALL_DIR" >/dev/null 2>&1
-    swapoff "$LVM_DIR/swap" >/dev/null 2>&1
-    lvchange -an "$LVM_GROUP_NAME" >/dev/null 2>&1
-    cryptsetup close "$CRYPT_FILE" >/dev/null 2>&1
-    umount -q "$CRYPT_FILE" >/dev/null 2>&1
+    umount -q "$BOOT_PART"
+    umount -Rq "$INSTALL_DIR"
+    swapoff "$LVM_DIR/swap"
+    lvchange -an "$LVM_GROUP_NAME"
+    cryptsetup close "$CRYPT_FILE"
+    umount -q "$CRYPT_FILE"
     sync
     set -e
 }
