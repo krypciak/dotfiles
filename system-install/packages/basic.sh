@@ -14,6 +14,7 @@ arch_basic_install() {
     echo 'imagemagick innoextract net-tools p7zip moreutils'
     echo 'procs'
     echo 'trash-cli'
+    echo 'github-cli'
 }
 
 _configure_tldr() {
