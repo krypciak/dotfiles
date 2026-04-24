@@ -90,7 +90,7 @@ if [ -v DISK ]; then
         KEY_SIZE=256
         ITER_TIME=3000
         HASH='sha256'
-        LUKSFORMAT_ARUGMNETS="--key-size $KEY_SIZE --hash $HASH --iter-time $ITER_TIME"
+        LUKSFORMAT_ARGUMENTS="--key-size $KEY_SIZE --hash $HASH --iter-time $ITER_TIME"
     else
         LVM_PART="${DISK}2"
         # None means all remaining space
