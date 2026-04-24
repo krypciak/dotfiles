@@ -35,6 +35,7 @@ if [ "$VARIANT" != 'arch' ]; then
 fi
 
 unmount() {
+    set +e
     sync
     umount -q "$BOOT_PART" >/dev/null 2>&1
     umount -Rq "$INSTALL_DIR" >/dev/null 2>&1
@@ -43,6 +44,7 @@ unmount() {
     cryptsetup close "$CRYPT_FILE" >/dev/null 2>&1
     umount -q "$CRYPT_FILE" >/dev/null 2>&1
     sync
+    set -e
 }
 
 fdisk -l "$DISK"
