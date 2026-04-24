@@ -22,7 +22,7 @@ elif [ "$TYPE" = 'disk' ]; then
         GRUB_CMDLINE_LINUX="cryptdevice=UUID=$CRYPT_UUID:$CRYPT_NAME $GRUB_CMDLINE_LINUX"
     fi
 
-    sed -i "s/\(GRUB_CMDLINE_LINUX=\"\)/\1${GRUB_CMDLINE_LINUX}/g" /etc/default/grub
+    sed -i "s|^GRUB_CMDLINE_LINUX=.*|GRUB_CMDLINE_LINUX=\"${GRUB_CMDLINE_LINUX}\"|" /etc/default/grub
 else
     err "configure-fstab: unknown install type: $TYPE"
     exit 1
