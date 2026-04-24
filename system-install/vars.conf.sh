@@ -88,7 +88,7 @@ if [ -v DISK ]; then
         CRYPT_NAME="$VARIANT"
         CRYPT_FILE="/dev/mapper/$CRYPT_NAME"
         KEY_SIZE=256
-        ITER_TIME=1000
+        ITER_TIME=2000
         HASH='sha256'
         LUKSFORMAT_ARGUMENTS="--key-size $KEY_SIZE --hash $HASH --iter-time $ITER_TIME"
     else
