@@ -11,18 +11,18 @@ info_garr "Configuring grub"
 if [ "$TYPE" = 'dir' ]; then
     BOOT_DIR_ALONE='/boot'
 elif [ "$TYPE" = 'disk' ]; then
-    GRUB_CMDLINE_LINUX="root=/dev/mapper/$LVM_GROUP_NAME-root"
+    flags="root=/dev/mapper/$LVM_GROUP_NAME-root"
     if [ "$ENABLE_SWAP" ]; then
         SWAP_UUID="$(blkid "$LVM_DIR"/swap -s UUID -o value)"
-        GRUB_CMDLINE_LINUX="$GRUB_CMDLINE_LINUX resume=UUID=$SWAP_UUID"
+        flags="$flags resume=UUID=$SWAP_UUID"
     fi
 
     if [ "$ENCRYPT" = '1' ]; then
         CRYPT_UUID="$(blkid "$CRYPT_PART" -s UUID -o value)"
-        GRUB_CMDLINE_LINUX="cryptdevice=UUID=$CRYPT_UUID:$CRYPT_NAME $GRUB_CMDLINE_LINUX"
+        flags="cryptdevice=UUID=$CRYPT_UUID:$CRYPT_NAME $flags"
     fi
 
-    sed -i "s|^GRUB_CMDLINE_LINUX=.*|GRUB_CMDLINE_LINUX=\"${GRUB_CMDLINE_LINUX}\"|" /etc/default/grub
+    sed -i "s|^GRUB_CMDLINE_LINUX_DEFAULT=.*|GRUB_CMDLINE_LINUX_DEFAULT=\"${flags}\"|" /etc/default/grub
 else
     err "configure-fstab: unknown install type: $TYPE"
     exit 1
