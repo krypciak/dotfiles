@@ -53,7 +53,9 @@ confirm 'N barr' "Start partitioning <path>$DISK</path>? $RED(DATA WARNING)" '' 
 
 info_barr "Unmouting"
 unmount
+set +e
 vgremove -f "$LVM_GROUP_NAME" >/dev/null 2>&1
+set -e
 unmount
 
 (
