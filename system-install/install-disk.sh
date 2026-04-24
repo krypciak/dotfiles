@@ -35,28 +35,15 @@ if [ "$VARIANT" != 'arch' ]; then
     exit 1
 fi
 
-unmount() {
-    set +e
-    info "Unmounting all (there may be errors)"
-    sync
-    set -x
-    umount -q "$BOOT_PART"
-    umount -Rq "$INSTALL_DIR"
-    swapoff "$LVM_DIR/swap"
-    lvchange -an "$LVM_GROUP_NAME"
-    cryptsetup close "$CRYPT_FILE"
-    umount -q "$CRYPT_FILE"
-    sync
-    set +x
-    set -e
-}
-trap 'unmount' exit 1
-
 fdisk -l "$DISK"
 info_garr "Partitioning the disk..."
 confirm 'N barr' "Start partitioning <path>$DISK</path>? $RED(DATA WARNING)" '' 'err "Said no to continuation prompt"; exit 1'
 
-info_barr "Unmouting"
+unmount() {
+    bash "$DOTDIR"/system-install/profile/common/scripts/lvm-unmount.sh
+}
+trap unmount exit
+
 unmount
 set +e
 vgremove -f "$LVM_GROUP_NAME"
@@ -168,24 +155,6 @@ $HOME_FORMAT_COMMAND
 info_barr "BOOT"
 $BOOT_FORMAT_COMMAND
 
-info_garr "Mounting volumes"
-info_barr "<path>$LVM_DIR/root</path> to <path>$INSTALL_DIR</path>"
-mount "$LVM_DIR/root" "$INSTALL_DIR"
-
-info "<path>$LVM_DIR/home</path> to <path>$INSTALL_DIR/home/$USER1</path>"
-mkdir -p "$INSTALL_DIR/home/$USER1"
-mount "$LVM_DIR/home" "$INSTALL_DIR/home/$USER1"
-
-BOOT_DIR="$INSTALL_DIR$BOOT_DIR_ALONE"
-info "<path>$BOOT_PART</path> to <path>$BOOT_DIR</path>"
-mkdir -p "$BOOT_DIR"
-mount "$BOOT_PART" "$BOOT_DIR"
-
-if [ "$ENABLE_SWAP" = '1' ]; then
-    info "Turning swap on"
-    swapon "$LVM_DIR/swap"
-fi
+bash "$DOTDIR"/system-install/profile/common/scripts/lvm-mount.sh
 
 bash "$DOTDIR"/system-install/install-dir.sh
-
-unmount
