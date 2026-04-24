@@ -46,6 +46,7 @@ unmount() {
     sync
     set -e
 }
+trap 'unmount' EXIT
 
 fdisk -l "$DISK"
 info_garr "Partitioning the disk..."
@@ -119,7 +120,7 @@ if [ "$ENCRYPT" = '1' ]; then
         done
 
         while true; do
-            info_barr "Opening <path>$CRYPT_PART</path> as <path>$CRYPT_NAME</path"
+            info_barr "Opening <path>$CRYPT_PART</path> as <path>$CRYPT_NAME</path>"
             if cryptsetup open "$CRYPT_PART" "$CRYPT_NAME"; then
                 break
             fi
