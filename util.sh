@@ -301,7 +301,7 @@ if [[ ! -v UTIL_SOURCED ]]; then
         fi
     }
 
-    OS_VARIANT="$(grep '^ID=' /etc/os-release | cut -d= -f2)"
+    VARIANT="$(grep '^ID=' /etc/os-release | cut -d= -f2)"
 
     USER_HOME="/home/$USER"
 

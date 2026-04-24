@@ -32,7 +32,7 @@ if [ "$ISO_OUT_DIR" = '' ]; then
     _help
 fi
 
-if [ "$OS_VARIANT" != 'arch' ]; then
+if [ "$VARIANT" != 'arch' ]; then
     err "Creating iso is only possible on arch."
     exit 1
 fi

@@ -6,7 +6,7 @@ DOTDIR="$DIR"/..
 check_is_root
 source_vars "$DOTDIR"
 
-if [ "$OS_VARIANT" != 'arch' ]; then
+if [ "$VARIANT" != 'arch' ]; then
     err "Installing to dir is only possible on arch."
     exit 1
 fi
