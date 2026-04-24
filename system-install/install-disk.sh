@@ -39,6 +39,7 @@ unmount() {
     set +e
     info "Unmounting all (there may be errors)"
     sync
+    set -x
     umount -q "$BOOT_PART"
     umount -Rq "$INSTALL_DIR"
     swapoff "$LVM_DIR/swap"
@@ -46,6 +47,7 @@ unmount() {
     cryptsetup close "$CRYPT_FILE"
     umount -q "$CRYPT_FILE"
     sync
+    set +x
     set -e
 }
 trap 'unmount' exit 1
