@@ -49,7 +49,7 @@ fdisk -l "$DISK"
 info_garr "Partitioning the disk..."
 confirm 'N barr' "Start partitioning <path>$DISK</path>? $RED(DATA WARNING)" '' 'err "Said no to continuation prompt"; exit 1'
 
-info_brr "Unmouting"
+info_barr "Unmouting"
 unmount
 vgremove -f "$LVM_GROUP_NAME" >/dev/null 2>&1
 unmount
