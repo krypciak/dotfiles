@@ -25,6 +25,7 @@ fi
 if [[ ! -v INSTALL_DIR ]]; then
     export INSTALL_DIR=/mnt/arch
 fi
+mkdir -p "$INSTALL_DIR"
 
 export TYPE='disk'
 source_vars "$DOTDIR"
