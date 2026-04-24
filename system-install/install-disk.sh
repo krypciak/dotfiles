@@ -3,15 +3,7 @@ DIR="$(dirname -- "${BASH_SOURCE[0]}" | xargs realpath)"
 DOTDIR="$DIR"/..
 . "$DOTDIR/util.sh"
 
-export TYPE='disk'
-
 check_is_root
-source_vars "$DOTDIR"
-
-if [ "$VARIANT" != 'arch' ]; then
-    err "Installing to disk is only possible on arch."
-    exit 1
-fi
 
 _help() {
     printf "Usage:\n"
@@ -32,6 +24,14 @@ fi
 
 if [[ ! -v INSTALL_DIR ]]; then
     export INSTALL_DIR=/mnt/arch
+fi
+
+export TYPE='disk'
+source_vars "$DOTDIR"
+
+if [ "$VARIANT" != 'arch' ]; then
+    err "Installing to disk is only possible on arch."
+    exit 1
 fi
 
 unmount() {
