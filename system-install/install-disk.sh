@@ -36,6 +36,7 @@ fi
 
 unmount() {
     set +e
+    info "Unmounting all"
     sync
     umount -q "$BOOT_PART" >/dev/null 2>&1
     umount -Rq "$INSTALL_DIR" >/dev/null 2>&1
@@ -46,7 +47,7 @@ unmount() {
     sync
     set -e
 }
-trap 'unmount' EXIT
+trap 'unmount' exit 1
 
 fdisk -l "$DISK"
 info_garr "Partitioning the disk..."
@@ -55,7 +56,7 @@ confirm 'N barr' "Start partitioning <path>$DISK</path>? $RED(DATA WARNING)" '' 
 info_barr "Unmouting"
 unmount
 set +e
-vgremove -f "$LVM_GROUP_NAME" >/dev/null 2>&1
+vgremove -f "$LVM_GROUP_NAME"
 set -e
 unmount
 
@@ -135,50 +136,50 @@ fi
 info "Setting up LVM on <path>$LVM_TARGET_FILE</path>"
 
 info "Creating LVM group <path>$LVM_GROUP_NAME</path>"
-pvcreate --force $LVM_TARGET_FILE || err "LVM error" && exit
-vgcreate $LVM_GROUP_NAME $LVM_TARGET_FILE || err "LVM error" && exit
+pvcreate --force $LVM_TARGET_FILE
+vgcreate $LVM_GROUP_NAME $LVM_TARGET_FILE
 
 info_garr "Creating volumes"
 if [ "$ENABLE_SWAP" = '1' ]; then
     info_barr "Creating SWAP"
-    lvcreate -C y -L $SWAP_SIZE $LVM_GROUP_NAME -n swap || err "LVM error" && exit
+    lvcreate -C y -L $SWAP_SIZE $LVM_GROUP_NAME -n swap
 fi
 info_barr "Creating ROOT of size $ROOT_SIZE"
-lvcreate -C y -L $ROOT_SIZE $LVM_GROUP_NAME -n root || err "LVM error" && exit
+lvcreate -C y -L $ROOT_SIZE $LVM_GROUP_NAME -n root
 
 info_barr "Creating HOME of size 100%FREE"
-lvcreate -C y -l 100%FREE $LVM_GROUP_NAME -n home || err "LVM error" && exit
+lvcreate -C y -l 100%FREE $LVM_GROUP_NAME -n home
 
 info_garr "Formatting volumes"
 if [ "$ENABLE_SWAP" = '1' ]; then
     info_barr "SWAP"
-    mkswap -L swap $LVM_DIR/swap || err "LVM error" && exit
+    mkswap -L swap $LVM_DIR/swap
 fi
 
 info_barr "ROOT"
-$ROOT_FORMAT_COMMAND || err "LVM error" && exit
+$ROOT_FORMAT_COMMAND
 
 info_barr "HOME"
-$HOME_FORMAT_COMMAND || err "LVM error" && exit
+$HOME_FORMAT_COMMAND
 
 info_barr "BOOT"
-$BOOT_FORMAT_COMMAND || err "LVM error" && exit
+$BOOT_FORMAT_COMMAND
 
 info_garr "Mounting volumes"
 info_barr "<path>$LVM_DIR/root</path> to <path>$INSTALL_DIR</path>"
-mount "$LVM_DIR/root" "$INSTALL_DIR" || err "LVM error" && exit
+mount "$LVM_DIR/root" "$INSTALL_DIR"
 
 info "<path>$LVM_DIR/home</path> to <path>$INSTALL_DIR/home/$USER1</path>"
 mkdir -p "$INSTALL_DIR/home/$USER1"
-mount "$LVM_DIR/home" "$INSTALL_DIR/home/$USER1" || err "LVM error" && exit
+mount "$LVM_DIR/home" "$INSTALL_DIR/home/$USER1"
 
 info "<path>$BOOT_PART</path> to <path>$BOOT_DIR</path>"
 mkdir -p "$BOOT_DIR"
-mount "$BOOT_PART" "$BOOT_DIR" || err "LVM error" && exit
+mount "$BOOT_PART" "$BOOT_DIR"
 
 if [ "$ENABLE_SWAP" = '1' ]; then
     info "Turning swap on"
-    swapon "$LVM_DIR/swap" || err "LVM error" && exit
+    swapon "$LVM_DIR/swap"
 fi
 
 bash "$DOTDIR"/system-install/install-dir.sh
