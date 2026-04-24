@@ -84,7 +84,7 @@ unmount
     fi
     echo t # set partition type
     echo 2
-    echo 43 # to LV
+    echo 44 # to LV
     echo p  # print the in-memory partition table
     echo w  # write changes
     echo q  # quit
@@ -131,7 +131,7 @@ else
     LVM_TARGET_FILE="$LVM_PART"
 fi
 
-info "Setting up LVM on <path>$LVM_PART</path>"
+info "Setting up LVM on <path>$LVM_TARGET_FILE</path>"
 
 info "Creating LVM group <path>$LVM_GROUP_NAME</path>"
 pvcreate --force $LVM_TARGET_FILE || err "LVM error" && exit
