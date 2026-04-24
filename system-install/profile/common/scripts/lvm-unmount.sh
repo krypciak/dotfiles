@@ -5,6 +5,10 @@ DOTDIR="$DIR"/../../../..
 
 check_is_root
 export TYPE='disk'
+if [[ ! -v DISK ]]; then
+    err "\$DISK variable is unset."
+    exit 1
+fi
 source_vars "$DOTDIR"
 
 if [[ ! -v INSTALL_DIR ]]; then
