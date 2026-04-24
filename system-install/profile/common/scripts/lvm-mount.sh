@@ -11,6 +11,14 @@ if [[ ! -v INSTALL_DIR ]]; then
     export INSTALL_DIR=/mnt/arch
 fi
 
+if [ ! -e "$CRYPT_FILE" ]; then
+    cryptsetup open "$CRYPT_PART" "$CRYPT_NAME"
+fi
+if [ ! -e "$LVM_DIR"/root ]; then
+    vgscan
+    vgchange -a y "$LVM_GROUP_NAME"
+fi
+
 info_garr "Mounting volumes"
 info_barr "<path>$LVM_DIR/root</path> to <path>$INSTALL_DIR</path>"
 mount "$LVM_DIR/root" "$INSTALL_DIR"
