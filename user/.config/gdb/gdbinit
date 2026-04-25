@@ -6,5 +6,3 @@ set print array-indexes on
 set debuginfod enabled on
 
 tui layout src
-
-add-auto-load-safe-path /home/krypek/home/Programming/repos/programming-exercises/oi/32/preoi2/d1/har/.gdbinit
