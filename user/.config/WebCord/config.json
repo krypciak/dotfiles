@@ -2,7 +2,7 @@
     "settings": {
         "general": {
             "menuBar": {
-                "hide": true
+                "hide": false
             },
             "tray": {
                 "disable": false
@@ -60,7 +60,7 @@
                 "enabled": false
             },
             "redirection": {
-                "warn": true
+                "warn": false
             },
             "optimize": {
                 "gpu": true
