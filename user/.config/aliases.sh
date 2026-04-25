@@ -35,7 +35,6 @@ alias cat='bat'
 alias ti='hyperfine'
 alias man='batman'
 alias lfs='dysk'
-
 alias dust='dust --reverse'
 
 alias iforgothowtosyncfork='printf "# Sync your fork\ngit fetch upstream\ngit checkout master\ngit merge upstream/master\n"'
