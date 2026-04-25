@@ -1,0 +1,17 @@
+#!/bin/bash
+set -euo pipefail
+
+for file in "$@"; do
+    if [[ -L "$file" ]]; then
+        if [[ -e "$file" ]]; then
+            # ok
+            :
+        else
+            old_path="$(readlink $file)"
+            # shellcheck disable=SC2001
+            new_path="$(echo "$old_path" | sed 's|/home/krypek/home|/home/krypek|g')"
+            echo $file " -> " $new_path
+            ln -sfn "$new_path" "$file"
+        fi
+    fi
+done
