@@ -11,6 +11,7 @@ ln -sf /usr/share/zoneinfo/$REGION/$CITY /etc/localtime
 echo "$REGION/$CITY" >/etc/timezone
 
 systemctl enable --now systemd-timesyncd
+timedatectl set-ntp true
 sleep 1
 hwclock --systohc
 
