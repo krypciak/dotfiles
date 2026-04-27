@@ -39,6 +39,7 @@ info_barr "Copying dotfiles"
 DEST_DOTFILES_DIR="$INSTALL_DIR/home/$USER1/.config/dotfiles"
 mkdir -p "$DEST_DOTFILES_DIR"
 cp -r "$DOTDIR" "$DEST_DOTFILES_DIR"
+rm -r "$DEST_DOTFILES_DIR"/user/private
 
 info_barr "Chrooting"
 
