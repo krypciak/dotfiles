@@ -1,0 +1,24 @@
+[$Version]
+update_info=dolphin_detailsmodesettings.upd:rename-leading-padding,dolphin_detailsmodesettings.upd:move-content-display,dolphin_directorysizemode.upd:convert-directorysizecount-to-directorysizemode
+
+[General]
+Version=202
+ViewPropsTimestamp=2022,12,30,13,38,36.17
+
+[KFileDialog Settings]
+Places Icons Auto-resize=false
+Places Icons Static Size=22
+
+[KPropertiesDialog]
+2 screens: Height=458
+2 screens: Width=419
+2560x1440 screen: Height=468
+2560x1440 screen: Width=565
+HDMI-A-1 DP-2 Window-Maximized 2560x1440 HDMI-A-1=true
+HDMI-A-1 Window-Maximized 2560x1440 HDMI-A-1=true
+
+[MainWindow]
+MenuBar=Disabled
+
+[UiSettings]
+ColorScheme=BreezeDark
