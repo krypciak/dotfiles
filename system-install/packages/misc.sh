@@ -5,4 +5,5 @@ arch_misc_install() {
     echo 'cpu-x'
     echo 'libfido2 libu2f-server yubikey-manager'
     echo 'nmap'
+    echo 'syncthing kdeconnect'
 }
