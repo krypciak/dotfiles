@@ -92,6 +92,7 @@ if [[ ! -v FOR_ROOT ]]; then
 
     inst link .config/river
     inst link .config/gammastep
+    inst link .config/fuzzel
     inst link .config/swaylock
     inst link .config/fnott
     inst link .config/hypr
@@ -116,7 +117,6 @@ if [[ ! -v FOR_ROOT ]]; then
 
     inst copy .config/tutanota-desktop/conf.json nooverride
     inst copy .config/cmus/autosave nooverride
-    inst copy .config/fuzzel nooverride
 
     inst copy .config/keepassxc nooverride
 
