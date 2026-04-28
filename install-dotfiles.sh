@@ -117,7 +117,7 @@ if [[ ! -v FOR_ROOT ]]; then
     inst copy .config/qt6ct nooverride
 
     inst copy .config/tutanota-desktop/conf.json nooverride
-    inst copy .config/cmus/autosave noverride
+    inst copy .config/cmus/autosave nooverride
 
     inst copy .config/keepassxc nooverride
 
