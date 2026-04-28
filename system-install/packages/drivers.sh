@@ -17,6 +17,6 @@ arch_drivers_install() {
         # cp $COMMON_CONFIGS_DIR/20-amdgpu.conf /etc/X11/xorg.conf.d/
     fi
     if [ "$ALL_DRIVERS" = '1' ] || [ "$GPU" = 'ati' ]; then echo "xf86-video-ati vulkan-radeon lib32-vulkan-radeon linux-firmware-radeon"; fi
-    if [ "$ALL_DRIVERS" = '1' ] || [ "$GPU" = 'intel' ]; then echo "xf86-video-intel vulkan-intel lib32-vulkan-intel linux-firmware-intel"; fi
+    if [ "$ALL_DRIVERS" = '1' ] || [ "$GPU" = 'intel' ]; then echo "vulkan-intel lib32-vulkan-intel linux-firmware-intel intel-media-driver"; fi
     if [ "$ALL_DRIVERS" = '1' ] || [ "$GPU" = 'nvidia' ]; then echo "xf86-video-nouveau linux-firmware-nvidia"; fi
 }
