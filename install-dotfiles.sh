@@ -102,6 +102,7 @@ if [[ ! -v FOR_ROOT ]]; then
     inst link .config/tridactyl
 
     inst link .config/plasmarc
+    inst link .config/kdeglobals
 
     info_garr "Copying configuration files..."
 
