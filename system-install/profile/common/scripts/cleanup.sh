@@ -25,3 +25,7 @@ chmod -c 0400 /etc/doas.conf
 if [ "$TYPE" != 'iso' ]; then
     sed -i 's/#CheckSpace/CheckSpace/g' /etc/pacman.conf
 fi
+
+if [ "$ENCRYPT" = '1' ]; then
+    touch /etc/encrypted
+fi
