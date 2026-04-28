@@ -83,6 +83,7 @@ if [[ ! -v FOR_ROOT ]]; then
     inst link .config/cmus/notify.cfg
     inst link .config/safeeyes
     inst link .config/fcitx5
+    inst link .config/xdg-desktop-portal
 
     inst link .config/awesome
     inst link .config/redshift
