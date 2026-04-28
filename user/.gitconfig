@@ -1,0 +1,25 @@
+[credential "https://github.com"]
+	helper = 
+	helper = !/usr/bin/gh auth git-credential
+[credential "https://gist.github.com"]
+	helper = 
+	helper = !/usr/bin/gh auth git-credential
+[user]
+	email = krypek@tuta.io
+	name = krypek
+[init]
+	defaultBranch = main
+[http]
+	postBuffer = 157286400
+	version = --edit
+	version = --edit
+	version = HTTP/1.1
+	version = HTTP/1.1
+	version = HTTP/2
+[pull]
+	rebase = false
+[safe]
+	directory = /opt/fuzzel
+	directory = /
+[color]
+	ui = auto

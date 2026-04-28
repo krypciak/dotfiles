@@ -75,6 +75,7 @@ if [[ ! -v FOR_ROOT ]]; then
     inst link .shellcheckrc
     inst link .config/gdb
     inst link .config/lazygit/config.yml
+    inst link .gitconfig
 
     inst link .config/alacritty
     inst link .config/wallpapers
