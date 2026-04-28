@@ -20,7 +20,7 @@ _help() {
 }
 handle_args "\
 -y|--noconfirm=export YOLO=1,\
---dir:=export INSTALL_DIR=\"\$2\"; export TYPE='dir',\
+--dir:=export INSTALL_DIR=\"\$2\",\
 " "$@"
 
 if [[ ! -v INSTALL_DIR ]]; then
