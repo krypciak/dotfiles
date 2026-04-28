@@ -25,6 +25,7 @@ fi
 
 info_garr "Mounting volumes"
 info_barr "<path>$LVM_DIR/root</path> to <path>$INSTALL_DIR</path>"
+mkdir -p "$INSTALL_DIR"
 mount "$LVM_DIR/root" "$INSTALL_DIR"
 
 info "<path>$LVM_DIR/home</path> to <path>$INSTALL_DIR/home/$USER1</path>"
