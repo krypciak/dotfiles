@@ -12,6 +12,7 @@
     "modules-center": [
     ],
     "modules-right": [
+        "battery",
         "custom/memory",
         "custom/swap",
         "cpu",
@@ -28,7 +29,6 @@
         // "backlight",
         // "keyboard-state",
         // "hyprland/language",
-        // "battery",
         // "battery#bat2",
         // "tray",
         // "custom/power"
@@ -53,10 +53,19 @@
         }
     },
     "hyprland/window": {},
-    "cpu": {
-        "format": " {usage}%",
-        "tooltip": false,
-        "interval": 2
+    "battery": {
+        "format": "{icon} {capacity}%",
+        "format-full": "{icon} {capacity}%",
+        "format-charging": "󰃨 {capacity}%",
+        "format-plugged": " {capacity}%" ,
+        "format-alt": "{icon} {time}",
+        "format-icons": [
+            "",
+            "",
+            "",
+            "",
+            ""
+        ]
     },
     "custom/memory": {
         "format": " {}",
@@ -67,6 +76,11 @@
     "custom/swap": {
         "format": "󰓡{swapUsed}",
         "exec": "$HOME/.config/scripts/bar/swap.sh",
+        "tooltip": false,
+        "interval": 2
+    },
+    "cpu": {
+        "format": " {usage}%",
         "tooltip": false,
         "interval": 2
     },
@@ -159,27 +173,6 @@
     //         "",
     //         "",
     //         ""
-    //     ]
-    // },
-    // "battery": {
-    //     "states": {
-    //         // "good": 95,
-    //         "warning": 30,
-    //         "critical": 15
-    //     },
-    //     "format": "{capacity}% {icon}",
-    //     "format-full": "{capacity}% {icon}",
-    //     "format-charging": "{capacity}% 󰃨",
-    //     "format-plugged": "{capacity}% ",
-    //     "format-alt": "{time} {icon}",
-    //     // "format-good": "", // An empty format will hide the module
-    //     // "format-full": "",
-    //     "format-icons": [
-    //         "",
-    //         "",
-    //         "",
-    //         "",
-    //         ""
     //     ]
     // },
     // "battery#bat2": {

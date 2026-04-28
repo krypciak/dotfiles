@@ -1,7 +1,4 @@
-#!/bin/sh
-# MODULE='eth0'
-# MODULE='enp9s0'
-# MODULE='wlp3s0'
+#!/bin/bash
 TIME='4'
 MULTI='1'
 INTERFACES="$(ip -br a | awk '{print $1}' | grep -vE ^lo | xargs)"
