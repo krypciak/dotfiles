@@ -112,11 +112,12 @@ if [[ ! -v FOR_ROOT ]]; then
     inst copy .config/gtk-4.0 nooverride
     inst copy .config/gtkrc nooverride
     inst copy .config/gtkrc-2.0 nooverride
+    inst copy .config/dconf nooverride
     inst copy .config/qt5ct nooverride
     inst copy .config/qt6ct nooverride
 
     inst copy .config/tutanota-desktop/conf.json nooverride
-    inst copy .config/cmus/autosave nooverride
+    inst copy .config/cmus/autosave noverride
 
     inst copy .config/keepassxc nooverride
 
