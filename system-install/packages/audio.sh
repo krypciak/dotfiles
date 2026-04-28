@@ -5,4 +5,5 @@ arch_audio_install() {
     echo 'pipewire pipewire-alsa pipewire-audio pipewire-docs pipewire-ffado'
     echo 'pipewire-jack pipewire-pulse pipewire-v4l2 wireplumber'
     echo 'pavucontrol cmus-git playerctl'
+    echo 'alsamixer'
 }
