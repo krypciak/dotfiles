@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 set -euo pipefail
 MONITORS="$(wlr-randr | grep -E '"*"|Enabled|preferred' | awk '{if ($1 ~ "Enabled") print $2 " "; else if ($1 ~ /[0-9]+x[0-9]+/) print $1 "@"; else print $1 " "}' | tr -d '\n' | tr '@' '\n')"
 echo "$MONITORS"
@@ -24,8 +24,9 @@ for inp in $RES_TO_SORT; do
     RES_TO_SEL="$RES_TO_SEL$res @ $refr \t\t\t\t\t\t\t $ref\n"
 done
 
+export RES_TO_SEL="$(printf "$RES_TO_SEL" | sort -t'@' -k1,1nr -k2,2nr)"
 printf "$RES_TO_SEL"
-SEL="$(printf "$RES_TO_SEL" | sort --general-numeric-sort --reverse | fuzzel -d --log-level none --width 17)"
+SEL="$(printf "$RES_TO_SEL" |  fuzzel -d --log-level none --width 17)"
 RES="$(echo $SEL | awk '{print $1}')"
 REFRESH="$(echo $SEL | awk '{print $4}')"
 set -x
