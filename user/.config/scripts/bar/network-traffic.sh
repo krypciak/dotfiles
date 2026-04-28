@@ -4,7 +4,7 @@
 # MODULE='wlp3s0'
 TIME='4'
 MULTI='1'
-INTERFACES="$(ip -br a | awk '{print $1}' | grep -v lo | xargs)"
+INTERFACES="$(ip -br a | awk '{print $1}' | grep -vE ^lo | xargs)"
 
 format_KiB() {
     KiB=$((($2 - $1) / 1024 / $TIME))
