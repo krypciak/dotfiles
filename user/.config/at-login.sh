@@ -52,7 +52,7 @@ export NODE_REPL_HISTORY="$XDG_DATA_HOME"/node_repl_history
 # gentoo specific
 export LIBSEAT_BACKEND=logind
 
-export SDL_VIDEODRIVEVER=wayland
+export SDL_VIDEODRIVER=wayland
 
 export ANDROID_HOME="$USER_HOME/Programming/android/sdk"
 export ANDROID_SDK_ROOT="$USER_HOME/Programming/android/sdk"
