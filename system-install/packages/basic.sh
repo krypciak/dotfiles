@@ -6,7 +6,7 @@ arch_basic_install() {
 
     echo 'fish lsd fd dysk dust atuin autojump-rs-bin ouch'
     echo 'tealdeer fastfetch bat bat-extras htop bottom hyperfine'
-    echo 'bc jq tmux fzf'
+    echo 'bc jq tmux fzf fend-bin'
     echo 'neovim neovim-symlinks tree-sitter-cli'
     echo 'lazygit git-delta tig tokei ttyper'
     echo 'ttf-nerd-fonts-symbols ttf-dejavu ttf-hack'
