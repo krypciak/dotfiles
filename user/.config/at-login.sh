@@ -1,73 +1,59 @@
 #!/bin/bash
-export AT_LOGIN_SOURCED=1
+set -a
 
-export QT_QPA_PLATFORMTHEME=qt6ct
+AT_LOGIN_SOURCED=1
 
-export LANG='en_US.UTF-8'
+QT_QPA_PLATFORMTHEME=qt6ct
 
-export EDITOR='nvim'
-export CM_LAUNCHER=rofi
+LANG='en_US.UTF-8'
 
-export GIT_DISCOVERY_ACROSS_FILESYSTEM=1
+EDITOR='nvim'
+CM_LAUNCHER=rofi
+
+GIT_DISCOVERY_ACROSS_FILESYSTEM=1
 
 if [ "$(whoami)" = 'root' ]; then
-    export USER_HOME="/root"
+    USER_HOME="/root"
 else
-    export USER_HOME="/home/$USER"
+    USER_HOME="/home/$USER"
 fi
-export PATH="$USER_HOME/.local/bin:$USER_HOME/.cargo/bin:$PATH:$USER_HOME/.config/scripts"
 
-export XDG_DATA_HOME="$USER_HOME/.local/share"
-export XDG_STATE_HOME="$USER_HOME/.local/state"
-export XDG_CONFIG_HOME="$USER_HOME/.config"
-export XDG_CACHE_HOME="$USER_HOME/.cache"
+PNPM_HOME="$USER_HOME/.local/share/pnpm"
+PATH="$USER_HOME/.local/bin:$USER_HOME/.cargo/bin:$PATH:$USER_HOME/.config/scripts:$PNPM_HOME:$USER_HOME/Programming/android/sdk/tools:$USER_HOME/.dotnet/tools"
+
+XDG_DATA_HOME="$USER_HOME/.local/share"
+XDG_STATE_HOME="$USER_HOME/.local/state"
+XDG_CONFIG_HOME="$USER_HOME/.config"
+XDG_CACHE_HOME="$USER_HOME/.cache"
+
 # ~/.gtkrc-2.0
-export GTK2_RC_FILES="$XDG_CONFIG_HOME"/gtk-2.0/gtkrc
+GTK2_RC_FILES="$XDG_CONFIG_HOME"/gtk-2.0/gtkrc
 # ~/.icons
-export XCURSOR_PATH=/usr/share/icons:"$XDG_DATA_HOME"/icons
+XCURSOR_PATH=/usr/share/icons:"$XDG_DATA_HOME"/icons
 # ~/.wine
-export WINEPREFIX="$XDG_DATA_HOME"/wine
+WINEPREFIX="$XDG_DATA_HOME"/wine
 # ~/.bash_history
 mkdir -p "$XDG_STATE_HOME"/bash
-export HISTFILE="$XDG_STATE_HOME"/bash/history
+HISTFILE="$XDG_STATE_HOME"/bash/history
 # ~/.grupg
-export GNUPGHOME="$XDG_DATA_HOME"/gnupg
+GNUPGHOME="$XDG_DATA_HOME"/gnupg
 # ~/.cargo
-export CARGO_HOME="$XDG_DATA_HOME"/cargo
+CARGO_HOME="$XDG_DATA_HOME"/cargo
 # ~/go
-export GOPATH="$XDG_DATA_HOME"/go
+GOPATH="$XDG_DATA_HOME"/go
 # ~/.gradle
-export GRADLE_USER_HOME="$XDG_DATA_HOME"/gradle
+GRADLE_USER_HOME="$XDG_DATA_HOME"/gradle
 # ~/.ICEauthority
-export ICEAUTHORITY="$XDG_CACHE_HOME"/ICEauthority
+ICEAUTHORITY="$XDG_CACHE_HOME"/ICEauthority
 # ~/.node_repl_history
-export NODE_REPL_HISTORY="$XDG_DATA_HOME"/node_repl_history
+NODE_REPL_HISTORY="$XDG_DATA_HOME"/node_repl_history
 
-# unset XDG_RUNTIME_DIR
-# shellcheck disable=SC2155
-# export XDG_RUNTIME_DIR=$(mktemp -d /tmp/$(id -u)-runtime-dir.XXX)
+LIBSEAT_BACKEND=logind
 
-# source /usr/share/nvm/init-nvm.sh
+ANDROID_HOME="$USER_HOME/Programming/android/sdk"
+ANDROID_SDK_ROOT="$USER_HOME/Programming/android/sdk"
+ANDROID_AVD_HOME="$USER_HOME/.android/avd"
 
-# gentoo specific
-export LIBSEAT_BACKEND=logind
+RIPGREP_CONFIG_PATH="$XDG_CONFIG_HOME/ripgrep/flags"
 
-export SDL_VIDEODRIVER=wayland
-
-export ANDROID_HOME="$USER_HOME/Programming/android/sdk"
-export ANDROID_SDK_ROOT="$USER_HOME/Programming/android/sdk"
-export ANDROID_AVD_HOME="$USER_HOME/.android/avd"
-export PATH="$PATH:$USER_HOME/Programming/android/sdk/tools"
-
-export PATH="$PATH:$USER_HOME/.dotnet/tools"
-
-export RIPGREP_CONFIG_PATH="$XDG_CONFIG_HOME/ripgrep/flags"
-export ANKI_WAYLAND=1
-
-# pnpm
-export PNPM_HOME="$USER_HOME/.local/share/pnpm"
-case ":$PATH:" in
-*":$PNPM_HOME:"*) ;;
-*) export PATH="$PNPM_HOME:$PATH" ;;
-esac
-# pnpm end
+set +a
