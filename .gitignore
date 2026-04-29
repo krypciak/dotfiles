@@ -1,14 +1,13 @@
 user/.config/dwl/run/debug.txt
-user/.config/dwl/run/log.txt
 user/private
 user/private.old
 user/.local/share/nvim/telescope_history
 user/.config/awesome/lain1
-user/.config/river/log.txt
 
+log.txt
 *.log
-*/**/LOG
-*/**/LOG.old
+LOG
+LOG.old
 *.png~
 *.kra~
 todo.txt
