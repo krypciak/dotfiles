@@ -8,7 +8,7 @@ arch_basic_install() {
     echo 'tealdeer fastfetch bat bat-extras htop bottom hyperfine'
     echo 'bc jq tmux fzf'
     echo 'neovim neovim-symlinks tree-sitter-cli'
-    echo 'lazygit git-delta tokei ttyper'
+    echo 'lazygit git-delta tig tokei ttyper'
     echo 'ttf-nerd-fonts-symbols ttf-dejavu ttf-hack'
     echo 'man-db man-pages'
     echo 'imagemagick innoextract net-tools p7zip moreutils'
