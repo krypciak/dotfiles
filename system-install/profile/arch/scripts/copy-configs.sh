@@ -16,3 +16,5 @@ cp -L -r "$DOTDIR"/system-install/profile/common/root/* /
 if [ "$TYPE" = 'iso' ]; then
     cp -L -r "$DOTDIR"/system-install/profile/iso/root/* /
 fi
+
+sed -i "s|USER_HOME|$USER_HOME|g" /etc/pacman.d/hooks/xkeyboard-config-caps-fix.hook
