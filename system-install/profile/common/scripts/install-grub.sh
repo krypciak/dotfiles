@@ -22,7 +22,7 @@ elif [ "$TYPE" = 'disk' ]; then
         CRYPT_UUID="$(blkid "$CRYPT_PART" -s UUID -o value)"
         flags="cryptdevice=UUID=$CRYPT_UUID:$CRYPT_NAME $flags"
 
-        if ! grep -qw "encrypt" /etc/mkinitcio.conf; then
+        if ! grep -qw "encrypt" /etc/mkinitcpio.conf; then
             sed -i 's|block|\0 encrypt|g' /etc/mkinitcpio.conf
         fi
     fi
