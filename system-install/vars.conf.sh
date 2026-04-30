@@ -71,6 +71,8 @@ PACKAGE_GROUPS="$PACKAGE_GROUPS misc"    # cpu-x, keepassxc, libfido2, libu2f-se
 PACKAGE_GROUPS="$PACKAGE_GROUPS android" # adb
 
 # Bootloader
+INSTALL_GRUB_THEME=1
+INSTALL_PLYMOUTH_THEME=1
 VARIANT_NAME="Arch"
 BOOTLOADER_ID="$VARIANT_NAME"
 if [ -v DISK ]; then

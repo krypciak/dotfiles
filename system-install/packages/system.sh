@@ -12,6 +12,10 @@ arch_system_install() {
     echo 'dosfstools efibootmgr git greetd grub mtools networkmanager'
     echo 'openbsd-netcat opendoas perl python python-pip'
     echo 'unrar unzip util-linux wget zip memtest86+'
+
+    if [ "$INSTALL_PLYMOUTH_THEME" = '1' ]; then
+        echo 'plymouth'
+    fi
 }
 
 arch_system_configure() {

@@ -24,6 +24,7 @@ if [ "$TYPE" = 'iso' ]; then
     ./"$DOTDIR"/system-install/profile/iso/scripts/iso.sh
 else
     ./"$DOTDIR"/system-install/profile/common/scripts/configure-fstab.sh
+    ./"$DOTDIR"/system-install/profile/common/scripts/install-plymouth.sh
     ./"$DOTDIR"/system-install/profile/common/scripts/install-grub.sh
     ./"$DOTDIR"/system-install/profile/common/scripts/run-mkinitcpio.sh
 fi

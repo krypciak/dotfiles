@@ -46,8 +46,8 @@ export GRUB_COLOR_NORMAL="light-blue/black"
 export GRUB_COLOR_HIGHLIGHT="light-cyan/blue"
 
 # Uncomment one of them for the gfx desired, a image background or a gfxtheme
-# GRUB_BACKGROUND="/boot/leasmug.png"
-GRUB_THEME="/boot/grub/themes/crossgrub/theme.txt"
+# GRUB_BACKGROUND=""
+# GRUB_THEME=""
 
 # Uncomment to get a beep at GRUB star
 #GRUB_INIT_TUNE="480 440 1"
