@@ -11,7 +11,7 @@ if [ "$INSTALL_PLYMOUTH_THEME" = 1 ]; then
 
     info_barr "Installing crosscode plymouth theme"
     git clone https://github.com/krypciak/crosscode-plymouth /tmp/crosscode-plymouth
-    bash /tmp/crosscode-plyouth/install.sh
+    bash /tmp/crosscode-plymouth/install.sh
 
     info_barr "Adding kernel flags to grub"
     flags="quiet splash vt.global_cursor_default=0 loglevel=3 systemd.show_status=0 rd.udev.log_level=3 fbcon=nodefer"
