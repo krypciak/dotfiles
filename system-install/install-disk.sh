@@ -95,7 +95,7 @@ if [ "$ENCRYPT" = '1' ]; then
             exit 1
         fi
 
-        info_barr "Opening <path>$CRYPT_PART</path> as <path>$CRYPT_NAME</path"
+        info_barr "Opening <path>$CRYPT_PART</path> as <path>$CRYPT_NAME</path>"
         info_barr "Automaticly filling password..."
         if ! echo "$LUKS_PASSWORD" | cryptsetup open "$CRYPT_PART" "$CRYPT_NAME"; then
             err "LUKS error"
