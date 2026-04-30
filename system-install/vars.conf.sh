@@ -63,7 +63,7 @@ PACKAGE_GROUPS="$PACKAGE_GROUPS dev-dotnet"
 PACKAGE_GROUPS="$PACKAGE_GROUPS java"
 PACKAGE_GROUPS="$PACKAGE_GROUPS fstools" # filesystems, ventoy, testdisk
 # PACKAGE_GROUPS="$PACKAGE_GROUPS gaming"    # steam. lib32 libraries, lutris, wine, some drivers, java
-PACKAGE_GROUPS="$PACKAGE_GROUPS misc"    # cpu-x, keepassxc, libfido2, libu2f-server, nmap, openbsd-netcat, yubikey-manager-qt
+PACKAGE_GROUPS="$PACKAGE_GROUPS misc" # cpu-x, keepassxc, libfido2, libu2f-server, nmap, openbsd-netcat, yubikey-manager-qt
 # PACKAGE_GROUPS="$PACKAGE_GROUPS social"    # emojis, webcord
 # PACKAGE_GROUPS="$PACKAGE_GROUPS cups"      # printing
 # PACKAGE_GROUPS="$PACKAGE_GROUPS bluetooth" # blueman, bluez, bluetooth support at initcpio
@@ -76,14 +76,18 @@ INSTALL_PLYMOUTH_THEME=1
 VARIANT_NAME="Arch"
 BOOTLOADER_ID="$VARIANT_NAME"
 if [ -v DISK ]; then
-    BOOT_PART="${DISK}1"
+    PARTITION_SEPERATOR=""
+    if [[ "$DISK" == nvme* ]]; then
+        PARTITION_SEPERATOR="p"
+    fi
+    BOOT_PART="${DISK}${PARTITION_SEPERATOR}1"
     BOOT_SIZE='500M'
 
     # Encryption
     # 0 -> disable  1 -> enable
     ENCRYPT=1
     if [ "$ENCRYPT" = '1' ]; then
-        CRYPT_PART="${DISK}2"
+        CRYPT_PART="${DISK}${PARTITION_SEPERATOR}2"
         # None means all remaining space
         CRYPT_SIZE=''
         LUKS_PASSWORD=123
@@ -95,7 +99,7 @@ if [ -v DISK ]; then
         HASH='sha256'
         LUKSFORMAT_ARGUMENTS="--key-size $KEY_SIZE --hash $HASH --iter-time $ITER_TIME"
     else
-        LVM_PART="${DISK}2"
+        LVM_PART="${DISK}${PARTITION_SEPERATOR}2"
         # None means all remaining space
         LVM_SIZE=''
     fi
