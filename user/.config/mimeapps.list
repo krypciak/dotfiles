@@ -1,5 +1,5 @@
 [Added Associations]
-application/pdf=librewolf.desktop;
+application/pdf=librewolf-3.desktop;librewolf-2.desktop;librewolf.desktop;
 application/rtf=libreoffice-writer.desktop;
 application/x-extension-htm=librewolf.desktop;
 application/x-extension-html=librewolf.desktop;
@@ -10,6 +10,7 @@ application/xhtml+xml=librewolf.desktop;
 image/jpeg=kolourpaint.desktop;org.kde.kolourpaint.desktop;librewolf.desktop;gimp.desktop;feh.desktop;
 image/png=org.kde.kolourpaint.desktop;gimp.desktop;librewolf.desktop;feh.desktop;
 inode/directory=org.kde.dolphin.desktop;
+text/csv=libreoffice-calc.desktop;
 text/html=librewolf.desktop;
 video/mp4=vlc.desktop;mpv.desktop;
 video/x-matroska=vlc.desktop;mpv.desktop;
@@ -18,11 +19,13 @@ x-scheme-handler/geo=openstreetmap-geo-handler.desktop;google-maps-geo-handler.d
 x-scheme-handler/http=librewolf.desktop;
 x-scheme-handler/https=librewolf.desktop;
 x-scheme-handler/mailto=tutanota-desktop.desktop;
-text/csv=libreoffice-calc.desktop;
 
 [Default Applications]
-application/pdf=librewolf.desktop
+application/pdf=librewolf-3.desktop;
 application/rtf=libreoffice-writer.desktop;
+application/x-ankiaddon=anki.desktop
+application/x-apkg=anki.desktop
+application/x-colpkg=anki.desktop
 application/x-extension-htm=librewolf.desktop
 application/x-extension-html=librewolf.desktop
 application/x-extension-shtml=librewolf.desktop
@@ -45,6 +48,3 @@ x-scheme-handler/https=librewolf.desktop;
 x-scheme-handler/mailto=tutanota-desktop.desktop;
 x-scheme-handler/sidequest=SideQuest.desktop
 x-scheme-handler/unknown=librewolf.desktop;
-application/x-colpkg=anki.desktop
-application/x-apkg=anki.desktop
-application/x-ankiaddon=anki.desktop
