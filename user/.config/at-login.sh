@@ -1,8 +1,6 @@
 #!/bin/bash
 set -a
 
-AT_LOGIN_SOURCED=1
-
 QT_QPA_PLATFORMTHEME=qt6ct
 
 LANG='en_US.UTF-8'
@@ -14,8 +12,10 @@ GIT_DISCOVERY_ACROSS_FILESYSTEM=1
 
 if [ "$(whoami)" = 'root' ]; then
     USER_HOME="/root"
+    AT_LOGIN_SOURCED="$USER"
 else
     USER_HOME="/home/$USER"
+    AT_LOGIN_SOURCED="$USER"
 fi
 
 PNPM_HOME="$USER_HOME/.local/share/pnpm"

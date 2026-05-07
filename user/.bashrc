@@ -1,4 +1,4 @@
-if [[ ! -v AT_LOGIN_SOURCED ]]; then
+if [[ "${AT_LOGIN_SOURCED-}" != "$USER" ]]; then
     source ~/.config/at-login.sh
 fi
 
