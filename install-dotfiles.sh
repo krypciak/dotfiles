@@ -77,6 +77,7 @@ if [[ ! -v FOR_ROOT ]]; then
     inst link .config/lazygit/config.yml
     inst link .gitconfig
     inst link .config/ripgrep
+    inst link .config/stylua
 
     inst link .config/alacritty
     inst link .config/wallpapers
