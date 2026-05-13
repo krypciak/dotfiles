@@ -190,7 +190,7 @@ hl.gesture {
 -- ### WORKSPACES ###
 -- ##################
 
-hl.workspace_rule { workspace = '6', on_created_empty = 'webcord' }
+hl.workspace_rule { workspace = '6', } -- on_created_empty = 'webcord' }
 hl.workspace_rule { workspace = '7', on_created_empty = browser }
 hl.workspace_rule { workspace = '9', on_created_empty = mail }
 hl.workspace_rule { workspace = '5', on_created_empty = music }
@@ -271,7 +271,7 @@ hl.bind(
 )
 
 -- Client manipulation
-hl.bind('SUPER + SHIFT + C', hl.dsp.window.kill())
+hl.bind('SUPER + SHIFT + C', hl.dsp.window.close())
 hl.bind('SUPER + CONTROL + Space', hl.dsp.window.float { action = 'toggle' })
 hl.bind('SUPER + F', hl.dsp.window.fullscreen(0))
 hl.bind('SUPER + M', hl.dsp.window.fullscreen { mode = 'maximized' })
