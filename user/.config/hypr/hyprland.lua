@@ -272,6 +272,7 @@ hl.bind(
 
 -- Client manipulation
 hl.bind('SUPER + SHIFT + C', hl.dsp.window.close())
+hl.bind('SUPER + ALT + SHIFT + C', hl.dsp.window.kill())
 hl.bind('SUPER + CONTROL + Space', hl.dsp.window.float { action = 'toggle' })
 hl.bind('SUPER + F', hl.dsp.window.fullscreen(0))
 hl.bind('SUPER + M', hl.dsp.window.fullscreen { mode = 'maximized' })
