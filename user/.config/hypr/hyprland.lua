@@ -259,7 +259,7 @@ hl.bind('SUPER + SHIFT + CONTROL + L', hl.dsp.exec_cmd(lock))
 hl.bind('XF86LogOff ', hl.dsp.exec_cmd(lock))
 
 hl.bind('SUPER + SHIFT + CONTROL + R', hl.dsp.exec_cmd(reboot), { locked = true })
-hl.bind('SUPER + SHIFT + CONTROL + T', hl.dsp.exec_cmd('~/.config/scripts/soft-reboot.sh'), { locked = true })
+hl.bind('SUPER + SHIFT + CONTROL + T', hl.dsp.exec_cmd('doas soft-reboot'), { locked = true })
 hl.bind('SUPER + SHIFT + CONTROL + W', hl.dsp.exec_cmd('doas grub-reboot 2 && ~/.config/scripts/reboot.sh'), { locked = true })
 
 hl.bind('SUPER + SHIFT + CONTROL + S', hl.dsp.exec_cmd(suspend), { locked = true })
