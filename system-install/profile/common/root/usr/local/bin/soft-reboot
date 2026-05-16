@@ -1,0 +1,6 @@
+#!/bin/bash
+
+if command -v systemctl; then
+    rm -f /run/greetd*
+    systemctl soft-reboot
+fi
