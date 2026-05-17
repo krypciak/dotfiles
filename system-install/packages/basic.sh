@@ -15,6 +15,7 @@ arch_basic_install() {
     echo 'procs'
     echo 'trash-cli'
     echo 'github-cli'
+    echo 'rsync'
 }
 
 _configure_tldr() {
