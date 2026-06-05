@@ -62,6 +62,7 @@ hl.env('XCURSOR_THEME', 'breeze_cursors')
 hl.env('HYPRCURSOR_SIZE', '24')
 
 hl.env('MOZ_ENABLE_WAYLAND', '1')
+hl.env('ELECTRON_OZONE_PLATFORM_HINT', 'auto')
 hl.env('GDK_BACKEND', 'wayland,x11,*')
 hl.env('SDL_VIDEODRIVER', 'wayland')
 hl.env('CLUTTER_BACKEND', 'wayland')
@@ -190,7 +191,7 @@ hl.gesture {
 -- ### WORKSPACES ###
 -- ##################
 
-hl.workspace_rule { workspace = '6', } -- on_created_empty = 'webcord' }
+hl.workspace_rule { workspace = '6' } -- on_created_empty = 'webcord' }
 hl.workspace_rule { workspace = '7', on_created_empty = browser }
 hl.workspace_rule { workspace = '9', on_created_empty = mail }
 hl.workspace_rule { workspace = '5', on_created_empty = music }
@@ -219,17 +220,17 @@ hl.bind('ALT + SHIFT + Z', hl.dsp.window.move { workspace = '9' })
 hl.bind('ALT + SHIFT + C', hl.dsp.window.move { workspace = '10' })
 hl.bind('ALT + SHIFT + H', hl.dsp.window.move { workspace = '11' })
 
-hl.window_rule { match = { class = '^(discord|WebCord)$' }, workspace = "6 silent" }
-hl.window_rule { match = { title = '^(WebCord)$' }, workspace = "6 silent" }
-hl.window_rule { match = { title = 'Discord Updater' }, workspace = "6 silent", center = true }
-hl.window_rule { match = { class = '^(LibreWolf|librewolf|chromium)$' }, workspace = "7 silent" }
-hl.window_rule { match = { class = '^(tutanota-desktop|aerc)$' }, workspace = "9 silent" }
-hl.window_rule { match = { class = '^(cmus|spotube)$' }, workspace = "5 silent" }
-hl.window_rule { match = { class = '^(prismlauncher|Minecraft.*|steam_app_960090)$' }, workspace = "8 silent" }
-hl.window_rule { match = { class = '^(MonkeyCity-Win.exe|dontstarve_steam_x64)$' }, workspace = "8 silent" }
-hl.window_rule { match = { title = '^(.*CrossCode.*|Alabaster Dawn|.*DevTools.*)$' }, workspace = "8 silent" }
-hl.window_rule { match = { class = '^(Lutris|steam_app_489830)$' }, workspace = "11 silent" }
-hl.window_rule { match = { title = '^(.*Steam.*|Launching...)$' }, workspace = "11 silent" }
+hl.window_rule { match = { class = '^(discord|WebCord)$' }, workspace = '6 silent' }
+hl.window_rule { match = { title = '^(WebCord)$' }, workspace = '6 silent' }
+hl.window_rule { match = { title = 'Discord Updater' }, workspace = '6 silent', center = true }
+hl.window_rule { match = { class = '^(LibreWolf|librewolf|chromium)$' }, workspace = '7 silent' }
+hl.window_rule { match = { class = '^(tutanota-desktop|aerc)$' }, workspace = '9 silent' }
+hl.window_rule { match = { class = '^(cmus|spotube)$' }, workspace = '5 silent' }
+hl.window_rule { match = { class = '^(prismlauncher|Minecraft.*|steam_app_960090)$' }, workspace = '8 silent' }
+hl.window_rule { match = { class = '^(MonkeyCity-Win.exe|dontstarve_steam_x64)$' }, workspace = '8 silent' }
+hl.window_rule { match = { title = '^(.*CrossCode.*|Alabaster Dawn|.*DevTools.*)$' }, workspace = '8 silent' }
+hl.window_rule { match = { class = '^(Lutris|steam_app_489830)$' }, workspace = '11 silent' }
+hl.window_rule { match = { title = '^(.*Steam.*|Launching...)$' }, workspace = '11 silent' }
 
 -- ###################
 -- ### KEYBINDINGS ###
@@ -248,7 +249,7 @@ local suspend = '~/.config/scripts/suspend.sh; ' .. lock
 local reboot = '~/.config/scripts/reboot.sh'
 local poweroff = '~/.config/scripts/poweroff.sh'
 
-hl.bind('SUPER + SHIFT + CONTROL + Q', hl.dsp.exec_cmd('hyprctl dispatch exit'))
+hl.bind('SUPER + SHIFT + CONTROL + Q', hl.dsp.exit())
 hl.bind('SUPER + SHIFT + CONTROL + M', hl.dsp.exec_cmd('hyprctl reload'))
 
 hl.bind('SUPER + SHIFT + CONTROL + P', hl.dsp.exec_cmd(poweroff), { locked = true })
@@ -370,6 +371,7 @@ hl.config {
         middle_click_paste = false,
         enable_swallow = true,
         swallow_regex = '^(a|A)lacritty$',
+        -- swallow_exception_regex = '^.*gigathon.*$',
         background_color = 'rgb(000000)',
     },
 }
