@@ -23,13 +23,13 @@
                 "fingerprinting": true
             },
             "permissions": {
-                "video": null,
+                "video": true,
                 "audio": true,
                 "fullscreen": true,
                 "notifications": null,
                 "display-capture": true,
                 "background-sync": false,
-                "speaker-selection": false,
+                "speaker-selection": true,
                 "clipboard-sanitized-write": true
             }
         },
