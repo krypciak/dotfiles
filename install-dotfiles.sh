@@ -78,6 +78,7 @@ if [[ ! -v FOR_ROOT ]]; then
     inst link .gitconfig
     inst link .config/ripgrep
     inst link .config/stylua
+    inst link .config/asm-lsp
 
     inst link .config/alacritty
     inst link .config/wallpapers
