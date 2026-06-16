@@ -11,6 +11,7 @@ hl.monitor {
 hl.monitor {
     output = 'HDMI-A-2',
     mode = '2560x1440@144',
+    bitdepth = 8,
 }
 hl.monitor {
     output = 'eDP-1',
@@ -32,26 +33,6 @@ local music = 'alacritty --class cmus --title cmus -e cmus'
 local clipboard_manager = 'wl-paste --watch cliphist -max-items 30000 store'
 local mail = 'tutanota-desktop --enable-features=UseOzonePlatform --ozone-platform=wayland'
 local browser = 'librewolf'
-
--- #################
--- ### AUTOSTART ###
--- #################
-
-hl.on('hyprland.start', function()
-    hl.exec_cmd('awww-daemon')
-    hl.exec_cmd('sleep 0.3; ' .. wallpaper .. ' inc 0 0')
-    hl.exec_cmd('gammastep -r')
-    hl.exec_cmd(bar_run)
-    hl.exec_cmd(clipboard_manager)
-    hl.exec_cmd('amixer set Capture nocap > /dev/null 2>&1')
-    hl.exec_cmd('fnott')
-    hl.exec_cmd('pgrep keepassxc || keepassxc')
-    hl.exec_cmd('sleep 15; pgrep tutanota || ' .. mail)
-    hl.exec_cmd('blueman-applet')
-    hl.exec_cmd('safeeyes')
-
-    hl.exec_cmd('fcitx5 -d')
-end)
 
 -- #############################
 -- ### ENVIRONMENT VARIABLES ###
@@ -81,6 +62,31 @@ hl.env('XDG_SESSION_DESKTOP', 'Hyprland')
 hl.env('XMODIFIERS', "'@im=fcitx'")
 hl.env('SDL_IM_MODULE', "'fcitx'")
 hl.env('QT_IM_MODULES', 'wayland;fcitx;ibus')
+
+-- #################
+-- ### AUTOSTART ###
+-- #################
+
+hl.on('hyprland.start', function()
+    hl.exec_cmd('dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP')
+    hl.exec_cmd('systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP')
+    hl.exec_cmd('dbus-update-activation-environment --systemd --all')
+    -- hl.exec_cmd('gnome-keyring-daemon --start --components=secrets')
+
+    hl.exec_cmd('awww-daemon')
+    hl.exec_cmd('sleep 0.3; ' .. wallpaper .. ' inc 0 0')
+    hl.exec_cmd('gammastep -r')
+    hl.exec_cmd(bar_run)
+    hl.exec_cmd(clipboard_manager)
+    hl.exec_cmd('amixer set Capture nocap > /dev/null 2>&1')
+    hl.exec_cmd('fnott')
+    hl.exec_cmd('pgrep keepassxc || keepassxc')
+    hl.exec_cmd('sleep 15; pgrep tutanota || ' .. mail)
+    hl.exec_cmd('blueman-applet')
+    hl.exec_cmd('safeeyes')
+
+    hl.exec_cmd('fcitx5 -d')
+end)
 
 -- ###################
 -- ### PERMISSIONS ###
