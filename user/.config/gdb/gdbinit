@@ -6,3 +6,5 @@ set print array-indexes on
 set debuginfod enabled on
 
 tui layout src
+
+set disassembly-flavor intel
