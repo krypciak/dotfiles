@@ -102,8 +102,6 @@ if [[ ! -v FOR_ROOT ]]; then
     inst link .config/hypr
     inst link .config/waybar
 
-    inst link .config/WebCord/config.json
-
     inst link .config/tridactyl
 
     inst link .config/plasmarc
