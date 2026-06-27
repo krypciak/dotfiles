@@ -20,12 +20,11 @@ source_vars "$DOTDIR"
 ./"$DOTDIR"/system-install/profile/common/scripts/set-passwords.sh
 ./"$DOTDIR"/system-install/profile/common/scripts/configure-packages.sh
 
-./"$DOTDIR"/system-install/profile/common/scripts/install-plymouth.sh
-
 if [ "$TYPE" = 'iso' ]; then
     ./"$DOTDIR"/system-install/profile/iso/scripts/iso.sh
 else
     ./"$DOTDIR"/system-install/profile/common/scripts/configure-fstab.sh
+    ./"$DOTDIR"/system-install/profile/common/scripts/install-plymouth.sh
     ./"$DOTDIR"/system-install/profile/common/scripts/install-grub.sh
     ./"$DOTDIR"/system-install/profile/common/scripts/run-mkinitcpio.sh
 fi

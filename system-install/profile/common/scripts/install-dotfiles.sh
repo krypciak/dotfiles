@@ -6,7 +6,8 @@ DOTDIR="$DIR"/../../../..
 check_is_root
 source_vars "$DOTDIR"
 
-chown_user "$USER_HOME"
+mkdir -p "$USER_HOME/.config" "$USER_HOME/.cache" "$USER_HOME/.local"
+chown_user "$USER_HOME" "$USER_HOME/.config" "$USER_HOME/.cache" "$USER_HOME/.local"
 
 if [ "$INSTALL_DOTFILES" = '1' ]; then
     info "Installing dotfiles for user <user>$USER1</user>"
@@ -39,8 +40,10 @@ if [ "$INSTALL_DOTFILES" = '1' ]; then
     fi
 fi
 
+set +e
 info 'Generating fish completions'
-fish --command "fish_update_completions" >/dev/null 2>&1 &
-doas -u "$USER1" fish --command "fish_update_completions" >/dev/null 2>&1 &
+fish --command "fish_update_completions" >/dev/null 2>&1
+doas -u "$USER1" fish --command "fish_update_completions" >/dev/null 2>&1
+set -e
 
 wait $(jobs -p)
