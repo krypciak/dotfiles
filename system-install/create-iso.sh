@@ -27,8 +27,8 @@ handle_args "\
 --wait-for-dir:=export ISO_WAIT_FOR_DIR=\"\$2\",\
 " "$@"
 
-if [ "$ISO_OUT_DIR" = '' ]; then
-    err "Missing argument (required for --mode=iso): --iso"
+if [ "${ISO_OUT_DIR-}" = '' ]; then
+    err "Missing argument: --iso"
     _help
 fi
 
