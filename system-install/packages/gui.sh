@@ -1,7 +1,7 @@
 #!/bin/bash
 
 arch_gui_install() {
-    echo 'alacritty feh gnome-keyring dolphin'
+    echo 'alacritty feh gnome-keyring dolphin dolphin-plugins ark'
     echo 'qt5-base qt6-base qt5ct qt6ct breeze breeze5 breeze-gtk breeze-icons gtk2 gtk3 nwg-look'
     echo 'xdg-desktop-portal xdg-utils archlinux-xdg-menu'
 
