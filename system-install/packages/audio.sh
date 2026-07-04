@@ -7,3 +7,7 @@ arch_audio_install() {
     echo 'pavucontrol cmus-git playerctl'
     echo 'alsa-utils'
 }
+
+arch_audio_configure() {
+    systemctl --user enable --now mpris-proxy
+}
