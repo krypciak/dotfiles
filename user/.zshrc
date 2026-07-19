@@ -46,17 +46,24 @@ zstyle ':completion:*' rehash true
 ## KEYBINDINGS ================================================================
 # Forces the use of emacs keyboard shortcuts. By default uses the vim ones,
 # but they are not very good by default and can be confusing for novice users.
-bindkey -v
+# bindkey -v
 
 # Makes zsh behave the same with words as bash. Recommended to leave it this
 # way since by default it simply behaves badly.
 autoload -U select-word-style
 select-word-style bash
 
-## PROMPT =====================================================================
-# Prints a new line each time a command is executed.
-precmd() { [ -z "$add_newline" ] && add_newline=true || echo; }
+bindkey '^F' forward-char
 
+ls_widget() {
+    echo
+    lsd
+    zle redisplay
+}
+zle -N ls_widget
+bindkey '^[l' ls_widget
+
+## PROMPT =====================================================================
 ## HISTORY ====================================================================
 HISTFILE="$HOME/.zsh_history" # Location of the history file.
 HISTSIZE=50000                # Maximum number of commands in the history.
@@ -81,17 +88,6 @@ command_not_found_handler() {
 }
 
 # Plugins
-source /usr/share/zsh/share/antigen.zsh
-# antigen bundle git
-# antigen bundle heroku
-# antigen bundle pip
-# antigen bundle lein
-# antigen bundle command-not-found
-antigen use oh-my-zsh
-antigen bundle zsh-users/zsh-syntax-highlighting
-antigen theme candy
-antigen apply
-
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 eval "$(atuin init zsh)"
@@ -133,10 +129,57 @@ fi
 
 source /usr/share/autojump/autojump.zsh
 
-alias topcmds='history | awk "{print \$2}" | sort | uniq -c | sort -nr | head -20'
+setopt PROMPT_SUBST
 
-# end=$(tput cup 9999 0)
-# PS1='%{${end}%} %B%F{blue}%~%f%F{%(?.fg.red)}>%b%f'
-PS1='%B%F{blue}%~%f%F{%(?.fg.red)}>%b%f'
-# tput cup 0 0
+autoload -Uz colors && colors
 
+compress_pwd() {
+    local -a parts
+    local path="${PWD/#$HOME/~}"
+    local absolute=0
+
+    [[ "$path" == /* ]] && absolute=1
+
+    parts=("${(@s:/:)path}")
+
+    local out=""
+    local keep=1
+
+    [[ $absolute -eq 1 ]] && out="/"
+
+    for ((i=1; i<=$#parts; i++)); do
+        [[ -z "${parts[i]}" ]] && continue
+
+        if (( i <= $#parts - keep )); then
+            if [[ "${parts[i]}" == "~" ]]; then
+                out+="~/"
+            else
+                out+="${parts[i][1]}/"
+            fi
+        else
+            out+="${parts[i]}"
+            (( i < $#parts )) && out+="/"
+        fi
+    done
+
+    print -r -- "$out"
+}
+
+prompt_char() {
+    if [[ $EUID -eq 0 ]]; then
+        echo -n "%B%F{red}# "
+    else
+        echo -n "%B%F{red}❯%F{yellow}❯%F{green}❯%f%b "
+    fi
+}
+
+ssh_info() {
+    if [[ -n "$SSH_TTY" ]]; then
+        echo -n "%F{brred}%n%f%F{white}@%F{yellow}%m "
+    fi
+}
+
+PROMPT='$(ssh_info)%F{blue}$(compress_pwd) $(prompt_char)'
+
+# Right prompt: exit code on failure
+RPROMPT='%(?..%F{red}✘ %?%f)'

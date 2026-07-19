@@ -65,6 +65,7 @@ if [[ ! -v FOR_ROOT ]]; then
     inst link .config/nvim
     inst link .config/zed
     inst link .config/fish
+    inst link .zshrc
     inst link .config/tealdeer
     inst link .bashrc
     inst link .bash_profile
@@ -149,6 +150,7 @@ else
 
     inst copy .config/nvim
     inst copy .config/fish
+    inst copy .zshrc
     inst copy .bashrc
     inst copy .config/at-login.sh
     inst copy .config/aliases.sh
