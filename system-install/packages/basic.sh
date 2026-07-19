@@ -4,7 +4,9 @@ arch_basic_install() {
     # already in system
     echo 'git zip wget unzip unrar'
 
-    echo 'fish lsd fd dysk dust atuin autojump-rs-bin ouch'
+    echo 'fish'
+    echo 'zsh zsh-autosuggestions'
+    echo 'lsd fd dysk dust atuin autojump-rs-bin ouch'
     echo 'tealdeer fastfetch bat bat-extras htop bottom hyperfine'
     echo 'bc jq tmux fzf fend-bin'
     echo 'neovim neovim-symlinks tree-sitter-cli'
