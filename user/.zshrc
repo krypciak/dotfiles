@@ -79,56 +79,9 @@ command_not_found_handler() {
     return 127
 }
 
-# autosuggestions
-ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=#BD93F9'
-source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
-
-# syntax highlighting
-typeset -A ZSH_HIGHLIGHT_STYLES
-
-# Commands
-ZSH_HIGHLIGHT_STYLES[command]='fg=#F8F8F2'
-ZSH_HIGHLIGHT_STYLES[builtin]='fg=#F8F8F2'
-ZSH_HIGHLIGHT_STYLES[function]='fg=#F8F8F2'
-ZSH_HIGHLIGHT_STYLES[alias]='fg=#F8F8F2'
-ZSH_HIGHLIGHT_STYLES[reserved-word]='fg=#F8F8F2'
-
-# Parameters / arguments
-ZSH_HIGHLIGHT_STYLES[default]='fg=#FF79C6'
-ZSH_HIGHLIGHT_STYLES[path]='fg=#FF79C6,underline'
-ZSH_HIGHLIGHT_STYLES[path_prefix]='fg=#FF79C6'
-ZSH_HIGHLIGHT_STYLES[single-quoted-argument]='fg=#F1FA8C'
-ZSH_HIGHLIGHT_STYLES[double-quoted-argument]='fg=#F1FA8C'
-
-# Operators / separators
-ZSH_HIGHLIGHT_STYLES[globbing]='fg=#00A6B2'
-ZSH_HIGHLIGHT_STYLES[history-expansion]='fg=#00A6B2'
-ZSH_HIGHLIGHT_STYLES[assign]='fg=#00A6B2'
-
-# Redirections
-ZSH_HIGHLIGHT_STYLES[redirection]='fg=#8BE9FD'
-
-# Comments
-ZSH_HIGHLIGHT_STYLES[comment]='fg=#6272A4'
-
-# Errors
-ZSH_HIGHLIGHT_STYLES[unknown-token]='fg=#FFB86C'
-ZSH_HIGHLIGHT_STYLES[commandseparator]='fg=#50FA7B'
-
-ZSH_HIGHLIGHT_PATTERNS+=(
-  '--*' 'fg=#FF79C6'
-  '-*' 'fg=#FF79C6'
-  '-[a-zA-Z]*' 'fg=#FF79C6'
-)
-
-source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
 # atuin
 eval "$(atuin init zsh)"
 eval "$(atuin gen-completions --shell zsh)"
-
-# fzf-tab
-source /usr/share/zsh/plugins/fzf-tab/fzf-tab.zsh
 
 # Source my stuff
 
@@ -220,3 +173,49 @@ PROMPT='$(ssh_info)%F{blue}$(compress_pwd) $(prompt_char)'
 
 # Right prompt: exit code on failure
 RPROMPT='%(?..%F{red}✘ %?%f)'
+
+
+# autosuggestions
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#BD93F9"
+source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+
+# syntax highlighting
+typeset -A ZSH_HIGHLIGHT_STYLES
+
+ZSH_HIGHLIGHT_STYLES[command]='fg=#F8F8F2'
+ZSH_HIGHLIGHT_STYLES[builtin]='fg=#F8F8F2'
+ZSH_HIGHLIGHT_STYLES[function]='fg=#F8F8F2'
+ZSH_HIGHLIGHT_STYLES[alias]='fg=#F8F8F2'
+ZSH_HIGHLIGHT_STYLES[precommand]='fg=#F8F8F2'
+ZSH_HIGHLIGHT_STYLES[hashed-command]='fg=#F8F8F2'
+
+ZSH_HIGHLIGHT_STYLES[single-hyphen-option]='fg=#FF79C6'
+ZSH_HIGHLIGHT_STYLES[double-hyphen-option]='fg=#FF79C6'
+
+ZSH_HIGHLIGHT_STYLES[single-quoted-argument]='fg=#F1FA8C'
+ZSH_HIGHLIGHT_STYLES[double-quoted-argument]='fg=#F1FA8C'
+ZSH_HIGHLIGHT_STYLES[dollar-quoted-argument]='fg=#F1FA8C'
+
+ZSH_HIGHLIGHT_STYLES[redirection]='fg=#8BE9FD'
+
+ZSH_HIGHLIGHT_STYLES[commandseparator]='fg=#50FA7B'
+
+ZSH_HIGHLIGHT_STYLES[unknown-token]='fg=#FFB86C'
+
+ZSH_HIGHLIGHT_STYLES[comment]='fg=#6272A4'
+
+ZSH_HIGHLIGHT_STYLES[globbing]='fg=#00a6b2'
+ZSH_HIGHLIGHT_STYLES[back-dollar-quoted-argument]='fg=#00a6b2'
+ZSH_HIGHLIGHT_STYLES[back-double-quoted-argument]='fg=#00a6b2'
+
+ZSH_HIGHLIGHT_STYLES[path]='underline'
+ZSH_HIGHLIGHT_STYLES[path_prefix]='underline'
+
+ZSH_HIGHLIGHT_STYLES[assign]='fg=#FF79C6'
+ZSH_HIGHLIGHT_STYLES[reserved-word]='fg=#F8F8F2'
+ZSH_HIGHLIGHT_STYLES[command-substitution-delimiter]='fg=#F1FA8C'
+
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+# fzf-tab
+source /usr/share/zsh/plugins/fzf-tab/fzf-tab.zsh
