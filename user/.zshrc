@@ -89,6 +89,7 @@ command_not_found_handler() {
 
 # Plugins
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 eval "$(atuin init zsh)"
 eval "$(atuin gen-completions --shell zsh)"

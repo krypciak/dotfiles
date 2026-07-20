@@ -5,7 +5,7 @@ arch_basic_install() {
     echo 'git zip wget unzip unrar'
 
     echo 'fish'
-    echo 'zsh zsh-autosuggestions'
+    echo 'zsh zsh-autosuggestions zsh-syntax-highlighting'
     echo 'lsd fd dysk dust atuin autojump-rs-bin ouch'
     echo 'tealdeer fastfetch bat bat-extras htop bottom hyperfine'
     echo 'bc jq tmux fzf fend-bin'
