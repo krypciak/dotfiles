@@ -63,14 +63,6 @@ ls_widget() {
 zle -N ls_widget
 bindkey '^[l' ls_widget
 
-## PROMPT =====================================================================
-## HISTORY ====================================================================
-HISTFILE="$HOME/.zsh_history" # Location of the history file.
-HISTSIZE=50000                # Maximum number of commands in the history.
-SAVEHIST=10000                # Number of commands to save between sessions.
-setopt share_history          # Share history between sessions.
-
-
 ## OTHER ======================================================================
 # Disables highlighting of pasted text.
 zle_highlight+=(paste:none)
@@ -87,12 +79,56 @@ command_not_found_handler() {
     return 127
 }
 
-# Plugins
+# autosuggestions
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=#BD93F9'
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+
+# syntax highlighting
+typeset -A ZSH_HIGHLIGHT_STYLES
+
+# Commands
+ZSH_HIGHLIGHT_STYLES[command]='fg=#F8F8F2'
+ZSH_HIGHLIGHT_STYLES[builtin]='fg=#F8F8F2'
+ZSH_HIGHLIGHT_STYLES[function]='fg=#F8F8F2'
+ZSH_HIGHLIGHT_STYLES[alias]='fg=#F8F8F2'
+ZSH_HIGHLIGHT_STYLES[reserved-word]='fg=#F8F8F2'
+
+# Parameters / arguments
+ZSH_HIGHLIGHT_STYLES[default]='fg=#FF79C6'
+ZSH_HIGHLIGHT_STYLES[path]='fg=#FF79C6,underline'
+ZSH_HIGHLIGHT_STYLES[path_prefix]='fg=#FF79C6'
+ZSH_HIGHLIGHT_STYLES[single-quoted-argument]='fg=#F1FA8C'
+ZSH_HIGHLIGHT_STYLES[double-quoted-argument]='fg=#F1FA8C'
+
+# Operators / separators
+ZSH_HIGHLIGHT_STYLES[globbing]='fg=#00A6B2'
+ZSH_HIGHLIGHT_STYLES[history-expansion]='fg=#00A6B2'
+ZSH_HIGHLIGHT_STYLES[assign]='fg=#00A6B2'
+
+# Redirections
+ZSH_HIGHLIGHT_STYLES[redirection]='fg=#8BE9FD'
+
+# Comments
+ZSH_HIGHLIGHT_STYLES[comment]='fg=#6272A4'
+
+# Errors
+ZSH_HIGHLIGHT_STYLES[unknown-token]='fg=#FFB86C'
+ZSH_HIGHLIGHT_STYLES[commandseparator]='fg=#50FA7B'
+
+ZSH_HIGHLIGHT_PATTERNS+=(
+  '--*' 'fg=#FF79C6'
+  '-*' 'fg=#FF79C6'
+  '-[a-zA-Z]*' 'fg=#FF79C6'
+)
+
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
+# atuin
 eval "$(atuin init zsh)"
 eval "$(atuin gen-completions --shell zsh)"
+
+# fzf-tab
+source /usr/share/zsh/plugins/fzf-tab/fzf-tab.zsh
 
 # Source my stuff
 
