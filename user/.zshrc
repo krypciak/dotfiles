@@ -179,6 +179,43 @@ RPROMPT='%(?..%F{red}✘ %?%f)'
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#BD93F9"
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 
+# Fix: region_highlight entries leaking across accept/edit cycles (ZSH 5.9+)
+# The # in fg=#BD93F9 is treated as a glob pattern by :${array:#pattern},
+# so the original removal never works. Also, region_highlight[-1]=() is wrong
+# when zsh-syntax-highlighting appends entries after ours.
+# https://github.com/zsh-users/zsh-autosuggestions/issues/789
+# https://github.com/zsh-users/zsh-autosuggestions/pull/850
+typeset -ga _ZSH_AUTOSUGGEST_OWNED_HIGHLIGHTS
+
+_zsh_autosuggest_highlight_reset() {
+	typeset -g _ZSH_AUTOSUGGEST_LAST_HIGHLIGHT
+
+	if [[ -n "$_ZSH_AUTOSUGGEST_LAST_HIGHLIGHT" ]]; then
+		local entry
+		local -a kept=()
+		for entry in $region_highlight; do
+			[[ "$entry" != *memo=zsh-autosuggestions* ]] && kept+=("$entry")
+		done
+		region_highlight=("${kept[@]}")
+
+		_ZSH_AUTOSUGGEST_OWNED_HIGHLIGHTS=()
+		unset _ZSH_AUTOSUGGEST_LAST_HIGHLIGHT
+	fi
+}
+
+_zsh_autosuggest_highlight_apply() {
+	typeset -g _ZSH_AUTOSUGGEST_LAST_HIGHLIGHT
+
+	if (( $#POSTDISPLAY )); then
+		local entry="$#BUFFER $(($#BUFFER + $#POSTDISPLAY)) $ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE memo=zsh-autosuggestions"
+		region_highlight+=("$entry")
+		_ZSH_AUTOSUGGEST_OWNED_HIGHLIGHTS+=("$entry")
+		_ZSH_AUTOSUGGEST_LAST_HIGHLIGHT="$entry"
+	else
+		unset _ZSH_AUTOSUGGEST_LAST_HIGHLIGHT
+	fi
+}
+
 # syntax highlighting
 typeset -A ZSH_HIGHLIGHT_STYLES
 
@@ -208,8 +245,8 @@ ZSH_HIGHLIGHT_STYLES[globbing]='fg=#00a6b2'
 ZSH_HIGHLIGHT_STYLES[back-dollar-quoted-argument]='fg=#00a6b2'
 ZSH_HIGHLIGHT_STYLES[back-double-quoted-argument]='fg=#00a6b2'
 
-ZSH_HIGHLIGHT_STYLES[path]='underline'
-ZSH_HIGHLIGHT_STYLES[path_prefix]='underline'
+ZSH_HIGHLIGHT_STYLES[path]='fg=#F8F8F2,underline'
+ZSH_HIGHLIGHT_STYLES[path_prefix]='fg=#F8F8F2,underline'
 
 ZSH_HIGHLIGHT_STYLES[assign]='fg=#FF79C6'
 ZSH_HIGHLIGHT_STYLES[reserved-word]='fg=#F8F8F2'
