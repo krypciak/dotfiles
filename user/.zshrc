@@ -46,7 +46,7 @@ zstyle ':completion:*' rehash true
 ## KEYBINDINGS ================================================================
 # Forces the use of emacs keyboard shortcuts. By default uses the vim ones,
 # but they are not very good by default and can be confusing for novice users.
-# bindkey -v
+bindkey -e
 
 # Makes zsh behave the same with words as bash. Recommended to leave it this
 # way since by default it simply behaves badly.
@@ -54,6 +54,8 @@ autoload -U select-word-style
 select-word-style bash
 
 bindkey '^F' forward-char
+bindkey  "^[[H"   beginning-of-line
+bindkey  "^[[F"   end-of-line
 
 ls_widget() {
     echo
