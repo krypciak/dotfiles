@@ -60,8 +60,6 @@ alias river='sh $HOME/.config/river/run.sh'
 alias hyprland='sh $HOME/.config/hypr/run.sh'
 alias start-hyprland='sh $HOME/.config/hypr/run.sh'
 
-alias tsc='npx tsc'
-
 alias ffmpeg='ffmpeg -hide_banner'
 
 alias gdb='gdb -q'
