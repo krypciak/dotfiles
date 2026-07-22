@@ -81,6 +81,9 @@ command_not_found_handler() {
     return 127
 }
 
+# Disable % if output has no endline
+PROMPT_EOL_MARK=''
+
 # atuin
 eval "$(atuin init zsh)"
 eval "$(atuin gen-completions --shell zsh)"
