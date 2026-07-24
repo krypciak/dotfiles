@@ -139,6 +139,7 @@ compress_pwd() {
 
     local out=""
     local keep=1
+    local i
 
     [[ $absolute -eq 1 ]] && out="/"
 
@@ -162,7 +163,7 @@ compress_pwd() {
 
 prompt_char() {
     if [[ $EUID -eq 0 ]]; then
-        echo -n "%B%F{red}# "
+        echo -n "%B%F{red}# %f%b"
     else
         echo -n "%B%F{red}❯%F{yellow}❯%F{green}❯%f%b "
     fi
