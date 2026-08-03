@@ -19,7 +19,7 @@ else
 fi
 
 PNPM_HOME="$USER_HOME/.local/share/pnpm"
-PATH="$USER_HOME/.local/bin:$USER_HOME/.cargo/bin:$PATH:$USER_HOME/.config/scripts:$PNPM_HOME:$USER_HOME/Programming/android/sdk/tools:$USER_HOME/.dotnet/tools"
+PATH="$USER_HOME/.local/bin:$USER_HOME/.cargo/bin:$PATH:$USER_HOME/.config/scripts:$PNPM_HOME/bin:$USER_HOME/Programming/android/sdk/tools:$USER_HOME/.dotnet/tools"
 
 XDG_DATA_HOME="$USER_HOME/.local/share"
 XDG_STATE_HOME="$USER_HOME/.local/state"
