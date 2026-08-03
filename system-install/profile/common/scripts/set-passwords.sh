@@ -22,7 +22,7 @@ else
         err "Please try again. Attempt $n/5"
     done
 fi
-chsh -s /bin/zsh root >/dev/null 2>&1
+chsh -s /bin/bash root >/dev/null 2>&1
 
 info "Set password for user <user>$USER1</user>"
 if [ "$USER_PASSWORD" != '' ]; then
@@ -40,4 +40,4 @@ else
         err "Please try again. Attempt $n/5"
     done
 fi
-chsh -s /bin/zsh "$USER1" >/dev/null 2>&1
+chsh -s /bin/bash "$USER1" >/dev/null 2>&1
