@@ -100,21 +100,5 @@ if status is-interactive
         end
     end
 
-
-    function last_history_item
-        echo $history[1]
-    end
-    abbr -a !! --position anywhere --function last_history_item
-
     source ~/.config/aliases.sh
-
-    alias topcmds='history | awk "{print \$1}" | sort | uniq -c | sort -nr | head -20'
-
-    function doas
-        if test "$argv[1]" = 'su' -o "$argv[1]" = 'bash' -o "$argv[1]" = 'fish'
-            echo no
-        else
-            /usr/bin/doas $argv
-        end
-    end
 end
