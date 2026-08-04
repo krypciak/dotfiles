@@ -65,7 +65,7 @@ if status is-interactive
     set fish_greeting
     apply_theme
 
-    source /usr/share/autojump/autojump.fish
+    zoxide init fish --cmd j | source
 
     atuin init fish | source
 

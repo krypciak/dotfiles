@@ -122,7 +122,7 @@ else
     }
 fi
 
-source /usr/share/autojump/autojump.zsh
+eval "$(zoxide init zsh --cmd j)"
 
 setopt PROMPT_SUBST
 
