@@ -368,6 +368,12 @@ hl.bind('SUPER + mouse:272', hl.dsp.window.drag(), { mouse = true })
 hl.bind('SUPER + mouse:273', hl.dsp.window.resize(), { mouse = true })
 hl.bind('SUPER + mouse:274', hl.dsp.window.float { action = 'toggle' }, { mouse = true })
 
+-- Passthrough
+hl.define_submap("passthru", function()
+  hl.bind("SUPER + Escape", hl.dsp.submap("reset"))
+end)
+hl.bind("SUPER + Escape", hl.dsp.submap("passthru"))
+
 -- ###############
 -- ### LAYOUTS ###
 -- ###############
