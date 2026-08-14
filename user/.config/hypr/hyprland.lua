@@ -32,7 +32,7 @@ local wallpaper = 'luajit ~/.config/wallpapers/wallpaper.lua'
 local music = 'alacritty --class cmus --title cmus -e cmus'
 local clipboard_manager = 'wl-paste --watch cliphist -max-items 30000 store'
 local mail = 'tutanota-desktop --enable-features=UseOzonePlatform --ozone-platform=wayland'
-local browser = 'librewolf'
+local browser = 'firefox'
 
 -- #############################
 -- ### ENVIRONMENT VARIABLES ###
@@ -241,7 +241,7 @@ hl.bind('ALT + CTRL + SHIFT + H', hl.dsp.window.move { workspace = '11', follow 
 hl.window_rule { match = { class = '^(discord|WebCord)$' }, workspace = '6 silent' }
 hl.window_rule { match = { title = '^(WebCord)$' }, workspace = '6 silent' }
 hl.window_rule { match = { title = 'Discord Updater' }, workspace = '6 silent', center = true }
-hl.window_rule { match = { class = '^(LibreWolf|librewolf|chromium)$' }, workspace = '7 silent' }
+hl.window_rule { match = { class = '^(Firefox|firefox|chromium)$' }, workspace = '7 silent' }
 hl.window_rule { match = { class = '^(tutanota-desktop|aerc)$' }, workspace = '9 silent' }
 hl.window_rule { match = { class = '^(cmus|spotube)$' }, workspace = '5 silent' }
 hl.window_rule { match = { class = '^(prismlauncher|Minecraft.*|steam_app_960090)$' }, workspace = '8 silent' }
