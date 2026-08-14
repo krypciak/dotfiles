@@ -1,7 +1,7 @@
 git:
-  pagers:
+  diffRenderers:
     - colorArg: always
-      pager: delta --dark --paging=never --line-numbers
+      command: delta --dark --paging=never --line-numbers
 customCommands:
   - key: "<c-r>"
     command: "gh pr create --fill --web"
