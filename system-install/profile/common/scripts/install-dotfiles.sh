@@ -11,11 +11,11 @@ chown_user "$USER_HOME" "$USER_HOME/.config" "$USER_HOME/.cache" "$USER_HOME/.lo
 
 if [ "$INSTALL_DOTFILES" = '1' ]; then
     info "Installing dotfiles for user <user>$USER1</user>"
-    doas -u "$USER1" sh "$DOTDIR"/install-dotfiles.sh
+    sudo -u "$USER1" sh "$DOTDIR"/install-dotfiles.sh
 
     if [ "${NVIM_PREINSTALL-}" = '1' ]; then
         info_barr 'Downloading user neovim plugins etc...'
-        doas -u "$USER1" "$DOTDIR"/system-install/profile/common/scripts/nvim-preinstall.sh
+        sudo -u "$USER1" "$DOTDIR"/system-install/profile/common/scripts/nvim-preinstall.sh
 
         mkdir -p /root/.local/share
         if [ "$TYPE" = 'iso' ]; then
@@ -43,7 +43,7 @@ fi
 set +e
 info 'Generating fish completions'
 fish --command "fish_update_completions" >/dev/null 2>&1
-doas -u "$USER1" fish --command "fish_update_completions" >/dev/null 2>&1
+sudo -u "$USER1" fish --command "fish_update_completions" >/dev/null 2>&1
 set -e
 
 wait $(jobs -p)

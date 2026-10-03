@@ -27,8 +27,8 @@ _configure_tldr() {
     tldr tldr >/dev/null 2>&1
 
     chown_user "$USER_HOME"/.cache
-    doas -u "$USER1" tldr --update
-    doas -u "$USER1" tldr tldr >/dev/null 2>&1
+    sudo -u "$USER1" tldr --update
+    sudo -u "$USER1" tldr tldr >/dev/null 2>&1
 }
 
 arch_basic_configure() {

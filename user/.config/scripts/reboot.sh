@@ -1,7 +1,7 @@
 #!/bin/sh
 if command -v systemctl >/dev/null; then
     if [ -f /etc/iso ]; then
-        doas systemctl reboot -ff
+        sudo systemctl reboot -ff
     else
         systemctl reboot
     fi

@@ -12,7 +12,6 @@ alias .3='cd ../../..'
 alias .4='cd ../../../..'
 alias .5='cd ../../../../..'
 
-alias 'dps'='doas pacman -Syu'
 alias 'sl'='ls'
 alias 'rmm'='rmtrash'
 
@@ -37,7 +36,7 @@ alias dust='dust --reverse'
 alias iforgothowtosyncfork='printf "# Sync your fork\ngit fetch upstream\ngit checkout master\ngit merge upstream/master\n"'
 alias gitignorenowork='printf "#Remember to commit everything changed before you do this!\ngit rm -rf --cached .\ngit add .\n"'
 alias iuploadedmycreditcardnumbertogitwhatnow='printf "git filter-repo --invert-paths --path <path to the file or directory>"\n'
-alias mountqcow2='printf "# Mount\ndoas modprobe nbd max_part=8\ndoas qemu-nbd --connect=/dev/nbd0 IMAGE.qcow2\ndoas mount /dev/nbd0 MNT\n\n# Umount\ndoas umount MNT\ndoas qemu-ndp --disconnect /dev/nbd0"'
+alias mountqcow2='printf "# Mount\nsudo modprobe nbd max_part=8\nsudo qemu-nbd --connect=/dev/nbd0 IMAGE.qcow2\nsudo mount /dev/nbd0 MNT\n\n# Umount\nsudo umount MNT\nsudo qemu-ndp --disconnect /dev/nbd0"'
 alias blkiduuid='blkid -s UUID -o value /dev/vda1'
 alias extractbootimg="printf 'ls -la \$(find /dev/block/platform -type d -name by-name) | grep boot\ndd if=/boot/img/path of=/sdcard/boot.img'"
 

@@ -100,7 +100,7 @@ for mode in normal locked; do
     riverctl map $mode Super+Shift+Control P spawn '$HOME/.config/scripts/poweroff.sh'
     riverctl map $mode Super+Shift+Control R spawn '$HOME/.config/scripts/reboot.sh'
     riverctl map $mode Super+Shift+Control T spawn '$HOME/.config/scripts/soft-reboot.sh'
-    riverctl map $mode Super+Shift+Control W spawn 'doas grub-reboot 2; $HOME/.config/scripts/reboot.sh'
+    riverctl map $mode Super+Shift+Control W spawn 'sudo grub-reboot 2; $HOME/.config/scripts/reboot.sh'
     riverctl map $mode Super+Shift+Control S spawn 'playerctl pause -a; $HOME/.config/scripts/suspend.sh; swaylock'
     riverctl map $mode Super+Shift+Control H spawn '$HOME/.config/scripts/hibernate.sh; swaylock'
 done

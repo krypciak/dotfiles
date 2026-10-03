@@ -14,7 +14,7 @@ info "Installing groups: <user>$GROUP_LIST</user>"
 
 n=0
 until [ "$n" -ge $PACKAGE_INSTALL_ATTEMPTS ]; do
-    doas -u "$USER1" paru $PARU_ARGUMENTS $PACMAN_ARGUMENTS -S $PACKAGE_LIST && break
+    sudo -u "$USER1" paru $PARU_ARGUMENTS $PACMAN_ARGUMENTS -S $PACKAGE_LIST && break
     n=$((n + 1))
     err "Package installation failed. Attempt $n/$PACKAGE_INSTALL_ATTEMPTS"
     sleep 3

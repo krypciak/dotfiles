@@ -226,7 +226,7 @@ prefers_reduced_motion = true
 # ]
 
 ## Set commands that should be totally stripped and ignored from stats
-common_prefix = ["doas"]
+common_prefix = ["sudo"]
 
 ## Set commands that will be completely ignored from stats
 # ignored_commands = [

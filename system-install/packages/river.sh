@@ -4,7 +4,7 @@ _make_sandbar() {
     info 'Compiling sandbar'
 
     cd "$USER_HOME"/.config/river/sandbar/
-    doas -u "$USER1" make
+    sudo -u "$USER1" make
 }
 
 _configure_river() {

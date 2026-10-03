@@ -6,5 +6,3 @@ SETUVAR _fish_abbr_cd_2E_:cd\x20\x2e\x2e
 SETUVAR _fish_abbr_cd_2E_2E_:cd\x20\x2e\x2e
 SETUVAR _fish_abbr_rmm:rmtrash
 SETUVAR _fish_abbr_sl:ls
-SETUVAR _fish_abbr_sudo:doas
-SETUVAR fish_globabbreviations:\x2d\x2dadd\x20dps\x20doas\x20pacman\x20\x2dSyu\x1edps\x20doas\x20pacman\x20\x2dSyu\x1esudo\x20doas\x1esl\x20ls\x1ermm\x20rmtrash\x1ecd\x2e\x2e\x20cd\x20\x2e\x2e\x1ecd\x2c\x2c\x20cd\x20\x2e\x2e

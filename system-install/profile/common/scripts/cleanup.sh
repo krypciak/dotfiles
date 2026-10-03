@@ -14,13 +14,13 @@ if [ "$TYPE" = 'iso' ] && [ "$DEV" != '1' ]; then
     rm -rf /var/cache/pacman/pkg /root/.cache/paru "$USER_HOME"/.cache/paru
 fi
 
-info_barr "Restoring doas config"
+info_barr "Restoring sudo config"
 if [ "$TYPE" = 'iso' ]; then
-    cp "$DOTDIR"/system-install/profile/iso/root/etc/doas.conf /etc/doas.conf
+    cp "$DOTDIR"/system-install/profile/iso/root/etc/sudoers /etc/sudoers
 else
-    cp "$DOTDIR"/system-install/profile/common/root/etc/doas.conf /etc/doas.conf
+    cp "$DOTDIR"/system-install/profile/common/root/etc/sudoers /etc/sudoers
 fi
-chmod -c 0400 /etc/doas.conf
+chmod -c 0440 /etc/sudoers
 
 if [ "$TYPE" != 'iso' ]; then
     sed -i 's/#CheckSpace/CheckSpace/g' /etc/pacman.conf

@@ -5,7 +5,7 @@ USER_HOME="/home/$USER1"
 
 # _git_pull() {
 #     cd $USER_HOME/.config/dotfiles || eend 1
-#     doas -u "$USER1" git pull
+#     sudo -u "$USER1" git pull
 # }
 # _git_pull &
 #

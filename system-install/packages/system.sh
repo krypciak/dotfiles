@@ -8,9 +8,9 @@ _configure_greetd() {
 }
 
 arch_system_install() {
-    echo 'btrfs-progs clang dbus dbus dbus-glib dbus-python doas-sudo-shim'
+    echo 'btrfs-progs clang dbus dbus dbus-glib dbus-python'
     echo 'dosfstools efibootmgr git greetd grub mtools networkmanager'
-    echo 'openbsd-netcat opendoas perl python python-pip'
+    echo 'openbsd-netcat sudo perl python python-pip'
     echo 'unrar unzip util-linux wget zip memtest86+'
 
     if [ "$INSTALL_PLYMOUTH_THEME" = '1' ]; then

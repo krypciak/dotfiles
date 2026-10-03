@@ -10,12 +10,12 @@ source_vars "$DOTDIR"
 ./"$DIR"/mkinitcpio-toggle.sh disable
 ./"$DIR"/time-lang.sh
 ./"$DOTDIR"/system-install/profile/common/scripts/add-user.sh
-./"$DOTDIR"/system-install/profile/common/scripts/temp-doas.sh
+./"$DOTDIR"/system-install/profile/common/scripts/temp-sudo.sh
 ./"$DIR"/init-pacman.sh
 ./"$DIR"/install-paru.sh
 ./"$DIR"/install-packages.sh
 ./"$DIR"/copy-configs.sh
-./"$DOTDIR"/system-install/profile/common/scripts/temp-doas.sh
+./"$DOTDIR"/system-install/profile/common/scripts/temp-sudo.sh
 ./"$DOTDIR"/system-install/profile/common/scripts/install-dotfiles.sh
 ./"$DOTDIR"/system-install/profile/common/scripts/set-passwords.sh
 ./"$DOTDIR"/system-install/profile/common/scripts/configure-packages.sh

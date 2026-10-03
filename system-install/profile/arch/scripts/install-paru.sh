@@ -17,12 +17,12 @@ if ! command -v "paru" >/dev/null 2>&1; then
         pacman $PACMAN_ARGUMENTS -Sy paru
     else
         # install paru manually
-        pacman $PACMAN_ARGUMENTS -Sy git doas debugedit
+        pacman $PACMAN_ARGUMENTS -Sy git sudo debugedit
         git clone https://aur.archlinux.org/paru.git /tmp/paru
         chown_user /tmp/paru
         chmod -R +wrx /tmp/paru
         cd /tmp/paru || exit 1
-        doas -u "$USER1" makepkg -si --noconfirm --needed
+        sudo -u "$USER1" makepkg -si --noconfirm --needed
     fi
 
 fi
