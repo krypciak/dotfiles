@@ -9,4 +9,6 @@ arch_bluetooth_configure() {
         systemctl enable bluetooth
         systemctl enable bluetooth-autoconnect
     fi
+
+    systemctl --user enable --now mpris-proxy
 }
