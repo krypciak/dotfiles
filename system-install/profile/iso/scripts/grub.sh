@@ -44,9 +44,9 @@ grub-mkimage -d "$ISO_ROOT"/boot/grub/x86_64-efi -o "$ISO_ROOT"/efi/boot/bootx64
 truncate -s '4M' "$ISO_ROOT"/boot/efi.img
 mkfs.fat -n "$(echo $VARIANT | tr '[:lower:]' '[:upper:]')_EFI" "$ISO_ROOT"/boot/efi.img
 
-mkdir -p "$ISO_ROOTFS"/tmp/efiboot
-mount "$ISO_ROOT"/boot/efi.img "$ISO_ROOTFS"/tmp/efiboot
-mkdir -p "$ISO_ROOTFS"/tmp/efiboot/efi/boot
-
-grub-mkimage -d "$ISO_ROOT"/boot/grub/x86_64-efi -o "$ISO_ROOTFS"/tmp/efiboot/efi/boot/bootx64.efi -O x86_64-efi -p /boot/grub iso9660
-umount "$ISO_ROOTFS"/tmp/efiboot
+# Populate efi.img with mtools instead of mounting it: needs no loop device,
+# so it works regardless of the loop module state.
+ISO_EFI_IMG="$ISO_ROOT"/boot/efi.img
+mmd -i "$ISO_EFI_IMG" ::efi
+mmd -i "$ISO_EFI_IMG" ::efi/boot
+mcopy -i "$ISO_EFI_IMG" "$ISO_ROOT"/efi/boot/bootx64.efi ::efi/boot/bootx64.efi

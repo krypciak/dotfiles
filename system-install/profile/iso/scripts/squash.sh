@@ -14,3 +14,5 @@ mksquashfs "$ISO_ROOTFS" "$ISO_LIVEOS"/rootfs.img -comp zstd -Xcompression-level
 
 cd "$ISO_LIVEOS"
 md5sum rootfs.img >rootfs.img.md5
+# The 'iso' boot hook gates on the .md5 file but verifies with sha512sum
+sha512sum rootfs.img >rootfs.img.sha512

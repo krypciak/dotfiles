@@ -17,10 +17,23 @@ build() {
     add_binary gpg
     add_binary grep
 
-    add_file /usr/lib/udev/rules.d/60-cdrom_id.rules
-    add_file /usr/lib/udev/rules.d/10-dm.rules
-    add_file /usr/lib/udev/rules.d/95-dm-notify.rules
-    add_file /usr/lib/initcpio/udev/11-dm-initramfs.rules /usr/lib/udev/rules.d/11-dm-initramfs.rules
+    # 10-dm.rules is the one that creates the /dev/mapper/<name> nodes the
+    # dm-snapshot code in the iso hook depends on. It used to be accompanied by
+    # lvm2's 11-dm-initramfs.rules, which no longer ships; 10-dm.rules handles
+    # the initrd coldplug case itself, so nothing is lost by dropping it.
+    # These files come from lvm2/systemd and move between package versions,
+    # so only add the ones that are actually present.
+    for rules in \
+        /usr/lib/udev/rules.d/60-cdrom_id.rules \
+        /usr/lib/udev/rules.d/10-dm.rules \
+        /usr/lib/udev/rules.d/95-dm-notify.rules; do
+        if [[ -f $rules ]]; then
+            add_file "$rules"
+        else
+            echo "WARNING: udev rules not found, skipping: $rules" >&2
+        fi
+    done
+
     if [[ $ARTIX_GNUPG_FD ]]; then
         mkdir -p "$BUILDROOT$dest"/gpg
         gpg --homedir "$BUILDROOT$dest"/gpg --import <&$ARTIX_GNUPG_FD

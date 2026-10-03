@@ -23,7 +23,7 @@ ISO_WAIT_FOR_DIR=''
 handle_args "\
 -y|--noconfirm=export YOLO=1,\
 --iso:=export ISO_OUT_DIR=\"\$2\",\
---iso-copy_to:=export ISO_COPY_TO_DIR=\"\$2\",\
+--iso-copy-to:=export ISO_COPY_TO_DIR=\"\$2\",\
 --wait-for-dir:=export ISO_WAIT_FOR_DIR=\"\$2\",\
 " "$@"
 
@@ -40,6 +40,7 @@ fi
 export VARIANT="arch"
 
 ISO_OUT_FILENAME="$VARIANT-iso-$(date -u +%Y-%m-%d).iso"
+mkdir -p "$ISO_OUT_DIR"
 ISO_OUT_FILE="$(echo "$ISO_OUT_DIR/$ISO_OUT_FILENAME" | xargs realpath)"
 
 ISO_WORK_DIR="/mnt/$VARIANT-iso"
@@ -97,18 +98,20 @@ else
 fi
 
 if [ "$ISO_COPY_TO_DIR" != '' ]; then
+    # --wait-for-dir is optional: default to the copy destination
+    [ "$ISO_WAIT_FOR_DIR" = '' ] && ISO_WAIT_FOR_DIR="$ISO_COPY_TO_DIR"
     _wait_dir_mount
     info "Copying the iso to <path>${ISO_COPY_TO_DIR}</path> ..."
-    rm -f "$ISO_WAIT_FOR_DIR"/$VARIANT-iso*
+    rm -f "$ISO_COPY_TO_DIR"/$VARIANT-iso*
     if command -v pv >/dev/null 2>&1; then
-        pv "$ISO_OUT_FILE" >"$ISO_WAIT_FOR_DIR/$ISO_OUT_FILENAME"
+        pv "$ISO_OUT_FILE" >"$ISO_COPY_TO_DIR/$ISO_OUT_FILENAME"
     else
-        cp "$ISO_OUT_FILE" "$ISO_WAIT_FOR_DIR"
+        cp "$ISO_OUT_FILE" "$ISO_COPY_TO_DIR"
     fi
     info "Syncing..."
     sync
     info "Unmounting..."
-    umount "$ISO_WAIT_FOR_DIR"
+    umount "$ISO_COPY_TO_DIR"
     info "Done."
     info "You can unplug your device now"
 fi
