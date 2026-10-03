@@ -116,7 +116,7 @@
     "pre_break_warning_time": 15,
     "random_order": true,
     "short_break_duration": 20,
-    "short_break_interval": 20,
+    "short_break_interval": 30,
     "short_breaks": [
         {
             "name": "Tightly close your eyes"
