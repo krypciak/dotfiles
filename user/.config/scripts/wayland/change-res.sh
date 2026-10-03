@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 set -euo pipefail
 MONITORS="$(wlr-randr | grep -E '"*"|Enabled|preferred' | awk '{if ($1 ~ "Enabled") print $2 " "; else if ($1 ~ /[0-9]+x[0-9]+/) print $1 "@"; else print $1 " "}' | tr -d '\n' | tr '@' '\n')"
 echo "$MONITORS"

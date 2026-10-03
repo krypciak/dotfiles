@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 if [ $# -eq 0 ]; then
     . ~/.config/at-login.sh
     exec start-hyprland >~/.config/hypr/log.txt 2>&1

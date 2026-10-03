@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 wpctl status | node -e '
 process.stdin.on("data", (data) => {

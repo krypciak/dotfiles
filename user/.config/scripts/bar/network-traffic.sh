@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 TIME='4'
 MULTI='1'
 INTERFACES="$(ip -br a | awk '{print $1}' | grep -vE ^lo | xargs)"

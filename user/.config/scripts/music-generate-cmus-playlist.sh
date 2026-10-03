@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 set -euo pipefail
 music_dir="$HOME/Music"
 cmus_playlists_dir="$HOME/.config/cmus/playlists"

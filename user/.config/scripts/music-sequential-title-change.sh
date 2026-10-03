@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 set -euo pipefail
 ls -tr -- *.mp3 | tr '\n' '\0' | while IFS= read -r -d '' f; do
     title="$(taffy "$f" | grep "title" | tail -c +10)"

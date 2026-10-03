@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 set -a
 
 QT_QPA_PLATFORMTHEME=qt6ct
