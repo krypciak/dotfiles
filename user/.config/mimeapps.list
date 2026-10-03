@@ -1,5 +1,5 @@
 [Added Associations]
-application/pdf=librewolf-3.desktop;librewolf-2.desktop;librewolf.desktop;
+application/pdf=firefox.desktop;librewolf-3.desktop;librewolf-2.desktop;librewolf.desktop;
 application/rtf=libreoffice-writer.desktop;
 application/x-extension-htm=librewolf.desktop;firefox.desktop;
 application/x-extension-html=librewolf.desktop;firefox.desktop;
