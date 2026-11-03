@@ -246,7 +246,7 @@ hl.window_rule { match = { class = '^(tutanota-desktop|aerc)$' }, workspace = '9
 hl.window_rule { match = { class = '^(cmus|spotube)$' }, workspace = '5 silent' }
 hl.window_rule { match = { class = '^(prismlauncher|Minecraft.*|steam_app_960090)$' }, workspace = '8 silent' }
 hl.window_rule { match = { class = '^(MonkeyCity-Win.exe|dontstarve_steam_x64)$' }, workspace = '8 silent' }
-hl.window_rule { match = { title = '^(.*CrossCode.*|Alabaster Dawn|.*DevTools.*)$' }, workspace = '8 silent' }
+hl.window_rule { match = { title = '^(CrossCode.*|Alabaster Dawn|.*DevTools.*)$' }, workspace = '8 silent' }
 hl.window_rule { match = { class = '^(Lutris|steam_app_489830)$' }, workspace = '11 silent' }
 hl.window_rule { match = { title = '^(.*Steam.*|Launching...)$' }, workspace = '11 silent' }
 
