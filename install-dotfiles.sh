@@ -121,6 +121,7 @@ if [[ ! -v FOR_ROOT ]]; then
 
     inst copy .config/tutanota-desktop/conf.json nooverride
     inst copy .config/cmus/autosave nooverride
+    inst copy .config/onlyoffice/DesktopEditors.conf nooverride
 
     inst copy .config/keepassxc nooverride
 
