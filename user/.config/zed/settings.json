@@ -7,8 +7,18 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
+  "outline_panel": {
+    "dock": "left"
+  },
+  "collaboration_panel": {
+    "dock": "left"
+  },
+  "git_panel": {
+    "dock": "left"
+  },
   "disable_ai": true,
   "agent": {
+    "dock": "right",
     "inline_assistant_model": {
       "provider": "openrouter",
       "model": "meta-llama/llama-4-scout"
@@ -46,6 +56,7 @@
     "active_language_button": false
   },
   "project_panel": {
+    "dock": "left",
     "button": true
   },
   "use_smartcase_search": true,
