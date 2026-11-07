@@ -197,10 +197,17 @@ hl.gesture {
 -- ### WORKSPACES ###
 -- ##################
 
-hl.workspace_rule { workspace = '6' } -- on_created_empty = 'webcord' }
-hl.workspace_rule { workspace = '7', on_created_empty = browser }
-hl.workspace_rule { workspace = '9', on_created_empty = mail }
-hl.workspace_rule { workspace = '5', on_created_empty = music }
+hl.on('workspace.created', function(ws)
+    if ws.is_empty then
+        if ws.name == '5' then
+            hl.exec_cmd(music)
+        elseif ws.name == '7' then
+            hl.exec_cmd(browser)
+        elseif ws.name == '9' then
+            hl.exec_cmd(mail)
+        end
+    end
+end)
 
 hl.bind('ALT + Tab', hl.dsp.focus { workspace = '1' })
 hl.bind('ALT + Q', hl.dsp.focus { workspace = '2' })
@@ -369,10 +376,8 @@ hl.bind('SUPER + mouse:273', hl.dsp.window.resize(), { mouse = true })
 hl.bind('SUPER + mouse:274', hl.dsp.window.float { action = 'toggle' }, { mouse = true })
 
 -- Passthrough
-hl.define_submap("passthru", function()
-  hl.bind("SUPER + Escape", hl.dsp.submap("reset"))
-end)
-hl.bind("SUPER + Escape", hl.dsp.submap("passthru"))
+hl.define_submap('passthru', function() hl.bind('SUPER + Escape', hl.dsp.submap('reset')) end)
+hl.bind('SUPER + Escape', hl.dsp.submap('passthru'))
 
 -- ###############
 -- ### LAYOUTS ###
