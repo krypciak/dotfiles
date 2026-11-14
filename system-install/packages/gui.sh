@@ -6,6 +6,7 @@ arch_gui_install() {
     echo 'xdg-desktop-portal xdg-utils archlinux-xdg-menu'
 
     echo 'fcitx5 fcitx5-configtool fcitx5-gtk fcitx5-qt fcitx5-breeze fcitx5-mozc'
+    echo 'systembus-notify'
 
     if [ "$PORTABLE" = 0 ]; then
         echo 'safeeyes'
@@ -14,4 +15,8 @@ arch_gui_install() {
 
 arch_gui_configure() {
     XDG_MENU_PREFIX=arch- kbuildsycoca6 --noincremental
+
+    mkdir -p "$USER_HOME"/.config/systemd/user
+    cp "$DOTDIR"/system-install/profile/common/configs/systembus-notify.service "$USER_HOME"/.config/systemd/user/
+    machinectl shell "$USER1"@ /usr/bin/systemctl --user enable systembus-notify.service
 }
