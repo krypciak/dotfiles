@@ -12,6 +12,7 @@ arch_system_install() {
     echo 'dosfstools efibootmgr git greetd grub mtools networkmanager'
     echo 'openbsd-netcat sudo perl python python-pip'
     echo 'unrar unzip util-linux wget zip memtest86+'
+    echo 'earlyoom'
 
     if [ "$INSTALL_PLYMOUTH_THEME" = '1' ]; then
         echo 'plymouth'
@@ -25,6 +26,8 @@ arch_system_configure() {
 
     systemctl enable greetd
     systemctl enable NetworkManager
+
+    systemctl enable earlyoom
 
     if [ "$TYPE" = 'iso' ]; then
         cp "$DOTDIR"/system-install/profile/iso/configs/arch-iso-service.service /usr/lib/systemd/system/
